@@ -1,3 +1,22 @@
 from django.db import models
+from django.utils.timezone import datetime
 
 # Create your models here.
+class Ticket(models.Model):
+    ticket_title = models.CharField(max_length=80)
+    issue_description = models.TextField()
+    date_created = models.DateField(auto_now_add=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    BUG = "BUG"
+    FEAT = "FEAT"
+    TICKET_TYPE_CHOICES = [(BUG, "Bug"), (FEAT, "Feature")]
+    ticket_type = models.CharField(
+        max_length=4, choices=TICKET_TYPE_CHOICES, default=BUG
+    )
+    OPEN = "OPN"
+    INPROG = "INP"
+    CLO = "SOL"
+    TICKET_STATUS_CHOICES = [(OPEN, "Opened"), (INPROG, "In progress"), (CLO, "Solved")]
+    ticket_status = models.CharField(
+        max_length=3, choices=TICKET_STATUS_CHOICES, default=OPEN
+    )
