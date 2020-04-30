@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.utils.timezone import datetime
 
 # Create your models here.
@@ -20,3 +21,6 @@ class Ticket(models.Model):
     ticket_status = models.CharField(
         max_length=3, choices=TICKET_STATUS_CHOICES, default=OPEN
     )
+
+    def __str__(self):
+        return self.ticket_title
