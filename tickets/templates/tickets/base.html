@@ -50,7 +50,16 @@
       </nav>
       <!-- /Bootstrrap navbar -->
     </header>
-    {% block content %} {% endblock %}
+    <div class="messages">
+      {% if messages %}
+        {% for message in messages %}
+          <p>{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+    
+    {% block content %} 
+    {% endblock %}
 
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
