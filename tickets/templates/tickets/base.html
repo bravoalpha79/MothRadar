@@ -42,7 +42,7 @@
             <a class="nav-item nav-link" href="#">Profile</a>
             <a class="nav-item nav-link" href="#">Logout</a>
             {% else %}
-            <a class="nav-item nav-link" href="#">Register</a>
+            <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
             <a class="nav-item nav-link" href="#">Login</a>
             {% endif %}
           </div>
