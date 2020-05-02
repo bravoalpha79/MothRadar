@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.timezone import datetime
+from django.urls import reverse
 
 # Create your models here.
 class Ticket(models.Model):
@@ -24,3 +25,6 @@ class Ticket(models.Model):
 
     def __str__(self):
         return self.ticket_title
+
+    def get_absolute_url(self):
+        return reverse("ticket-details", kwargs={"pk": self.pk})
