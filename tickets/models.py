@@ -5,8 +5,8 @@ from django.urls import reverse
 
 # Create your models here.
 class Ticket(models.Model):
-    ticket_title = models.CharField(max_length=80)
-    issue_description = models.TextField()
+    title = models.CharField(max_length=80)
+    description = models.TextField()
     date_created = models.DateField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     BUG = "BUG"
@@ -19,12 +19,10 @@ class Ticket(models.Model):
     INPROG = "INP"
     CLO = "SOL"
     TICKET_STATUS_CHOICES = [(OPEN, "Opened"), (INPROG, "In progress"), (CLO, "Solved")]
-    ticket_status = models.CharField(
-        max_length=3, choices=TICKET_STATUS_CHOICES, default=OPEN
-    )
+    status = models.CharField(max_length=3, choices=TICKET_STATUS_CHOICES, default=OPEN)
 
     def __str__(self):
-        return self.ticket_title
+        return self.title
 
     def get_absolute_url(self):
         return reverse("ticket-details", kwargs={"pk": self.pk})

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 from django.contrib.auth.decorators import login_required
 from .models import Ticket
 
@@ -10,9 +10,12 @@ def home(request):
 
 class TicketCreateView(CreateView):
     model = Ticket
-    fields = ["ticket_title", "issue_description", "ticket_type"]
+    fields = ["title", "description", "ticket_type"]
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+
+class TicketDetailView(DetailView):
+    model = Ticket
