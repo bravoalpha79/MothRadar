@@ -14,7 +14,7 @@ def register(request):
                 request, "Your account has been created, {}.".format(username)
             )
             form.save()
-            return redirect("home")
+            return redirect("login")
     else:
         form = UserRegistrationForm()
     return render(request, "users/register.html", {"form": form})
