@@ -32,5 +32,6 @@ urlpatterns = [
         name="logout",
     ),
     path("profile/", users_views.profile, name="profile"),
+    path("profile/update/", users_views.update_profile, name="update_profile"),
     path("admin/", admin.site.urls),
 ]
