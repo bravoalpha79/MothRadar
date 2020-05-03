@@ -1,12 +1,15 @@
 {% extends "tickets/base.html" %} 
-{% load crispy_forms_tags %}
+{% load crispy_forms_tags %} 
 {% block content%}
-    <h2>{{ user.username }} Profile</h2>
-    <p>Email: {{ user.email }}</p>
-    <p>Member since: {{ user.date_joined|date:"d F Y" }}</p>
-    <p>Tickets raised:</p>
-    <p>Comments:</p>
-    {% block profile_update %}
-        <a class="btn btn-info" href="{% url 'update_profile' %}">Edit</a>
-    {% endblock profile_update %}
+<h2>{{ user.username }} Profile</h2>
+<p>Email: {{ user.email }}</p>
+<p>Member since: {{ user.date_joined|date:"d F Y" }}</p>
+<p>Tickets raised:</p>
+<p>Comments:</p>
+{% block profile_update %}
+<a class="btn btn-info" href="{% url 'update_profile' %}">Edit</a>
+<a class="btn btn-warning" href="{% url 'password_change' %}"
+  >Change Password</a
+>
+{% endblock profile_update %} 
 {% endblock %}
