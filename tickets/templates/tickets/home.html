@@ -1,5 +1,35 @@
 {% extends "tickets/base.html" %} 
-
 {% block content %}
-<h2>Welcome to MothRadar!</h2>
+<h1>Welcome to MothRadar!</h1>
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <h2>Submit tickets.</h2>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <h2>Browse existing issues.</h2>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <h2>Upvote issues to get them fixed sooner.</h2>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <h2>Comment on issues to help others.</h2>
+    </div>
+  </div>
+</div>
+{% if not user.is_authenticated %}
+    <h4><a href="{% url 'register' %}">Create an account</a> now, or <a href="{% url 'login' %}">log in</a> if you already have one.</h4>
+{% endif %}
 {% endblock %}
