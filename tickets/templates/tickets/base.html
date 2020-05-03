@@ -32,7 +32,9 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav mr-auto">
             <a class="nav-item nav-link" href="#">Home</a>
-            <a class="nav-item nav-link" href="#">Tickets</a>
+            <a class="nav-item nav-link" href="{% url 'ticket-list' %}"
+              >Tickets</a
+            >
             {% if user.is_authenticated %}
             <a
               class="nav-item nav-link btn btn-info"
@@ -57,18 +59,15 @@
       <!-- /Bootstrrap navbar -->
     </header>
     <div class="messages">
-      {% if messages %} 
-        {% for message in messages %}
-        <p>{{ message }}</p>
-        {% endfor %} 
-      {% endif %}
+      {% if messages %} {% for message in messages %}
+      <p>{{ message }}</p>
+      {% endfor %} {% endif %}
     </div>
 
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-8">
-          {% block content %} 
-          {% endblock %}
+          {% block content %} {% endblock %}
         </div>
       </div>
     </div>

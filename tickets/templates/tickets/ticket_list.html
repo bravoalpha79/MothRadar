@@ -1,0 +1,18 @@
+{% extends "tickets/base.html" %} 
+{% block content%}
+    {% for ticket in object_list %}
+        <a href="{% url 'ticket-details' ticket.id %}"><h3>{{ ticket.title }}</h3></a>
+        <p>{{ ticket.description }}</p>
+        <p>Created on {{ ticket.date_created }} by {{ ticket.author }}</p>
+        <p><strong>{{ ticket.ticket_type }}</strong>&nbsp;<em>{{ ticket.status }}</em></p>
+        {% if user.is_authenticated and user == ticket.author %}
+            <div>
+                <a class="btn btn-info" href="{% url 'ticket-edit' ticket.id %}">Edit</a>
+                <a class="btn btn-danger" href="{% url 'ticket-delete' ticket.id %}">Delete</a>
+            </div>
+        {% endif %}
+        <hr>
+    {% empty %}
+        <h3>Ticket list is empty.</h3>
+    {% endfor %}
+{% endblock %}
