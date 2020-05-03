@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, UpdateView
 from django.contrib.auth.decorators import login_required
 from .models import Ticket
 
@@ -19,3 +19,8 @@ class TicketCreateView(CreateView):
 
 class TicketDetailView(DetailView):
     model = Ticket
+
+
+class TicketUpdateView(UpdateView):
+    model = Ticket
+    fields = ["title", "description", "ticket_type"]

@@ -1,9 +1,11 @@
-{% extends "tickets/base.html" %} 
-{% block content%}
+{% extends "tickets/base.html" %} {% block content%}
     <h2>{{ object.title }}</h2>
     <p>{{ object.description }}</p>
     <p>{{ object.date_created }}</p>
     <p>{{ object.author }}</p>
     <p><strong>{{ object.ticket_type }}</strong></p>
     <p><em>{{ object.status }}</em></p>
+    <div>
+        <a class="btn btn-info" href="{% url 'ticket-edit' object.id %}">Edit</a>
+    </div>
 {% endblock %}
