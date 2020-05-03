@@ -7,5 +7,5 @@ urlpatterns = [
     path("", views.home, name="home"),
     path("tickets/create/", TicketCreateView.as_view(), name="ticket-create"),
     path("tickets/<int:pk>/", TicketDetailView.as_view(), name="ticket-details"),
-    path("tickets/edit/<int:pk>/", TicketUpdateView.as_view(), name="ticket-edit"),
+    path("tickets/<int:pk>/edit/", TicketUpdateView.as_view(), name="ticket-edit"),
 ]
