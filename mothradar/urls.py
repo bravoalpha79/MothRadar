@@ -46,6 +46,11 @@ urlpatterns = [
         ),
         name="password_change_done",
     ),
+    path(
+        "password-reset/",
+        auth_views.PasswordResetView.as_view(template_name="users/password_reset.html"),
+        name="password_reset",
+    ),
     path("profile/", include("users.urls")),
     path("admin/", admin.site.urls),
 ]
