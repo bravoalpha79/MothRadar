@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.views.generic import CreateView, DetailView, UpdateView
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required
 from .models import Ticket
 
@@ -24,3 +25,8 @@ class TicketDetailView(DetailView):
 class TicketUpdateView(UpdateView):
     model = Ticket
     fields = ["title", "description", "ticket_type"]
+
+
+class TicketDeleteView(DeleteView):
+    model = Ticket
+    success_url = reverse_lazy("ticket-create")

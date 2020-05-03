@@ -1,0 +1,15 @@
+{% extends "tickets/base.html" %} 
+{% load crispy_forms_tags %} 
+{% block content %}
+    <form method="POST">
+        {% csrf_token %} 
+        {{ form|crispy }}
+        <p>
+            Are you sure you want to delete ticket "<strong>{{ object.title }}</strong>"?
+        </p>
+        <div>
+            <button class="btn btn-danger" type="submit">Delete</button>
+            <a class="btn btn-success" href="{% url 'ticket-details' object.id %}">Cancel</a>
+        </div>
+    </form>
+{% endblock %}
