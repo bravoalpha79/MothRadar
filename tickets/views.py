@@ -32,7 +32,7 @@ class TicketCreateView(CreateView):
 def detail(request, pk):
     ticket = get_object_or_404(Ticket, id=pk)
     form = CreateCommentForm()
-    comments = Comment.objects.filter(rel_ticket=ticket)
+    comments = Comment.objects.filter(rel_ticket=ticket).order_by("-created")
 
     if request.method == "POST":
         form = CreateCommentForm(request.POST)
@@ -45,7 +45,7 @@ def detail(request, pk):
     return render(
         request,
         "tickets/ticket_detail.html",
-        {"ticket": ticket, "form": form, "comments": comments},
+        {"ticket": ticket, "form": form, "comments": comments,},
     )
 
 
