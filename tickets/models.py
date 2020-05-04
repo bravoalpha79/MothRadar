@@ -10,16 +10,22 @@ class Ticket(models.Model):
     date_created = models.DateField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     BUG = "BUG"
-    FEAT = "FEAT"
+    FEAT = "FEATURE"
     TICKET_TYPE_CHOICES = [(BUG, "Bug"), (FEAT, "Feature")]
     ticket_type = models.CharField(
-        max_length=4, choices=TICKET_TYPE_CHOICES, default=BUG
+        max_length=7, choices=TICKET_TYPE_CHOICES, default=BUG
     )
-    OPEN = "OPN"
-    INPROG = "INP"
-    CLO = "SOL"
-    TICKET_STATUS_CHOICES = [(OPEN, "Opened"), (INPROG, "In progress"), (CLO, "Solved")]
-    status = models.CharField(max_length=3, choices=TICKET_STATUS_CHOICES, default=OPEN)
+    OPENED = "OPENED"
+    INPROG = "INPROG"
+    CLOSED = "SOLVED"
+    TICKET_STATUS_CHOICES = [
+        (OPENED, "Opened"),
+        (INPROG, "In progress"),
+        (CLOSED, "Solved"),
+    ]
+    status = models.CharField(
+        max_length=6, choices=TICKET_STATUS_CHOICES, default=OPENED
+    )
 
     def __str__(self):
         return self.title
