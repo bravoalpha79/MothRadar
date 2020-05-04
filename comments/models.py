@@ -6,7 +6,7 @@ from tickets.models import Ticket
 
 # Create your models here.
 class Comment(models.Model):
-    text = models.TextField("Comment")
+    text = models.TextField()
     created = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     rel_ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)

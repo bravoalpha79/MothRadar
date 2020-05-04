@@ -33,6 +33,7 @@
         <p><small>Posted by {{ comment.author }} on {{ comment.created|date:"j M Y"}} at {{ comment.created|time:"G i"}}</small></p>
             <p>{{ comment.text }}</p>
         </div>
+        <br>
     {% empty %}
         <p>No comments yet.</p>
     {% endfor %}
