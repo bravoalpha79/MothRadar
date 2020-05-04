@@ -10,6 +10,7 @@ from django.views.generic import (
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from comments.models import Comment
+from comments.forms import CreateCommentForm, EditCommentForm
 from .models import Ticket
 
 
@@ -29,7 +30,10 @@ class TicketCreateView(CreateView):
 
 def detail(request, pk):
     ticket = get_object_or_404(Ticket, id=pk)
-    return render(request, "tickets/ticket_detail.html", {"ticket": ticket})
+    form = CreateCommentForm()
+    return render(
+        request, "tickets/ticket_detail.html", {"ticket": ticket, "form": form}
+    )
 
 
 class TicketUpdateView(UpdateView):
