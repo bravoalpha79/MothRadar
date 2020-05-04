@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.generic import (
     CreateView,
@@ -28,11 +28,24 @@ class TicketCreateView(CreateView):
         return super().form_valid(form)
 
 
+# method created with the help of https://djangocentral.com/creating-comments-system-with-django/
 def detail(request, pk):
     ticket = get_object_or_404(Ticket, id=pk)
     form = CreateCommentForm()
+    comments = Comment.objects.filter(rel_ticket=ticket)
+
+    if request.method == "POST":
+        form = CreateCommentForm(request.POST)
+        form.instance.author = request.user
+        form.instance.rel_ticket = ticket
+        if form.is_valid():
+            form.save()
+            return redirect("ticket-details", pk)
+
     return render(
-        request, "tickets/ticket_detail.html", {"ticket": ticket, "form": form}
+        request,
+        "tickets/ticket_detail.html",
+        {"ticket": ticket, "form": form, "comments": comments},
     )
 
 
