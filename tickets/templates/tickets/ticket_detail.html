@@ -1,6 +1,8 @@
 {% extends "tickets/base.html" %} 
 {% load crispy_forms_tags %}
 {% block content%}
+<br>
+<div class="card">
     <h2>{{ ticket.title }}</h2>
     <p>{{ ticket.description }}</p>
     <p>{{ ticket.date_created }}</p>
@@ -15,7 +17,8 @@
         >
         </div>
     {% endif %} 
-
+    <br>
+</div>
 <!-- Comments ---> 
     <br>
     {% if user.is_authenticated %}
@@ -33,7 +36,6 @@
         <p><small>Posted by {{ comment.author }} on {{ comment.created|date:"j M Y"}} at {{ comment.created|time:"G i"}}</small></p>
             <p>{{ comment.text }}</p>
         </div>
-        <br>
     {% empty %}
         <p>No comments yet.</p>
     {% endfor %}
