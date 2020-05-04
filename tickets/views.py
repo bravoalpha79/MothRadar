@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import (
     CreateView,
@@ -27,8 +27,9 @@ class TicketCreateView(CreateView):
         return super().form_valid(form)
 
 
-class TicketDetailView(DetailView):
-    model = Ticket
+def detail(request, pk):
+    ticket = get_object_or_404(Ticket, id=pk)
+    return render(request, "tickets/ticket_detail.html", {"ticket": ticket})
 
 
 class TicketUpdateView(UpdateView):
