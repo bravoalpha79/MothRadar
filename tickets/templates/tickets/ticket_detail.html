@@ -1,4 +1,5 @@
 {% extends "tickets/base.html" %} 
+{% load crispy_forms_tags %}
 {% block content%}
     <h2>{{ object.title }}</h2>
     <p>{{ object.description }}</p>
@@ -7,9 +8,31 @@
     <p><strong>{{ object.ticket_type }}</strong></p>
     <p><em>{{ object.status }}</em></p>
     {% if user.is_authenticated and user == object.author %}
-    <div>
+        <div>
         <a class="btn btn-info" href="{% url 'ticket-edit' object.id %}">Edit</a>
-        <a class="btn btn-danger" href="{% url 'ticket-delete' object.id %}">Delete</a>
-    </div>
+        <a class="btn btn-danger" href="{% url 'ticket-delete' object.id %}"
+            >Delete</a
+        >
+        </div>
+    {% endif %} 
+
+<!-- Comments ---> 
+    {% if user.is_authenticated %}
+        <form method="POST">
+            {% csrf_token %} 
+            {{ form|crispy }}
+            <div>
+                <button class="btn btn-info" type="submit">Submit</button>
+            </div>
+        </form>
     {% endif %}
+    {% for comment in comments %}
+        <div class="card">
+        <p><small>Posted by {{ comment.author }} on {{ comment.created|date:"j M Y"}} at {{ comment.created|time:"G i"}}</small></p>
+            <p>{{ comment.text }}</p>
+        </div>
+    {% empty %}
+        <p>No comments yet.</p>
+    {% endfor %}
+<!-- ./Comments ---> 
 {% endblock %}
