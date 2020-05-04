@@ -37,6 +37,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     "users.apps.UsersConfig",
     "tickets.apps.TicketsConfig",
+    "comments.apps.CommentsConfig",
     "crispy_forms",
     "django.contrib.admin",
     "django.contrib.auth",
