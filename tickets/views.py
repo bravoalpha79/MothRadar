@@ -7,8 +7,11 @@ from django.views.generic import (
     DeleteView,
     ListView,
 )
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from comments.models import Comment
 from .models import Ticket
+
 
 # Create your views here.
 def home(request):
