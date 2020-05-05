@@ -2,7 +2,14 @@ body {
   background-color: aqua;
 }
 
-a {
-  appearance: button;
-  -webkit-appearance: button;
+#newComment {
+  display: none;
+}
+
+.commentId {
+  display: none;
+}
+
+#text {
+  width: 100%;
 }

@@ -27,9 +27,12 @@ $("#postComment").click(function () {
       csrfmiddlewaretoken: csrfToken,
       text: text,
     };
-    $.post(url, data).done(function () {
+    $.post(url, data).done(function (response) {
       $("#comments").prepend("<small>Comment added</small>");
       $("#text").val("");
+      $("#newCommentAuthor").text(response.author);
+      $("#newCommentText").text(response.text);
+      $("#newComment").fadeIn("slow");
     });
   }
 });
