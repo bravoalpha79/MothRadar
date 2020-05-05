@@ -10,7 +10,7 @@ from django.views.generic import (
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from comments.models import Comment
-from comments.forms import CreateCommentForm, EditCommentForm
+from comments.forms import EditCommentForm
 from .models import Ticket
 
 
@@ -26,27 +26,6 @@ class TicketCreateView(CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
-
-
-# # method created with the help of https://djangocentral.com/creating-comments-system-with-django/
-# def detail(request, pk):
-#     ticket = get_object_or_404(Ticket, id=pk)
-#     form = CreateCommentForm()
-#     comments = Comment.objects.filter(rel_ticket=ticket).order_by("-created")
-
-#     if request.method == "POST":
-#         form = CreateCommentForm(request.POST)
-#         form.instance.author = request.user
-#         form.instance.rel_ticket = ticket
-#         if form.is_valid():
-#             form.save()
-#             return redirect("ticket-details", pk)
-
-#     return render(
-#         request,
-#         "tickets/ticket_detail.html",
-#         {"ticket": ticket, "form": form, "comments": comments,},
-#     )
 
 
 class TicketDetailView(DetailView):
