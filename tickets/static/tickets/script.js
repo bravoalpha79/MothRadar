@@ -1,9 +1,10 @@
+// getCookie function obtained from Django documentation
 function getCookie(name) {
-  var cookieValue = null;
+  let cookieValue = null;
   if (document.cookie && document.cookie !== "") {
-    var cookies = document.cookie.split(";");
-    for (var i = 0; i < cookies.length; i++) {
-      var cookie = cookies[i].trim();
+    let cookies = document.cookie.split(";");
+    for (let i = 0; i < cookies.length; i++) {
+      let cookie = cookies[i].trim();
       // Does this cookie string begin with the name we want?
       if (cookie.substring(0, name.length + 1) === name + "=") {
         cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
@@ -15,18 +16,20 @@ function getCookie(name) {
 }
 
 $("#postComment").click(function () {
+  const url = `comments/add/`;
+  const text = $("#text").val();
   let csrfToken = getCookie("csrftoken");
-  //   let ticketId = parseInt($("#ticketId").val());
-  let url = `comments/add/`;
-  let text = $("#text").val();
 
-  let data = {
-    csrfmiddlewaretoken: csrfToken,
-    // ticketId: ticketId,
-    text: text,
-  };
-
-  $.post(url, data).done(function () {
-    $("#comments").prepend("<p>Comment added</p>");
-  });
+  if (!text) {
+    $("#comments").prepend("<small>You can't post an empty comment.</small>");
+  } else {
+    let data = {
+      csrfmiddlewaretoken: csrfToken,
+      text: text,
+    };
+    $.post(url, data).done(function () {
+      $("#comments").prepend("<small>Comment added</small>");
+      $("#text").val("");
+    });
+  }
 });

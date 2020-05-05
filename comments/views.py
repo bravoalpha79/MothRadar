@@ -11,3 +11,4 @@ def add_comment(request, pk):
         form.instance.rel_ticket = get_object_or_404(Ticket, pk=pk)
         if form.is_valid:
             form.save()
+        return HttpResponse("Success!!")
