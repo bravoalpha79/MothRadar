@@ -28,25 +28,37 @@ class TicketCreateView(CreateView):
         return super().form_valid(form)
 
 
-# method created with the help of https://djangocentral.com/creating-comments-system-with-django/
-def detail(request, pk):
-    ticket = get_object_or_404(Ticket, id=pk)
-    form = CreateCommentForm()
-    comments = Comment.objects.filter(rel_ticket=ticket).order_by("-created")
+# # method created with the help of https://djangocentral.com/creating-comments-system-with-django/
+# def detail(request, pk):
+#     ticket = get_object_or_404(Ticket, id=pk)
+#     form = CreateCommentForm()
+#     comments = Comment.objects.filter(rel_ticket=ticket).order_by("-created")
 
-    if request.method == "POST":
-        form = CreateCommentForm(request.POST)
-        form.instance.author = request.user
-        form.instance.rel_ticket = ticket
-        if form.is_valid():
-            form.save()
-            return redirect("ticket-details", pk)
+#     if request.method == "POST":
+#         form = CreateCommentForm(request.POST)
+#         form.instance.author = request.user
+#         form.instance.rel_ticket = ticket
+#         if form.is_valid():
+#             form.save()
+#             return redirect("ticket-details", pk)
 
-    return render(
-        request,
-        "tickets/ticket_detail.html",
-        {"ticket": ticket, "form": form, "comments": comments,},
-    )
+#     return render(
+#         request,
+#         "tickets/ticket_detail.html",
+#         {"ticket": ticket, "form": form, "comments": comments,},
+#     )
+
+
+class TicketDetailView(DetailView):
+    model = Ticket
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["comments"] = Comment.objects.filter(
+            rel_ticket=self.object.id
+        ).order_by("-created")
+        context["form"] = CreateCommentForm()
+        return context
 
 
 class TicketUpdateView(UpdateView):
