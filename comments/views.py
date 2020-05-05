@@ -1,13 +1,10 @@
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .forms import CreateCommentForm
 from tickets.models import Ticket
 from .models import Comment
 
-# Create your views here.
-
-
+# The Comment.objects.create solution obtained from ckz8780
 @login_required
 def add_comment(request, pk):
     if request.method == "POST":
