@@ -52,6 +52,14 @@ class TicketCreateView(CreateView):
 class TicketDetailView(DetailView):
     model = Ticket
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["comments"] = Comment.objects.filter(
+            rel_ticket=self.object.id
+        ).order_by("-created")
+        context["form"] = CreateCommentForm()
+        return context
+
 
 class TicketUpdateView(UpdateView):
     model = Ticket
