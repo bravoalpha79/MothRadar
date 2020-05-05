@@ -6,7 +6,6 @@ from .views import (
     TicketUpdateView,
     TicketDeleteView,
 )
-
 from . import views
 
 urlpatterns = [
