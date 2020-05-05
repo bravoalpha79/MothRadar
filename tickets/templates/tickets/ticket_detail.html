@@ -1,43 +1,52 @@
 {% extends "tickets/base.html" %} 
-{% load crispy_forms_tags %}
+{% load crispy_forms_tags %} 
 {% block content%}
-<br>
+<br />
 <div class="card">
-    <h2>{{ ticket.title }}</h2>
-    <p>{{ ticket.description }}</p>
-    <p>{{ ticket.date_created }}</p>
-    <p>{{ ticket.author }}</p>
-    <p><strong>{{ ticket.ticket_type }}</strong></p>
-    <p><em>{{ ticket.status }}</em></p>
-    {% if user.is_authenticated and user == ticket.author %}
-        <div>
-        <a class="btn btn-info" href="{% url 'ticket-edit' ticket.id %}">Edit</a>
-        <a class="btn btn-danger" href="{% url 'ticket-delete' ticket.id %}"
-            >Delete</a
-        >
-        </div>
-    {% endif %} 
-    <br>
+  <small id="ticketId">{{ object.id }}</small>
+  <h2>{{ object.title }}</h2>
+  <p>{{ object.description }}</p>
+  <p>{{ object.date_created }}</p>
+  <p>{{ object.author }}</p>
+  <p><strong>{{ object.ticket_type }}</strong></p>
+  <p><em>{{ object.status }}</em></p>
+  {% if user.is_authenticated and user == object.author %}
+  <div>
+    <a class="btn btn-info" href="{% url 'ticket-edit' object.id %}">Edit</a>
+    <a class="btn btn-danger" href="{% url 'ticket-delete' object.id %}"
+      >Delete</a
+    >
+  </div>
+  {% endif %}
+  <br />
 </div>
-<!-- Comments ---> 
-    <br>
-    {% if user.is_authenticated %}
-        <form method="POST">
-            {% csrf_token %} 
-            {{ form|crispy }}
-            <div>
-                <button class="btn btn-info btn-sm" type="submit">Post comment</button>
-            </div>
-        </form>
-    {% endif %}
-    <br>
-    {% for comment in comments %}
-        <div class="card">
-        <p><small>Posted by {{ comment.author }} on {{ comment.created|date:"j M Y"}} at {{ comment.created|time:"G i"}}</small></p>
-            <p>{{ comment.text }}</p>
-        </div>
-    {% empty %}
-        <p>No comments yet.</p>
-    {% endfor %}
-<!-- ./Comments ---> 
+<!-- Comments --->
+<div id="comments">
+<br />
+{% if user.is_authenticated %}
+<!--<form id="commentForm" method="POST">
+  {% csrf_token %} 
+  {{ form|crispy }}-->
+  <textarea name="" id="text" cols="101" rows="3">
+  </textarea>
+  <div>
+    <button id="postComment" class="btn btn-info btn-sm">Post comment</button>
+  </div>
+<!--</form>-->
+{% endif %}
+<br />
+{% for comment in comments %}
+<div class="card">
+    <small id="commentId">{{ comment.id }}</small>
+  <p>
+    <small
+      >Posted by {{ comment.author }} on {{ comment.created|date:"j M Y"}} at {{ comment.created|time:"G i" }}</small>
+  </p>
+  <p>{{ comment.text }}</p>
+</div>
+{% empty %}
+<p>No comments yet.</p>
+{% endfor %}
+</div>
+<!-- ./Comments --->
 {% endblock %}
