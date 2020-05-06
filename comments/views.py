@@ -11,5 +11,14 @@ def add_comment(request, pk):
         text = request.POST.get("text")
         author = request.user
         ticket = get_object_or_404(Ticket, pk=pk)
-        Comment.objects.create(text=text, author=author, rel_ticket=ticket)
-    return JsonResponse({"text": str(text), "author": author.username})
+        try:
+            Comment.objects.create(text=text, author=author, rel_ticket=ticket)
+            return JsonResponse(
+                {
+                    "success": "You comment was successfully added.",
+                    "text": str(text),
+                    "author": author.username,
+                }
+            )
+        except:
+            return JsonResponse({"error": "Something went wrong. Comment not added."})
