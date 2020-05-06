@@ -45,7 +45,7 @@
       <small class="commentId">{{ comment.id }}</small>
       <p>
         <small
-          >Posted by {{ comment.author }} on {{ comment.created|date:"j M Y"}}
+          >Posted by <strong>{{ comment.author }}</strong> on {{ comment.created|date:"j M Y"}}
           at {{ comment.created|time:"G i" }}</small
         >
       </p>

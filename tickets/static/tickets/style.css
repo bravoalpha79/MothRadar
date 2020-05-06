@@ -11,5 +11,6 @@ body {
 }
 
 #newComment {
+  display: none;
   background-color: yellow;
 }

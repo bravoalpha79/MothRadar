@@ -49,8 +49,8 @@ $("#postComment").click(function () {
         newCommentDiv.appendChild(newCommentHeader);
         newCommentDiv.appendChild(newCommentText);
 
-        let comments = document.getElementById("commentsList");
-        comments.insertBefore(newCommentDiv, comments.firstChild);
+        $("#commentsList").prepend(newCommentDiv);
+        $(newCommentDiv).fadeIn("4000");
       }
     });
   }
