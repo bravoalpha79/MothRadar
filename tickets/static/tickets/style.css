@@ -2,14 +2,14 @@ body {
   background-color: aqua;
 }
 
-#newComment {
-  display: none;
-}
-
 .commentId {
   display: none;
 }
 
 #text {
   width: 100%;
+}
+
+#newComment {
+  background-color: yellow;
 }

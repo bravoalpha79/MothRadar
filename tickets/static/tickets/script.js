@@ -21,18 +21,37 @@ $("#postComment").click(function () {
   let csrfToken = getCookie("csrftoken");
 
   if (!text) {
-    $("#comments").prepend("<small>You can't post an empty comment.</small>");
+    $("#commentMessage").text("You can't post an empty comment.");
   } else {
     let data = {
       csrfmiddlewaretoken: csrfToken,
       text: text,
     };
     $.post(url, data).done(function (response) {
-      $("#comments").prepend("<small>Comment added</small>");
-      $("#text").val("");
-      $("#newCommentAuthor").text(response.author);
-      $("#newCommentText").text(response.text);
-      $("#newComment").fadeIn("slow");
+      if (response.error) {
+        $("#commentMessage").text(response.error);
+      } else {
+        $("#text").val("");
+        $("#commentMessage").text(response.success);
+
+        let newCommentDiv = document.createElement("div");
+        newCommentDiv.id = "newComment";
+        newCommentDiv.setAttribute("class", "card");
+
+        let newCommentHeader = document.createElement("small");
+        newCommentHeader.id = "newCommentHeader";
+        newCommentHeader.innerHTML = `Posted by ${response.author} a moment ago`;
+
+        let newCommentText = document.createElement("p");
+        newCommentText.id = "newCommentText";
+        newCommentText.innerHTML = `${response.text}`;
+
+        newCommentDiv.appendChild(newCommentHeader);
+        newCommentDiv.appendChild(newCommentText);
+
+        let comments = document.getElementById("commentsList");
+        comments.insertBefore(newCommentDiv, comments.firstChild);
+      }
     });
   }
 });

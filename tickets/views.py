@@ -36,7 +36,6 @@ class TicketDetailView(DetailView):
         context["comments"] = Comment.objects.filter(
             rel_ticket=self.object.id
         ).order_by("-created")
-        context["form"] = CreateCommentForm()
         return context
 
 
