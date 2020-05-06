@@ -1,5 +1,14 @@
 body {
-  background-color: aqua;
+  background-color: rgb(34, 33, 33);
+  color: #b9b7b7;
+}
+
+#text {
+  background-color: rgb(82, 82, 82);
+}
+
+.card {
+  background-color: rgb(47, 47, 47);
 }
 
 .commentId {
