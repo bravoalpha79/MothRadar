@@ -1,8 +1,16 @@
 {% extends "comments/comments.html" %}
 {% block upvotes %}
-<span
-    ><button type="button" class="btn btn-primary">
-      Upvotes <span class="badge badge-light">5</span>
-    </button></span
-  > 
+{% if uv_status %}
+    <span
+        ><button type="button" class="btn btn-primary">
+        Upvote! <span class="badge badge-light">5</span>
+        </button></span
+    > 
+{% else %}
+    <span
+        ><button type="button" class="btn btn-secondary" disabled>
+        Upvotes <span class="badge badge-light">5</span>
+        </button></span
+    > 
+{% endif %}
 {% endblock upvotes %}
