@@ -1,3 +1,35 @@
 body {
-  background-color: aqua;
+  background-color: rgb(34, 33, 33);
+  color: #b9b7b7;
+}
+
+#text {
+  width: 100%;
+  background-color: rgb(82, 82, 82);
+  color: darkgray;
+}
+
+#text::placeholder {
+  color: darkgray;
+}
+
+.card {
+  background-color: rgb(47, 47, 47);
+}
+
+.commentId {
+  display: none;
+}
+
+#commentMessage {
+  margin-left: 2rem;
+}
+
+#newCommentText {
+  margin-top: 1rem;
+}
+
+#newComment {
+  display: none;
+  background-color: rgba(0, 255, 0, 0.1);
 }

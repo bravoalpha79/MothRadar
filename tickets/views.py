@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.generic import (
     CreateView,
@@ -7,8 +7,12 @@ from django.views.generic import (
     DeleteView,
     ListView,
 )
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from comments.models import Comment
+from comments.forms import EditCommentForm
 from .models import Ticket
+
 
 # Create your views here.
 def home(request):
@@ -26,6 +30,13 @@ class TicketCreateView(CreateView):
 
 class TicketDetailView(DetailView):
     model = Ticket
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["comments"] = Comment.objects.filter(
+            rel_ticket=self.object.id
+        ).order_by("-created")
+        return context
 
 
 class TicketUpdateView(UpdateView):
