@@ -18,7 +18,7 @@
 <div class="row">
   <div class="col-12">
     <div class="card">
-      <h2>Upvote issues to get them fixed sooner.</h2>
+      <h2>Upvote tickets to get them fixed sooner.</h2>
     </div>
   </div>
 </div>
@@ -30,6 +30,8 @@
   </div>
 </div>
 {% if not user.is_authenticated %}
-    <h4><a href="{% url 'register' %}">Create an account</a> now, or <a href="{% url 'login' %}">log in</a> if you already have one.</h4>
-{% endif %}
-{% endblock %}
+<h4>
+  <a href="{% url 'register' %}">Create an account</a> now, or
+  <a href="{% url 'login' %}">log in</a> if you already have one.
+</h4>
+{% endif %} {% endblock %}
