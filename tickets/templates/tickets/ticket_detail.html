@@ -8,11 +8,9 @@
   <p>{{ object.author }}</p>
   <p><strong>{{ object.ticket_type }}</strong></p>
   <p><em>{{ object.status }}</em></p>
-  <span
-    ><button type="button" class="btn btn-primary" disabled>
-      Upvotes <span class="badge badge-light">5</span>
-    </button></span
-  >
+  {% block upvotes %} 
+  {% endblock upvotes %} 
+  
   {% if user.is_authenticated and user == object.author %}
   <div>
     <a class="btn btn-info" href="{% url 'ticket-edit' object.id %}">Edit</a>
@@ -25,4 +23,5 @@
 </div>
 {% block comments %} 
 {% endblock comments %} 
+
 {% endblock content %}

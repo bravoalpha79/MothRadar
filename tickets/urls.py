@@ -15,7 +15,7 @@ urlpatterns = [
     path("tickets/<int:pk>/", include("comments.urls")),
     path(
         "tickets/<int:pk>/details",
-        TicketDetailView.as_view(template_name="comments/comments.html"),
+        TicketDetailView.as_view(template_name="upvotes/upvotes.html"),
         name="ticket-details",
     ),
     path("tickets/<int:pk>/edit/", TicketUpdateView.as_view(), name="ticket-edit"),

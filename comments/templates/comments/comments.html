@@ -1,6 +1,9 @@
 {% extends "tickets/ticket_detail.html"%} 
 
-{% block comments %} 
+{% block upvotes %} 
+{% endblock upvotes %} 
+
+{% block comments %}
 <div id="commentsArea">
   <br />
   <!-- comments "form" -->
@@ -27,8 +30,9 @@
       <small class="commentId">{{ comment.id }}</small>
       <p>
         <small
-          >Posted by <strong>{{ comment.author }}</strong> on {{ comment.created|date:"j M Y"}}
-          at {{ comment.created|time:"G i" }}</small
+          >Posted by <strong>{{ comment.author }}</strong> on {{
+          comment.created|date:"j M Y"}} at {{ comment.created|time:"G i"
+          }}</small
         >
       </p>
       <p>{{ comment.text }}</p>
