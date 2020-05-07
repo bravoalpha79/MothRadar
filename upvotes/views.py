@@ -1,5 +1,4 @@
 from django.shortcuts import render, get_object_or_404
-from django
 
 # Create your views here.
 def upvote(request, pk):
@@ -7,7 +6,7 @@ def upvote(request, pk):
     ticket = get_object_or_404(Ticket, pk=pk)
     try:
         Upvote.objects.get(ticket=ticket, author=voter)
-        return JsonResponse({"text": "Already upvoted."}) 
+        return JsonResponse({"text": "Already upvoted."})
     except:
         Upvote.objects.create(ticket=ticket, author=voter)
-        return JsonResponse({"text": "Upvote successful!"}) 
+        return JsonResponse({"text": "Upvote successful!"})
