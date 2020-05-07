@@ -2,15 +2,17 @@
 {% block upvotes %}
 {% if uv_status %}
     <span
-        ><button type="button" class="btn btn-primary">
-        Upvote! <span class="badge badge-light">5</span>
+        ><button id="upvote" type="button" class="btn btn-primary">
+        Upvote! <span class="badge badge-light">{{ upvotes }}</span>
         </button></span
     > 
+    <span id="upvoteMessage">Some message</span>
 {% else %}
     <span
-        ><button type="button" class="btn btn-secondary" disabled>
-        Upvotes <span class="badge badge-light">5</span>
+        ><button id="upvote" type="button" class="btn btn-secondary" disabled>
+        Upvotes <span class="badge badge-light">{{ upvotes }}</span>
         </button></span
     > 
+    <span id="upvoteMessage">Something else</span>
 {% endif %}
 {% endblock upvotes %}

@@ -15,6 +15,7 @@ function getCookie(name) {
   return cookieValue;
 }
 
+// Ajax call to post new comment
 $("#postComment").click(function () {
   const url = `comments/add/`;
   const text = $("#text").val();
@@ -55,3 +56,5 @@ $("#postComment").click(function () {
     });
   }
 });
+
+// Ajax call upon upvote button click

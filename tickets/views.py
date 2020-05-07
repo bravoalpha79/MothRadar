@@ -35,9 +35,11 @@ class TicketDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         voter = self.request.user
+
         context["comments"] = Comment.objects.filter(
             rel_ticket=self.object.id
         ).order_by("-created")
+        context["upvotes"] = Upvote.objects.filter(ticket=self.object.id).count()
         try:
             Upvote.objects.get(ticket=self.object.id, upvoter=voter)
             context["uv_status"] = False
@@ -58,3 +60,9 @@ class TicketDeleteView(DeleteView):
 
 class TicketListView(ListView):
     model = Ticket
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     for item in self.object_list:
+    #         context["upvotes"] = Upvote.objects.filter(ticket=item.id).count()
+    #     return context
