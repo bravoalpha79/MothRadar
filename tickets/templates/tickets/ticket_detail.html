@@ -21,43 +21,7 @@
   {% endif %}
   <br />
 </div>
-<!-- Comments --->
-<div id="commentsArea">
-  <br />
-  <!-- comments "form" -->
-  {% if user.is_authenticated %}
-  <textarea
-    name=""
-    id="text"
-    cols="95"
-    rows="3"
-    placeholder="Your comment:"
-  ></textarea>
-  <div>
-    <button id="postComment" class="btn btn-info btn-sm">Post comment</button>
-    <small id="commentMessage"></small>
-  </div>
-  <!--</form>-->
-  {% endif %}
-  <br />
-  <div id="commentsList">
-    <!-- New comment -->
-    <!-- ./New comment -->
-    {% for comment in comments %}
-    <div class="card">
-      <small class="commentId">{{ comment.id }}</small>
-      <p>
-        <small
-          >Posted by <strong>{{ comment.author }}</strong> on {{ comment.created|date:"j M Y"}}
-          at {{ comment.created|time:"G i" }}</small
-        >
-      </p>
-      <p>{{ comment.text }}</p>
-    </div>
-    {% empty %}
-    <p>No comments yet.</p>
-    {% endfor %}
-  </div>
-</div>
+{% block comments %}
+{% endblock comments %}
 <!-- ./Comments --->
 {% endblock %}

@@ -13,7 +13,11 @@ urlpatterns = [
     path("tickets/", TicketListView.as_view(), name="ticket-list"),
     path("tickets/create/", TicketCreateView.as_view(), name="ticket-create"),
     path("tickets/<int:pk>/", include("comments.urls")),
-    path("tickets/<int:pk>/details", TicketDetailView.as_view(), name="ticket-details"),
+    path(
+        "tickets/<int:pk>/details",
+        TicketDetailView.as_view(template_name="comments/comments.html"),
+        name="ticket-details",
+    ),
     path("tickets/<int:pk>/edit/", TicketUpdateView.as_view(), name="ticket-edit"),
     path("tickets/<int:pk>/delete/", TicketDeleteView.as_view(), name="ticket-delete"),
 ]
