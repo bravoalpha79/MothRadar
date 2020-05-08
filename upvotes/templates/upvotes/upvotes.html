@@ -1,27 +1,29 @@
 {% extends "comments/comments.html" %}
 {% block upvotes %}
 {% if uv_status %}
-    {% if ticket.ticket_type == "Bug" %}
+    {% if ticket.ticket_type == "BUG" %}
     <span
-        ><button id="upvote" type="button" class="btn btn-primary">
-        Upvote! <span class="badge badge-light">{{ upvotes }}</span>
+        ><button id="upvoteFree" class="btn btn-primary">
+        Upvote! <span id="upvoteCount" class="badge badge-light">{{ upvotes }}</span>
         </button></span
     > 
-    <span id="upvoteMessage">Some message</span>
+    <span id="upvoteMessage"></span>
     {% else %}
     <span
-        ><button id="upvotePaid" type="button" class="btn btn-primary">
-        <i class="fas fa-lock"></i>&nbsp;Upvote!  <span class="badge badge-light">{{ upvotes }}</span>
+        ><button id="upvotePaid" class="btn btn-primary">
+        <i class="fas fa-lock"></i>&nbsp;Upvote!  <span id="upvoteCount" class="badge badge-light">{{ upvotes }}</span>
         </button></span
     > 
-    <span id="upvoteMessage">Some message</span>
+    <span id="upvoteMessage"></span>
     {% endif %}
 {% else %}
     <span
-        ><button id="upvoteDone" type="button" class="btn btn-secondary" disabled>
-        Upvotes <span class="badge badge-light">{{ upvotes }}</span>
+        ><button id="upvoteDone" class="btn btn-secondary" disabled>
+        Upvotes <span id="upvoteCount" class="badge badge-light">{{ upvotes }}</span>
         </button></span
     > 
-    <span id="upvoteMessage">Something else</span>
+    <span id="upvoteMessage"></span>
 {% endif %}
+
+
 {% endblock upvotes %}

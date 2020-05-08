@@ -57,4 +57,32 @@ $("#postComment").click(function () {
   }
 });
 
-// Ajax call upon upvote button click
+// Handle click of upvoteDone (disabled) button
+$("#upvoteDone").click(function () {
+  $("#upvoteMessage").text("Already upvoted.");
+});
+
+// Ajax call upon upvoteFree button click
+$("#upvoteFree").click(function () {
+  const url = "upvote/";
+  let csrfToken = getCookie("csrftoken");
+
+  let data = {
+    csrfmiddlewaretoken: csrfToken,
+  };
+
+  $.post(url, data).done(function (response) {
+    let count = parseInt($("#upvoteCount").text());
+    if (response.error) {
+      $("#upvoteMessage").text(response.error);
+    } else {
+      count += 1;
+      $("#upvoteMessage").text(response.success);
+      $("#upvoteFree")
+        .removeClass("btn-primary")
+        .addClass("btn-secondary")
+        .attr("disabled");
+      $("#upvoteCount").text(count);
+    }
+  });
+});
