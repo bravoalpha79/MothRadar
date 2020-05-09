@@ -1,0 +1,14 @@
+{% extends "tickets/base.html" %}
+
+{% block head_js %}
+    <script>
+        //<![CDATA[
+            Stripe.publishableKey = "{{ publishable }}";
+        //]]>
+    </script>
+    <script src="{% static 'upvotes/stripe.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
