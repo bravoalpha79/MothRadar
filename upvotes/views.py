@@ -68,4 +68,4 @@ def upvote_paid(request, pk):
     else:
         form = UpvoteFeaturePaymentForm()
 
-    return render(request, "payment.html", {"form": form})
+    return render(request, "upvotes/payment.html", {"form": form})

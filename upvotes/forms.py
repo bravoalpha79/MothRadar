@@ -3,7 +3,7 @@ from django import forms
 
 class UpvoteFeaturePaymentForm(forms.Form):
 
-    MONTH_CHOICES = [(i, i) for i in range(1, 12)]
+    MONTH_CHOICES = [(i, i) for i in range(1, 13)]
     YEAR_CHOICES = [(i, i) for i in range(2020, 2030)]
 
     credit_card_number = forms.CharField(label="Credit Card number", required=False)
