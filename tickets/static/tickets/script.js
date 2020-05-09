@@ -1,4 +1,9 @@
-// getCookie function obtained from Django documentation
+/**
+ * GetCookie function obtained from Django documentation
+ * From the list of document cookies, extract the one with the
+ * name passed in as the argument.
+ **/
+
 function getCookie(name) {
   let cookieValue = null;
   if (document.cookie && document.cookie !== "") {
@@ -15,7 +20,11 @@ function getCookie(name) {
   return cookieValue;
 }
 
-// Ajax call to post new comment
+/**
+ * Post a new comment - Ajax call and DOM insertion.
+ * Ajax code written based on a suggestion and a sample snippet
+ * provided by ckz8780.
+ **/
 $("#postComment").click(function () {
   const url = `comments/add/`;
   const text = $("#text").val();
@@ -63,7 +72,7 @@ $("#upvoteDone").click(function () {
   $("#upvoteMessage").text("Already upvoted.");
 });
 
-// Ajax call upon upvoteFree button click
+// upvoteFree button click - Ajax call and DOM insertion
 $("#upvoteFree").click(function () {
   const url = "upvote/";
   let csrfToken = getCookie("csrftoken");
