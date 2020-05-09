@@ -2,18 +2,11 @@
 {% block upvotes %}
 {% if uv_status %}
     {% if ticket.ticket_type == "BUG" %}
-    <span
-        ><button id="upvoteFree" class="btn btn-primary">
-        Upvote! <span id="upvoteCount" class="badge badge-light">{{ upvotes }}</span>
-        </button></span
-    > 
+    <span><button id="upvoteFree" class="btn btn-primary">Upvote! <span id="upvoteCount" class="badge badge-light">{{ upvotes }}</span>
+        </button></span> 
     <span id="upvoteMessage"></span>
     {% else %}
-    <span
-        ><button id="upvotePaid" class="btn btn-primary" data-toggle="modal" data-target="#paymentModal">
-        <i class="fas fa-lock"></i>&nbsp;Upvote!  <span id="upvoteCount" class="badge badge-light">{{ upvotes }}</span>
-        </button></span
-    > 
+    <span><button id="upvotePaid" class="btn btn-primary" data-toggle="modal" data-target="#paymentModal"><i class="fas fa-lock"></i>&nbsp;Upvote!  <span id="upvoteCount" class="badge badge-light">{{ upvotes }}</span></button></span> 
     <span id="upvoteMessage"></span>
     {% endif %}
 {% else %}
@@ -40,7 +33,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Proceed</button>
+        <a type="button" class="btn btn-primary" href="{% url 'upvote-paid' ticket.id %}">Proceed</a>
       </div>
     </div>
   </div>
