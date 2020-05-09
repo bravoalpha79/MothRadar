@@ -50,7 +50,7 @@ $("#postComment").click(function () {
         newCommentDiv.appendChild(newCommentHeader);
         newCommentDiv.appendChild(newCommentText);
 
-        $("#commentsList").prepend(newCommentDiv);
+        $("#commentsList").append(newCommentDiv);
         $(newCommentDiv).fadeIn("4000");
       }
     });

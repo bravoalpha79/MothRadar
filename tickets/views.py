@@ -38,7 +38,7 @@ class TicketDetailView(DetailView):
 
         context["comments"] = Comment.objects.filter(
             rel_ticket=self.object.id
-        ).order_by("-created")
+        ).order_by("created")
         context["upvotes"] = Upvote.objects.filter(ticket=self.object.id).count()
         try:
             Upvote.objects.get(ticket=self.object.id, upvoter=voter)
