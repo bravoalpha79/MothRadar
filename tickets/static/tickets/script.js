@@ -50,6 +50,7 @@ $("#postComment").click(function () {
         newCommentDiv.appendChild(newCommentHeader);
         newCommentDiv.appendChild(newCommentText);
 
+        $("#noComment").hide();
         $("#commentsList").append(newCommentDiv);
         $(newCommentDiv).fadeIn("4000");
       }

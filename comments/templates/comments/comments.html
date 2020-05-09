@@ -7,8 +7,6 @@
 <div id="commentsArea">
   <br />
   <div id="commentsList">
-    <!-- New comment -->
-    <!-- ./New comment -->
     {% for comment in comments %}
     <div class="card">
       <small class="commentId">{{ comment.id }}</small>
@@ -18,23 +16,27 @@
       </p>
       <p>{{ comment.text }}</p>
     </div>
+    <!-- New comment -->
+    <!-- ./New comment -->
     {% empty %}
-    <p>No comments yet.</p>
+    <p id="noComment">No comments yet.</p>
     {% endfor %}
   </div>
   <br />
   <!-- comments "form" -->
   {% if user.is_authenticated %}
-  <textarea
-    name=""
-    id="text"
-    cols="95"
-    rows="3"
-    placeholder="Your comment:"
-  ></textarea>
-  <div>
-    <button id="postComment" class="btn btn-info btn-sm">Post comment</button>
-    <small id="commentMessage"></small>
+  <div class="form-group">
+    <textarea
+      name=""
+      id="text"
+      cols="95"
+      rows="3"
+      placeholder="Your comment:"
+    ></textarea>
+    <div>
+      <button id="postComment" class="btn btn-info btn-sm">Post comment</button>
+      <small id="commentMessage"></small>
+    </div>
   </div>
   {% endif %}
   <!--./comments "form"-->
