@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "users.apps.UsersConfig",
     "tickets.apps.TicketsConfig",
     "comments.apps.CommentsConfig",
+    "upvotes.apps.UpvotesConfig",
     "crispy_forms",
     "django.contrib.admin",
     "django.contrib.auth",

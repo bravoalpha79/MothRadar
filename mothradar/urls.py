@@ -19,7 +19,6 @@ from django.contrib.auth import views as auth_views
 from users import views as users_views
 
 urlpatterns = [
-    path("", include("tickets.urls")),
     path("register/", users_views.register, name="register"),
     path(
         "login/",
@@ -74,4 +73,5 @@ urlpatterns = [
     ),
     path("profile/", include("users.urls")),
     path("admin/", admin.site.urls),
+    path("", include("tickets.urls")),
 ]

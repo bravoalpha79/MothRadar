@@ -8,11 +8,7 @@
   <p>
     <strong>{{ ticket.ticket_type }}</strong>&nbsp;<em>{{ ticket.status }}</em>
   </p>
-  <span
-    ><button type="button" class="btn btn-primary" disabled>
-      Upvotes <span class="badge badge-light">5</span>
-    </button></span
-  >
+  <span> Upvotes <span class="badge badge-light">{{ upvotes }}</span> </span>
   {% if user.is_authenticated and user == ticket.author %}
   <div>
     <a class="btn btn-info" href="{% url 'ticket-edit' ticket.id %}">Edit</a>
