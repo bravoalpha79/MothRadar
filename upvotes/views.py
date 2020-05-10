@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.http import JsonResponse
 from django.conf import settings
 from tickets.models import Ticket
@@ -40,7 +40,7 @@ def upvote_paid(request, pk):
                 return messages.warning(
                     "Ticket already upvoted. Your payment will not be processed."
                 )
-                return redirect(reverse("ticket-details", pk=pk))
+                return redirect(reverse("ticket-details", args=[pk]))
             except:
                 try:
                     customer = stripe.Charge.create(
@@ -58,7 +58,7 @@ def upvote_paid(request, pk):
                         request,
                         "Your payment was processed successfully! Ticket upvoted.",
                     )
-                    return redirect(reverse("ticket-details", pk=pk))
+                    return redirect(reverse("ticket-details", args=[pk]))
                 else:
                     messages.error(request, "Unable to process payment")
 
@@ -69,4 +69,8 @@ def upvote_paid(request, pk):
     else:
         form = UpvoteFeaturePaymentForm()
 
-    return render(request, "upvotes/payment.html", {"form": form})
+    return render(
+        request,
+        "upvotes/payment.html",
+        {"form": form, "publishable": settings.STRIPE_PUBLISHABLE, "ticket": ticket},
+    )
