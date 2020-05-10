@@ -56,7 +56,8 @@ body {
 }
 
 .list-card-title-line,
-.list-card-status-line {
+.list-card-status-line,
+.upvote-line {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -100,4 +101,8 @@ body {
 
 .list-card-status-SOLVED {
   color: green;
+}
+
+.detail-title {
+  margin-top: 1.5rem;
 }
