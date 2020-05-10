@@ -4,6 +4,7 @@
 
 {% block content %}
 <form method="POST">
+    {% csrf_token %}
     {{ form|crispy }}
     <div>
       <button type="submit" id="completePayment" class="btn btn-info">Complete Payment</button>
