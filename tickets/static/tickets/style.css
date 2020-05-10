@@ -3,6 +3,20 @@ body {
   color: #b9b7b7;
 }
 
+.homeCard {
+  margin-bottom: 1rem;
+  padding: 3rem;
+  transition: background-color 1s linear;
+}
+
+.homeCard:hover {
+  background-color: rgb(88, 87, 87);
+}
+
+.homeCard p {
+  display: none;
+}
+
 #text {
   width: 100%;
   background-color: rgb(82, 82, 82);
