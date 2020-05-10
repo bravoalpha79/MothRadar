@@ -16,8 +16,7 @@
       src="https://kit.fontawesome.com/0467a2a6b6.js"
       crossorigin="anonymous"
     ></script>
-    <script src="https://js.stripe.com/v3/"></script>
-    {% block head_js %} {% endblock %}
+    
   </head>
   <body>
     <header>
@@ -96,5 +95,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="{% static 'tickets/script.js' %}"></script>
+    {% block stripe_js %} 
+    {% endblock %}
   </body>
 </html>
