@@ -34,6 +34,10 @@ body {
   background-color: rgb(47, 47, 47);
 }
 
+.card hr {
+  background-color: black;
+}
+
 .commentId {
   display: none;
 }
@@ -49,4 +53,51 @@ body {
 #newComment {
   display: none;
   background-color: rgba(0, 255, 0, 0.1);
+}
+
+.list-card-title-line,
+.list-card-status-line {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.list-card-title-line h5 {
+  max-width: 85%;
+}
+
+.list-card-type-BUG,
+.list-card-type-FEATURE {
+  color: rgb(44, 44, 44);
+  padding: 0rem 0.3rem;
+  border-radius: 5px;
+}
+
+.list-card-type-BUG {
+  background-color: yellow;
+}
+
+.list-card-type-FEATURE {
+  background-color: green;
+}
+
+.list-card-status-OPENED,
+.list-card-status-INPROG,
+.list-card-status-SOLVED {
+  font-style: italic;
+  margin-left: 0.5rem;
+}
+
+.list-card-status-OPENED {
+  color: aqua;
+}
+
+.list-card-status-INPROG {
+  color: pink;
+}
+
+.list-card-status-SOLVED {
+  color: green;
 }

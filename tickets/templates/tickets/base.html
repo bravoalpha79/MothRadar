@@ -17,8 +17,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://js.stripe.com/v3/"></script>
-    {% block head_js %}
-    {% endblock %}
+    {% block head_js %} {% endblock %}
   </head>
   <body>
     <header>
@@ -66,13 +65,11 @@
       <!-- /Bootstrrap navbar -->
     </header>
     <div class="messages">
-      {% if messages %} 
-      {% for message in messages %}
-        <div class="alert alert-{{ message.tags }}" role="alert">
-          {{ message }}
-        </div>
-      {% endfor %} 
-      {% endif %}
+      {% if messages %} {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}" role="alert">
+        {{ message }}
+      </div>
+      {% endfor %} {% endif %}
     </div>
 
     <div class="container">
