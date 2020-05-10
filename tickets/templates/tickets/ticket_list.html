@@ -1,22 +1,32 @@
-{% extends "tickets/base.html" %} {% block content%}
+{% extends "tickets/base.html" %} 
+{% block content%}
 <br />
 {% for ticket in object_list %}
-<div class="card">
-  <a href="{% url 'ticket-details' ticket.id %}"><h3>{{ ticket.title }}</h3></a>
-  <p>{{ ticket.description }}</p>
-  <p>Created on {{ ticket.date_created }} by {{ ticket.author }}</p>
-  <p>
-    <strong>{{ ticket.ticket_type }}</strong>&nbsp;<em>{{ ticket.status }}</em>
-  </p>
-  <span> Upvotes <span class="badge badge-light">{{ upvotes }}</span> </span>
-  {% if user.is_authenticated and user == ticket.author %}
-  <div>
+<div class="card list-card mt-2">
+  <div class="card-body">
+    <h5 class="card-title">
+      <a href="{% url 'ticket-details' ticket.id %}">{{ ticket.title }}</a>
+    </h5>
+    <h6 class="card-subtitle mb-2 text-muted">
+      <small>Created on {{ ticket.date_created }} by <strong>{{ ticket.author }}</strong></small>
+    </h6>
+    <hr>
+    <p class="card-text">{{ ticket.description }}</p>
+    <p>
+      <strong>{{ ticket.ticket_type }}</strong>&nbsp;<em
+        >{{ ticket.status }}</em
+      >
+    </p>
+    <span> Upvotes: <span class="badge badge-light">{{ upvotes }}</span> </span>
+    {% if user.is_authenticated and user == ticket.author %}
+    <p class="ml-auto">
     <a class="btn btn-info" href="{% url 'ticket-edit' ticket.id %}">Edit</a>
     <a class="btn btn-danger" href="{% url 'ticket-delete' ticket.id %}"
       >Delete</a
     >
+    </p>
+    {% endif %}
   </div>
-  {% endif %}
 </div>
-<br />
-{% endfor %} {% endblock %}
+{% endfor %} 
+{% endblock %}
