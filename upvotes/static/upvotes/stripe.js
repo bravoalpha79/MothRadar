@@ -19,7 +19,7 @@ $(function () {
         $("#id_expiry_month").removeAttr("name");
         $("#id_expiry_year").removeAttr("name");
 
-        forn.submit();
+        form.submit();
       } else {
         $("#stripe-error-message").text(response.error.message);
         $("#credit-card-errors").show();

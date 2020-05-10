@@ -8,6 +8,8 @@ from .models import Upvote
 from .forms import UpvoteFeaturePaymentForm
 import stripe
 
+stripe.api_key = settings.STRIPE_SECRET
+
 # Create your views here.
 @login_required
 def upvote(request, pk):
@@ -23,8 +25,6 @@ def upvote(request, pk):
 
 @login_required
 def upvote_paid(request, pk):
-
-    stripe.api_key = settings.STRIPE_SECRET
 
     voter = request.user
     ticket = get_object_or_404(Ticket, pk=pk)
@@ -45,11 +45,11 @@ def upvote_paid(request, pk):
                 try:
                     customer = stripe.Charge.create(
                         amount=int(PRICE * 100),
-                        currency="EURO",
+                        currency="EUR",
                         description=request.user.email,
                         card=form.cleaned_data["stripe_id"],
                     )
-                except stripe.error.cardError:
+                except stripe.error.CardError:
                     messages.error(request, "Your card was declined!")
 
                 if customer.paid:
@@ -63,6 +63,7 @@ def upvote_paid(request, pk):
                     messages.error(request, "Unable to process payment")
 
         else:
+            print(form.errors)
             messages.error(request, "Unable to process payment with that card.")
 
     else:
