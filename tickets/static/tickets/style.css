@@ -1,6 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap");
+
 body {
   background-color: rgb(34, 33, 33);
   color: #b9b7b7;
+  font-family: "Open Sans", sans-serif;
+}
+
+.homeCard {
+  margin-bottom: 1rem;
+  padding: 3rem;
+  transition: background-color 1s linear;
+}
+
+.homeCard:hover {
+  background-color: rgb(88, 87, 87);
+}
+
+.homeCard p {
+  display: none;
 }
 
 #text {
@@ -15,6 +32,10 @@ body {
 
 .card {
   background-color: rgb(47, 47, 47);
+}
+
+.card hr {
+  background-color: black;
 }
 
 .commentId {
@@ -32,4 +53,56 @@ body {
 #newComment {
   display: none;
   background-color: rgba(0, 255, 0, 0.1);
+}
+
+.list-card-title-line,
+.list-card-status-line,
+.upvote-line {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.list-card-title-line h5 {
+  max-width: 85%;
+}
+
+.list-card-type-BUG,
+.list-card-type-FEATURE {
+  color: rgb(44, 44, 44);
+  padding: 0rem 0.3rem;
+  border-radius: 5px;
+}
+
+.list-card-type-BUG {
+  background-color: yellow;
+}
+
+.list-card-type-FEATURE {
+  background-color: green;
+}
+
+.list-card-status-OPENED,
+.list-card-status-INPROG,
+.list-card-status-SOLVED {
+  font-style: italic;
+  margin-left: 0.5rem;
+}
+
+.list-card-status-OPENED {
+  color: aqua;
+}
+
+.list-card-status-INPROG {
+  color: pink;
+}
+
+.list-card-status-SOLVED {
+  color: green;
+}
+
+.detail-title {
+  margin-top: 1.5rem;
 }

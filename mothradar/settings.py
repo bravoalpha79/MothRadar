@@ -127,6 +127,10 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 LOGIN_REDIRECT_URL = "ticket-list"
 LOGIN_URL = "login"
 
+STRIPE_PUBLISHABLE = os.environ.get("STRIPE_PUBLISHABLE")
+STRIPE_SECRET = os.environ.get("STRIPE_SECRET")
+
+
 # Gmail settings obtained from Corey Schafer's Django tutorial
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"

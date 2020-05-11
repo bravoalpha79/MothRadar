@@ -1,44 +1,45 @@
 {% extends "tickets/ticket_detail.html"%} 
 
-{% block upvotes %} 
-{% endblock upvotes %} 
-
 {% block comments %}
-<div id="commentsArea">
-  <br />
-  <div id="commentsList">
-    {% for comment in comments %}
-    <div class="card">
-      <small class="commentId">{{ comment.id }}</small>
-      <p>
-        <small
-          >Posted by <strong>{{ comment.author }}</strong> on {{ comment.created|date:"j M Y" }} at {{ comment.created|time:"G i" }}</small>
-      </p>
-      <p>{{ comment.text }}</p>
+  <div id="commentsArea">
+    <h5>Comments: </h5>
+    <div id="commentsList">
+      {% for comment in comments %}
+      <div class="card">
+        <small class="commentId">{{ comment.id }}</small>
+        <p>
+          <small
+            >Posted by <strong>{{ comment.author }}</strong> on {{ comment.created|date:"j M Y" }} at {{ comment.created|time:"G i" }}</small
+          >
+        </p>
+        <p>{{ comment.text }}</p>
+      </div>
+      <!-- New comment -->
+      <!-- ./New comment -->
+      {% empty %}
+      <p id="noComment">No comments yet.</p>
+      {% endfor %}
     </div>
-    <!-- New comment -->
-    <!-- ./New comment -->
-    {% empty %}
-    <p id="noComment">No comments yet.</p>
-    {% endfor %}
-  </div>
-  <br />
-  <!-- comments "form" -->
-  {% if user.is_authenticated %}
-  <div class="form-group">
-    <textarea
-      name=""
-      class="textarea form-control" id="text"
-      rows="3"
-      placeholder="Your comment:"
-    ></textarea>
-    <div>
-      <button id="postComment" class="btn btn-info btn-sm mt-2">Post comment</button>
-      <small id="commentMessage"></small>
+    <br />
+    <!-- comments "form" -->
+    {% if user.is_authenticated %}
+    <div class="form-group">
+      <textarea
+        name=""
+        class="textarea form-control"
+        id="text"
+        rows="3"
+        placeholder="Your comment:"
+      ></textarea>
+      <div>
+        <button id="postComment" class="btn btn-info btn-sm mt-2">
+          Post comment
+        </button>
+        <small id="commentMessage"></small>
+      </div>
     </div>
+    {% endif %}
+    <!--./comments "form"-->
+    <br />
   </div>
-  {% endif %}
-  <!--./comments "form"-->
-  <br />
-</div>
 {% endblock comments %}

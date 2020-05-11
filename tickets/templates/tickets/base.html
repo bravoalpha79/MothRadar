@@ -5,10 +5,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MothRadar - {{ title }}</title>
-    <script
-      src="https://kit.fontawesome.com/0467a2a6b6.js"
-      crossorigin="anonymous"
-    ></script>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -16,6 +12,11 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="{% static 'tickets/style.css' %}" />
+    <script
+      src="https://kit.fontawesome.com/0467a2a6b6.js"
+      crossorigin="anonymous"
+    ></script>
+    
   </head>
   <body>
     <header>
@@ -64,7 +65,9 @@
     </header>
     <div class="messages">
       {% if messages %} {% for message in messages %}
-      <p>{{ message }}</p>
+      <div class="alert alert-{{ message.tags }}" role="alert">
+        {{ message }}
+      </div>
       {% endfor %} {% endif %}
     </div>
 
@@ -92,5 +95,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="{% static 'tickets/script.js' %}"></script>
+    {% block stripe_js %} 
+    {% endblock %}
   </body>
 </html>

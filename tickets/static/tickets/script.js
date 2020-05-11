@@ -96,3 +96,8 @@ $("#upvoteFree").click(function () {
     }
   });
 });
+
+// Homepage card animation
+$(".homeCard").click(function () {
+  $(this).children("p").toggle("500");
+});

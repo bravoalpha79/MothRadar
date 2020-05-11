@@ -1,22 +1,37 @@
-{% extends "tickets/base.html" %} {% block content%}
+{% extends "tickets/base.html" %} 
+{% block content%}
 <br />
 {% for ticket in object_list %}
-<div class="card">
-  <a href="{% url 'ticket-details' ticket.id %}"><h3>{{ ticket.title }}</h3></a>
-  <p>{{ ticket.description }}</p>
-  <p>Created on {{ ticket.date_created }} by {{ ticket.author }}</p>
-  <p>
-    <strong>{{ ticket.ticket_type }}</strong>&nbsp;<em>{{ ticket.status }}</em>
-  </p>
-  <span> Upvotes <span class="badge badge-light">{{ upvotes }}</span> </span>
-  {% if user.is_authenticated and user == ticket.author %}
-  <div>
+<div class="card list-card mt-2 p-1">
+  <div class="card-body">
+    <div class="list-card-title-line">
+      <h5 class="card-title">
+        <a href="{% url 'ticket-details' ticket.id %}">{{ ticket.title }}</a>
+      </h5>
+      <span class="list-card-type-{{ticket.ticket_type}}"><strong>{{ ticket.ticket_type }}</strong></span>
+    </div>
+    <h6 class="card-subtitle mb-2 text-muted">
+      <small>Created on {{ ticket.date_created }} by <strong>{{ ticket.author }}</strong></small>
+    </h6>
+    <hr>
+    <p class="card-text">{{ ticket.description }}</p>
+    <br/>
+    <hr>
+    <div class="list-card-status-line">
+        <h6> Upvotes: <span class="badge badge-primary">{{ 5 }}</span></h6>
+        <span>Status: <span class="list-card-status-{{ ticket.status }}">{{ ticket.status }}</span></span>
+    </div>
+    
+    {% if user.is_authenticated and user == ticket.author %}
+    <p class="ml-auto">
     <a class="btn btn-info" href="{% url 'ticket-edit' ticket.id %}">Edit</a>
     <a class="btn btn-danger" href="{% url 'ticket-delete' ticket.id %}"
       >Delete</a
     >
+    </p>
+    {% endif %}
   </div>
-  {% endif %}
 </div>
-<br />
-{% endfor %} {% endblock %}
+{% endfor %} 
+{% endblock %}
+

@@ -35,16 +35,18 @@ class TicketDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         voter = self.request.user
+        upvoted = Upvote.objects.filter(ticket=self.object.id, upvoter=voter.id)
 
         context["comments"] = Comment.objects.filter(
             rel_ticket=self.object.id
         ).order_by("created")
         context["upvotes"] = Upvote.objects.filter(ticket=self.object.id).count()
-        try:
-            Upvote.objects.get(ticket=self.object.id, upvoter=voter)
+
+        if upvoted:
             context["uv_status"] = False
-        except:
+        else:
             context["uv_status"] = True
+
         return context
 
 
