@@ -38,16 +38,12 @@ body {
   background-color: black;
 }
 
-.commentId {
-  display: none;
+.comment-card {
+  margin-top: 0.5rem;
 }
 
 #commentMessage {
   margin-left: 2rem;
-}
-
-#newCommentText {
-  margin-top: 1rem;
 }
 
 #newComment {

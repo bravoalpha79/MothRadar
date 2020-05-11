@@ -46,18 +46,24 @@ $("#postComment").click(function () {
 
         let newCommentDiv = document.createElement("div");
         newCommentDiv.id = "newComment";
-        newCommentDiv.setAttribute("class", "card");
+        newCommentDiv.setAttribute("class", "card comment-card");
+
+        let newCommentBody = document.createElement("div");
+        newCommentDiv.setAttribute("class", "card-body");
 
         let newCommentHeader = document.createElement("small");
         newCommentHeader.id = "newCommentHeader";
+        newCommentHeader.setAttribute("class", "card-subtitle text-muted");
         newCommentHeader.innerHTML = `Posted by ${response.author} a moment ago`;
 
         let newCommentText = document.createElement("p");
         newCommentText.id = "newCommentText";
+        newCommentText.setAttribute("class", "card-text mt-2");
         newCommentText.innerHTML = `${response.text}`;
 
-        newCommentDiv.appendChild(newCommentHeader);
-        newCommentDiv.appendChild(newCommentText);
+        newCommentBody.appendChild(newCommentHeader);
+        newCommentBody.appendChild(newCommentText);
+        newCommentDiv.appendChild(newCommentBody);
 
         $("#noComment").hide();
         $("#commentsList").append(newCommentDiv);
