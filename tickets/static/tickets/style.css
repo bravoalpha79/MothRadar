@@ -6,6 +6,10 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
+.bg-dark {
+  background-color: rgb(26, 25, 25) !important;
+}
+
 .homeCard {
   margin-bottom: 1rem;
   padding: 3rem;
@@ -40,6 +44,11 @@ body {
 
 .comment-card {
   margin-top: 0.5rem;
+}
+
+#upvoteCount,
+.list-upvote-count span {
+  font-size: 1rem;
 }
 
 #commentMessage {
@@ -84,6 +93,7 @@ body {
 .list-card-status-INPROG,
 .list-card-status-SOLVED {
   font-style: italic;
+  font-weight: bold;
   margin-left: 0.5rem;
 }
 

@@ -16,13 +16,12 @@
       src="https://kit.fontawesome.com/0467a2a6b6.js"
       crossorigin="anonymous"
     ></script>
-    
   </head>
   <body>
     <header>
       <!-- Bootstrap navbar -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'home' %}">MothRadar</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -42,7 +41,7 @@
             >
             {% if user.is_authenticated %}
             <a
-              class="nav-item nav-link btn btn-info"
+              class="nav-item nav-link btn btn-info ml-5"
               href="{% url 'ticket-create' %}"
               >Create ticket</a
             >
@@ -95,7 +94,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="{% static 'tickets/script.js' %}"></script>
-    {% block stripe_js %} 
-    {% endblock %}
+    {% block stripe_js %} {% endblock %}
   </body>
 </html>
