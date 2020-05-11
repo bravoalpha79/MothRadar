@@ -1,37 +1,39 @@
-{% extends "tickets/ticket_detail.html" %} {% block upvotes %} {% if uv_status%}
-{% if ticket.ticket_type == "BUG" %}
-<span
-  >Upvotes:
-  <span id="upvoteCount" class="badge badge-light">{{ upvotes }}</span></span
->
-<span id="upvoteMessage"></span>
-<span><button id="upvoteFree" class="btn btn-primary">Upvote!</button></span>
-{% else %}
-<span
-  >Upvotes:
-  <span id="upvoteCount" class="badge badge-light">{{ upvotes }}</span></span
->
-<span id="upvoteMessage"></span>
-<span
-  ><button
-    id="upvotePaid"
-    class="btn btn-primary"
-    data-toggle="modal"
-    data-target="#paymentModal"
-  >
-    <i class="fas fa-lock"></i>&nbsp;Upvote!
-  </button></span
->
-{% endif %} {% else %}
-<span
-  >Upvotes:
-  <span id="upvoteCount" class="badge badge-light">{{ upvotes }}</span></span
->
-<span id="upvoteMessage"></span>
-<span
-  ><button id="upvoteDone" class="btn btn-secondary" disabled>Upvoted</button>
+{% extends "tickets/ticket_detail.html" %} 
+{% block upvotes %} 
+  {% if uv_status %}
+    {% if object.ticket_type == "BUG" %}
+      <span
+        >Upvotes:
+        <span id="upvoteCount" class="badge badge-light">{{ upvotes }}</span></span
+      >
+      <span id="upvoteMessage"></span>
+      <span><button id="upvoteFree" class="btn btn-primary">Upvote!</button></span>
+    {% else %}
+      <span
+        >Upvotes:
+        <span id="upvoteCount" class="badge badge-light">{{ upvotes }}</span></span
+      >
+      <span id="upvoteMessage"></span>
+      <span
+        ><button
+          id="upvotePaid"
+          class="btn btn-primary"
+          data-toggle="modal"
+          data-target="#paymentModal"
+        >
+          <i class="fas fa-lock"></i>&nbsp;Upvote!
+        </button></span
+      >
+    {% endif %} 
+  {% else %}
+    <span
+      >Upvotes:
+      <span id="upvoteCount" class="badge badge-light">{{ upvotes }}</span></span
+    >
+    <span id="upvoteMessage"></span>
+    <span
+      ><button id="upvoteDone" class="btn btn-secondary" disabled>Upvoted</button>
   {% endif %}
-
   <!-- Bootstrap Modal -->
   <div
     class="modal fade"
@@ -74,5 +76,4 @@
   </div>
   <!-- ./Bootstrap Modal -->
 
-  {% endblock upvotes %}
-</span>
+{% endblock upvotes %}

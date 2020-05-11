@@ -15,11 +15,12 @@ stripe.api_key = settings.STRIPE_SECRET
 def upvote(request, pk):
     voter = request.user
     ticket = get_object_or_404(Ticket, pk=pk)
-    try:
-        Upvote.objects.get(ticket=ticket, upvoter=voter)
+    upvoted = Upvote.objects.filter(ticket=ticket.id, upvoter=voter.id)
+
+    if upvoted:
         return JsonResponse({"error": "Already upvoted."})
-    except:
-        Upvote.objects.create(ticket=ticket, upvoter=voter)
+    else:
+        Upvote.objects.create(ticket_id=ticket.id, upvoter_id=voter.id)
         return JsonResponse({"success": "Upvote successful!"})
 
 
@@ -28,20 +29,22 @@ def upvote_paid(request, pk):
 
     voter = request.user
     ticket = get_object_or_404(Ticket, pk=pk)
+    upvoted = Upvote.objects.filter(ticket=ticket.id, upvoter=voter.id)
 
     PRICE = 10
 
     if request.method == "POST":
         form = UpvoteFeaturePaymentForm(request.POST)
+        print(voter, ticket)
 
         if form.is_valid():
-            try:
-                Upvote.objects.get(ticket=ticket, upvoter=voter)
-                return messages.warning(
-                    "Ticket already upvoted. Your payment will not be processed."
+            if upvoted:
+                messages.warning(
+                    request,
+                    "Ticket already upvoted. Your payment will not be processed.",
                 )
                 return redirect(reverse("ticket-details", args=[pk]))
-            except:
+            else:
                 try:
                     customer = stripe.Charge.create(
                         amount=int(PRICE * 100),
