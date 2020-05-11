@@ -112,3 +112,22 @@ body {
 .detail-title {
   margin-top: 1.5rem;
 }
+
+.sidebar {
+  margin-top: 0.5rem;
+}
+
+.list-group-item-dark {
+  background-color: rgb(44, 43, 43);
+  color: #b9b7b7;
+}
+
+#search {
+  background-color: rgb(82, 82, 82);
+  border: none;
+  color: #cecccc;
+}
+
+#search::placeholder {
+  color: #a1a0a0;
+}

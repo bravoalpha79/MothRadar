@@ -1,6 +1,26 @@
 {% extends "tickets/base.html" %} 
+
+
+{% block sidebar %}
+<div class="sidebar col-lg-4">
+  <div>
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-dark searchbox">
+        <div class="row">
+          <input id="search" class="col-8 col-lg-7 form-control mt-1 ml-3 mr-1" placeholder="Search" aria-label="Search">
+          <button class="col-3 col-lg-3 btn btn-outline-success px-md-2 mt-1 ml-auto mr-3" type="submit">Search</button>
+        </div>
+      </li>
+      <li class="list-group-item list-group-item-dark">Dapibus ac facilisis in</li>
+      <li class="list-group-item list-group-item-dark">Morbi leo risus</li>
+      <li class="list-group-item list-group-item-dark">Porta ac consectetur ac</li>
+      <li class="list-group-item list-group-item-dark">Vestibulum at eros</li>
+    </ul>
+  </div>
+</div>
+{% endblock %} 
+
 {% block content%}
-<br />
 {% for ticket in object_list %}
 <div class="card list-card mt-2 p-1">
   <div class="card-body">
@@ -44,5 +64,4 @@
     {% endif %}
   </div>
 </div>
-{% endfor %} 
-{% endblock %}
+{% endfor %} {% endblock %}
