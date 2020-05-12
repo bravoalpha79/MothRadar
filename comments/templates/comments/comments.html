@@ -1,8 +1,8 @@
 {% extends "tickets/ticket_detail.html"%} 
 
 {% block comments %}
-  <div id="commentsArea">
-    <h5>Comments: </h5>
+  <div id="commentsArea" class="mt-4">
+    <h5 class="ml-1 mb-3">Comments: </h5>
     <div id="commentsList">
       {% for comment in comments %}
       <div class="card comment-card">
