@@ -61,10 +61,5 @@ class TicketDeleteView(DeleteView):
 
 
 class TicketListView(ListView):
+    paginate_by = 5
     model = Ticket
-
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     for item in self.object_list:
-    #         context["upvotes"] = Upvote.objects.filter(ticket=item.id).count()
-    #     return context
