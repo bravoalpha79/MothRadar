@@ -134,6 +134,10 @@ form select {
   color: #b9b7b7;
 }
 
+.list-group-item-dark a {
+  color: #959595;
+}
+
 #search {
   background-color: rgb(82, 82, 82);
   border: none;

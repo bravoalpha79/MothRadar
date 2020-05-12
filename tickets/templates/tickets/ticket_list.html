@@ -4,16 +4,18 @@
 <div class="sidebar col-lg-4">
   <div>
     <ul class="list-group">
+      <h6 class="text-muted ml-1 mt-3">Search</h6>
       <li class="list-group-item list-group-item-dark searchbox">
         <div class="row">
-          <input id="search" class="col-8 col-lg-7 form-control mt-1 ml-3 mr-1" placeholder="Search" aria-label="Search">
+          <input id="search" class="col-8 col-lg-7 form-control mt-1 ml-3 mr-1" placeholder="Enter subject keyword(s)" aria-label="Search">
           <button class="col-3 col-lg-3 btn btn-outline-success px-md-2 mt-1 ml-auto mr-3" type="submit">Search</button>
         </div>
       </li>
-      <li class="list-group-item list-group-item-dark">Dapibus ac facilisis in</li>
-      <li class="list-group-item list-group-item-dark">Morbi leo risus</li>
-      <li class="list-group-item list-group-item-dark">Porta ac consectetur ac</li>
-      <li class="list-group-item list-group-item-dark">Vestibulum at eros</li>
+      <h6 class="text-muted ml-1 mt-4">View</h6>
+      <li class="list-group-item list-group-item-dark"><a href="{% url 'ticket-list' %}">Most recent</a></li>
+      <li class="list-group-item list-group-item-dark"><a href="{% url 'upvoted-list' %}">Most upvoted</a></li>
+      <li class="list-group-item list-group-item-dark"><a href="{% url 'bug-list' %}">Bugs only</a></li>
+      <li class="list-group-item list-group-item-dark"><a href="{% url 'feature-list' %}">Features only</a></li>
     </ul>
   </div>
 </div>

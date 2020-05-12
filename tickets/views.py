@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
+from django.db.models import Count
 from django.views.generic import (
     CreateView,
     DetailView,
@@ -63,3 +64,15 @@ class TicketDeleteView(DeleteView):
 class TicketListView(ListView):
     paginate_by = 5
     model = Ticket
+
+
+class BugListView(TicketListView):
+    queryset = Ticket.objects.filter(ticket_type="BUG")
+
+
+class FeatureListView(TicketListView):
+    queryset = Ticket.objects.filter(ticket_type="FEATURE")
+
+
+class UpvoteSortedListView(TicketListView):
+    queryset = Ticket.objects.all().annotate(votes=Count("upvotes")).order_by("-votes")
