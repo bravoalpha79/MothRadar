@@ -8,7 +8,9 @@ class Ticket(models.Model):
     title = models.CharField(max_length=80)
     description = models.TextField()
     date_created = models.DateField(auto_now_add=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="raised_tickets"
+    )
     BUG = "BUG"
     FEAT = "FEATURE"
     TICKET_TYPE_CHOICES = [(BUG, "Bug"), (FEAT, "Feature")]

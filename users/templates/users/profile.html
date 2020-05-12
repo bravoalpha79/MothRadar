@@ -4,12 +4,11 @@
 <h2>{{ user.username }} Profile</h2>
 <p>Email: {{ user.email }}</p>
 <p>Member since: {{ user.date_joined|date:"d F Y" }}</p>
-<p>Tickets raised:</p>
-<p>Comments:</p>
+<p>Tickets raised: {{ user.raised_tickets.count }}</p>
+<p>Comments: {{ user.comments.count }}</p>
 {% block profile_update %}
 <a class="btn btn-info" href="{% url 'update_profile' %}">Edit</a>
 <a class="btn btn-warning" href="{% url 'password_change' %}"
   >Change Password</a
 >
-{% endblock profile_update %} 
-{% endblock %}
+{% endblock profile_update %} {% endblock %}
