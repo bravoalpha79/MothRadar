@@ -1,26 +1,35 @@
 {% extends "tickets/base.html" %} 
-
 {% block sidebar %}
 <div class="sidebar col-lg-4">
   <div>
     <ul class="list-group">
       <li class="list-group-item list-group-item-dark searchbox">
         <div class="row justify-content-between">
-          <input id="search" class="col-9 col-lg-8 form-control mt-1 ml-3 mr-1" placeholder="Enter subject keyword(s)" aria-label="Search">
-          <button id="search-button" class="col-2 btn btn-outline-success px-md-2 mt-1 mr-3" type="submit"><i class="fas fa-search"></i></button>
+          <input id="search" class="col-9 col-lg-8 form-control mt-1 ml-3 mr-1" placeholder="Enter subject keyword(s)" aria-label="Search" />
+          <button id="search-button" class="col-2 btn btn-outline-success px-md-2 mt-1 mr-3" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
         </div>
       </li>
       <li class="list-group-item list-group-item-dark text-muted">View:</li>
-      <li class="list-group-item list-group-item-dark"><a href="{% url 'ticket-list' %}">Most recent</a></li>
-      <li class="list-group-item list-group-item-dark"><a href="{% url 'upvoted-list' %}">Most upvoted</a></li>
-      <li class="list-group-item list-group-item-dark"><a href="{% url 'bug-list' %}">Bugs only</a></li>
-      <li class="list-group-item list-group-item-dark"><a href="{% url 'feature-list' %}">Features only</a></li>
+      <li class="list-group-item list-group-item-dark">
+        <a href="{% url 'ticket-list' %}">Most recent</a>
+      </li>
+      <li class="list-group-item list-group-item-dark">
+        <a href="{% url 'upvoted-list' %}">Most upvoted</a>
+      </li>
+      <li class="list-group-item list-group-item-dark">
+        <a href="{% url 'bug-list' %}">Bugs only</a>
+      </li>
+      <li class="list-group-item list-group-item-dark">
+        <a href="{% url 'feature-list' %}">Features only</a>
+      </li>
     </ul>
   </div>
 </div>
 {% endblock %} 
 
-{% block content%}
+{% block content%} 
   {% for ticket in object_list %}
   <div class="card list-card mt-2 p-1">
     <div class="card-body">
@@ -28,61 +37,49 @@
         <h5 class="card-title">
           <a href="{% url 'ticket-details' ticket.id %}">{{ ticket.title }}</a>
         </h5>
-        <span class="list-card-type-{{ticket.ticket_type}}"
-          ><strong>{{ ticket.ticket_type }}</strong></span
-        >
+        <span class="list-card-type-{{ticket.ticket_type}}"><strong>{{ ticket.ticket_type }}</strong></span>
       </div>
       <h6 class="card-subtitle mb-2 text-muted">
-        <small
-          >Created on {{ ticket.date_created }} by
-          <strong>{{ ticket.author }}</strong></small
-        >
+        <small>Created on {{ ticket.date_created }} by <strong>{{ ticket.author }}</strong></small>
       </h6>
-      <hr />
       <p class="card-text">{{ ticket.description }}</p>
       <br />
       <hr />
-      <div class="list-card-status-line">
+      <div class="list-card-status-line mt-4">
         <h6 class="list-upvote-count">
-          Upvotes: <span class="badge badge-primary">{{ ticket.upvotes.count }}</span>
+          Upvotes:
+          <span class="badge badge-primary">{{ ticket.upvotes.count }}</span>
         </h6>
-        <span
-          >Status:
-          <span class="list-card-status-{{ ticket.status }}"
-            >{{ ticket.status }}</span
-          ></span
-        >
+        <span>Status:<span class="list-card-status-{{ ticket.status }}">{{ ticket.status }}</span></span>
       </div>
 
       {% if user.is_authenticated and user == ticket.author %}
       <p class="ml-auto">
         <a class="btn btn-info" href="{% url 'ticket-edit' ticket.id %}">Edit</a>
-        <a class="btn btn-danger" href="{% url 'ticket-delete' ticket.id %}"
-          >Delete</a
-        >
+        <a class="btn btn-danger" href="{% url 'ticket-delete' ticket.id %}">Delete</a>
       </p>
       {% endif %}
     </div>
   </div>
-  {% endfor %} 
+  {% endfor %}
 
 <!-- Pagination code snippet copied from Django documentation and styled -->
 <div class="pagination my-3 py-2 mx-auto">
-    <span class="step-links">
-        {% if page_obj.has_previous %}
-            <a href="?page=1">&laquo; First</a>
-            <a class="mx-1" href="?page={{ page_obj.previous_page_number }}">Previous</a>
-        {% endif %}
+  <span class="step-links">
+    {% if page_obj.has_previous %}
+    <a href="?page=1">&laquo; First</a>
+    <a class="mx-1" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+    {% endif %}
 
-        <span class="current mx-2">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-        </span>
-
-        {% if page_obj.has_next %}
-            <a class="mx-1" href="?page={{ page_obj.next_page_number }}">Next</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
-        {% endif %}
+    <span class="current mx-2">
+      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
     </span>
+
+    {% if page_obj.has_next %}
+    <a class="mx-1" href="?page={{ page_obj.next_page_number }}">Next</a>
+    <a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+    {% endif %}
+  </span>
 </div>
 
 {% endblock %}
