@@ -88,17 +88,18 @@ form select {
 
 .list-card-type-BUG,
 .list-card-type-FEATURE {
-  color: rgb(44, 44, 44);
-  padding: 0rem 0.3rem;
+  padding: 0rem 0.4rem;
   border-radius: 5px;
 }
 
 .list-card-type-BUG {
-  background-color: yellow;
+  color: #000;
+  background-color: rgba(255, 255, 0, 0.5);
 }
 
 .list-card-type-FEATURE {
-  background-color: green;
+  color: #acabab;
+  background-color: rgba(82, 3, 119, 0.7);
 }
 
 .list-card-status-OPENED,
@@ -110,15 +111,15 @@ form select {
 }
 
 .list-card-status-OPENED {
-  color: aqua;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .list-card-status-INPROG {
-  color: pink;
+  color: rgba(255, 192, 203, 0.7);
 }
 
 .list-card-status-SOLVED {
-  color: green;
+  color: rgba(0, 128, 0, 0.7);
 }
 
 .detail-title {
