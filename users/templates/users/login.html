@@ -1,11 +1,11 @@
 {% extends "tickets/base.html" %} 
 {% load crispy_forms_tags %} 
 {% block content%}
+<h4 class="mb-4">Login</h4>
 <form method="POST">
-  {% csrf_token %} 
-  {{ form|crispy }}
+  {% csrf_token %} {{ form|crispy }}
   <div>
-    <button class="btn btn-info" type="submit">Log In</button>
+    <button class="btn btn-info mr-4" type="submit">Log In</button>
     <small><a href="{% url 'password_reset' %}">Forgot password?</a></small>
   </div>
 </form>

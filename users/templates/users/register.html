@@ -1,6 +1,7 @@
 {% extends "tickets/base.html" %} 
 {% load crispy_forms_tags %}
-{% block content %} 
+{% block content %}
+<h4 class="mb-4">New user registration</h4> 
 <form method="POST">
     {% csrf_token %}
     {{ form|crispy }}

@@ -10,6 +10,17 @@ body {
   background-color: rgb(26, 25, 25) !important;
 }
 
+form input,
+form textarea,
+form select {
+  background-color: rgb(200, 199, 199) !important;
+  color: #000 !important;
+}
+
+#ticket-button {
+  color: #fafafa;
+}
+
 .homeCard {
   margin-bottom: 1rem;
   padding: 3rem;
