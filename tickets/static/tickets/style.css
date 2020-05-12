@@ -122,6 +122,11 @@ form select {
   color: rgba(0, 128, 0, 0.7);
 }
 
+.list-upvote-count span,
+#upvoteCount {
+  opacity: 0.7;
+}
+
 .detail-title {
   margin-top: 1.5rem;
 }
