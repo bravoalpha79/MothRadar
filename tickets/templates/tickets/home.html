@@ -1,5 +1,5 @@
 {% extends "tickets/base.html" %} {% block content %}
-<h1>Welcome to MothRadar!</h1>
+<h1 class="text-center mt-3 mb-5">Welcome to MothRadar!</h1>
 <div class="row">
   <div class="col-12">
     <div class="card homeCard">
@@ -60,8 +60,8 @@
   </div>
 </div>
 {% if not user.is_authenticated %}
-<h4>
+<h5 class="text-center mt-4">
   <a href="{% url 'register' %}">Create an account</a> now, or
   <a href="{% url 'login' %}">log in</a> if you already have one.
-</h4>
+</h5>
 {% endif %} {% endblock %}
