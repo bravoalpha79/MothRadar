@@ -1,38 +1,37 @@
 {% extends "comments/comments.html" %} 
 {% block upvotes %} 
-  {% if uv_status %}
-    {% if object.ticket_type == "BUG" %}
-      <span
-        >Upvotes:
-        <span id="upvoteCount" class="badge badge-light">{{ upvotes }}</span></span
-      >
-      <span id="upvoteMessage"></span>
-      <span><button id="upvoteFree" class="btn btn-primary">Upvote!</button></span>
-    {% else %}
-      <span
-        >Upvotes:
-        <span id="upvoteCount" class="badge badge-light">{{ upvotes }}</span></span
-      >
-      <span id="upvoteMessage"></span>
-      <span
-        ><button
-          id="upvotePaid"
-          class="btn btn-primary"
-          data-toggle="modal"
-          data-target="#paymentModal"
-        >
-          <i class="fas fa-lock"></i>&nbsp;Upvote!
-        </button></span
-      >
-    {% endif %} 
-  {% else %}
-    <span
-      >Upvotes:
-      <span id="upvoteCount" class="badge badge-light">{{ upvotes }}</span></span
-    >
-    <span id="upvoteMessage"></span>
-    <span
-      ><button id="upvoteDone" class="btn btn-secondary" disabled>Upvoted</button>
+{% if uv_status %} 
+{% if object.ticket_type == "BUG" %}
+<span
+  >Upvotes:
+  <span id="upvoteCount" class="badge badge-light">{{ upvotes }}</span></span
+>
+<span id="upvoteMessage"></span>
+<span><button id="upvoteFree" class="btn btn-primary">Upvote!</button></span>
+{% else %}
+<span
+  >Upvotes:
+  <span id="upvoteCount" class="badge badge-light">{{ upvotes }}</span></span
+>
+<span id="upvoteMessage"></span>
+<span
+  ><button
+    id="upvotePaid"
+    class="btn btn-primary"
+    data-toggle="modal"
+    data-target="#paymentModal"
+  >
+    <i class="fas fa-lock"></i>&nbsp;Upvote!
+  </button></span
+>
+{% endif %} {% else %}
+<span
+  >Upvotes:
+  <span id="upvoteCount" class="badge badge-light">{{ upvotes }}</span></span
+>
+<span id="upvoteMessage"></span>
+<span
+  ><button id="upvoteDone" class="btn btn-secondary" disabled>Upvoted</button>
   {% endif %}
   <!-- Bootstrap Modal -->
   <div
@@ -46,7 +45,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="paymentModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="paymentModalLabel"></h5>
           <button
             type="button"
             class="close"
@@ -57,8 +56,9 @@
           </button>
         </div>
         <div class="modal-body">
-          Upvoting of Feature tickets is a paid service. You will be redirected
-          to Stripe payment. Continue?
+          <p class="text-center">Upvoting of a Feature ticket is a paid service.</p>
+          <h4 class="text-center mb-3">Price: EUR 10</h4>
+          <p class="text-center">You will be redirected to payment processing. Continue?</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">
@@ -76,4 +76,5 @@
   </div>
   <!-- ./Bootstrap Modal -->
 
-{% endblock upvotes %}
+  {% endblock upvotes %}
+</span>

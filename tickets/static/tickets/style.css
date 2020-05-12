@@ -143,3 +143,14 @@ form select {
 #search::placeholder {
   color: #a1a0a0;
 }
+
+.modal-content {
+  background-color: rgb(192, 189, 189) !important;
+  color: #000;
+  border: none;
+}
+
+.modal-header,
+.modal-footer {
+  border: none;
+}
