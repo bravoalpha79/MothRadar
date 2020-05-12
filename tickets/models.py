@@ -34,3 +34,6 @@ class Ticket(models.Model):
 
     def get_absolute_url(self):
         return reverse("ticket-details", kwargs={"pk": self.pk})
+
+    class Meta:
+        ordering = ["-date_created"]
