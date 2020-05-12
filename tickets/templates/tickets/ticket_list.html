@@ -1,6 +1,5 @@
 {% extends "tickets/base.html" %} 
 
-
 {% block sidebar %}
 <div class="sidebar col-lg-4">
   <div>
@@ -21,47 +20,68 @@
 {% endblock %} 
 
 {% block content%}
-{% for ticket in object_list %}
-<div class="card list-card mt-2 p-1">
-  <div class="card-body">
-    <div class="list-card-title-line">
-      <h5 class="card-title">
-        <a href="{% url 'ticket-details' ticket.id %}">{{ ticket.title }}</a>
-      </h5>
-      <span class="list-card-type-{{ticket.ticket_type}}"
-        ><strong>{{ ticket.ticket_type }}</strong></span
-      >
-    </div>
-    <h6 class="card-subtitle mb-2 text-muted">
-      <small
-        >Created on {{ ticket.date_created }} by
-        <strong>{{ ticket.author }}</strong></small
-      >
-    </h6>
-    <hr />
-    <p class="card-text">{{ ticket.description }}</p>
-    <br />
-    <hr />
-    <div class="list-card-status-line">
-      <h6 class="list-upvote-count">
-        Upvotes: <span class="badge badge-primary">{{ ticket.upvotes.count }}</span>
+  {% for ticket in object_list %}
+  <div class="card list-card mt-2 p-1">
+    <div class="card-body">
+      <div class="list-card-title-line">
+        <h5 class="card-title">
+          <a href="{% url 'ticket-details' ticket.id %}">{{ ticket.title }}</a>
+        </h5>
+        <span class="list-card-type-{{ticket.ticket_type}}"
+          ><strong>{{ ticket.ticket_type }}</strong></span
+        >
+      </div>
+      <h6 class="card-subtitle mb-2 text-muted">
+        <small
+          >Created on {{ ticket.date_created }} by
+          <strong>{{ ticket.author }}</strong></small
+        >
       </h6>
-      <span
-        >Status:
-        <span class="list-card-status-{{ ticket.status }}"
-          >{{ ticket.status }}</span
-        ></span
-      >
-    </div>
+      <hr />
+      <p class="card-text">{{ ticket.description }}</p>
+      <br />
+      <hr />
+      <div class="list-card-status-line">
+        <h6 class="list-upvote-count">
+          Upvotes: <span class="badge badge-primary">{{ ticket.upvotes.count }}</span>
+        </h6>
+        <span
+          >Status:
+          <span class="list-card-status-{{ ticket.status }}"
+            >{{ ticket.status }}</span
+          ></span
+        >
+      </div>
 
-    {% if user.is_authenticated and user == ticket.author %}
-    <p class="ml-auto">
-      <a class="btn btn-info" href="{% url 'ticket-edit' ticket.id %}">Edit</a>
-      <a class="btn btn-danger" href="{% url 'ticket-delete' ticket.id %}"
-        >Delete</a
-      >
-    </p>
-    {% endif %}
+      {% if user.is_authenticated and user == ticket.author %}
+      <p class="ml-auto">
+        <a class="btn btn-info" href="{% url 'ticket-edit' ticket.id %}">Edit</a>
+        <a class="btn btn-danger" href="{% url 'ticket-delete' ticket.id %}"
+          >Delete</a
+        >
+      </p>
+      {% endif %}
+    </div>
   </div>
+  {% endfor %} 
+
+<!-- Pagination code snippet copied from Django documentation -->
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
 </div>
-{% endfor %} {% endblock %}
+
+{% endblock %}
