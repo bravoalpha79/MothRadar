@@ -4,14 +4,13 @@
 <div class="sidebar col-lg-4">
   <div>
     <ul class="list-group">
-      <h6 class="text-muted ml-1 mt-3">Search</h6>
       <li class="list-group-item list-group-item-dark searchbox">
-        <div class="row">
-          <input id="search" class="col-8 col-lg-7 form-control mt-1 ml-3 mr-1" placeholder="Enter subject keyword(s)" aria-label="Search">
-          <button class="col-3 col-lg-3 btn btn-outline-success px-md-2 mt-1 ml-auto mr-3" type="submit">Search</button>
+        <div class="row justify-content-between">
+          <input id="search" class="col-9 col-lg-8 form-control mt-1 ml-3 mr-1" placeholder="Enter subject keyword(s)" aria-label="Search">
+          <button id="search-button" class="col-2 btn btn-outline-success px-md-2 mt-1 mr-3" type="submit"><i class="fas fa-search"></i></button>
         </div>
       </li>
-      <h6 class="text-muted ml-1 mt-4">View</h6>
+      <li class="list-group-item list-group-item-dark text-muted">View:</li>
       <li class="list-group-item list-group-item-dark"><a href="{% url 'ticket-list' %}">Most recent</a></li>
       <li class="list-group-item list-group-item-dark"><a href="{% url 'upvoted-list' %}">Most upvoted</a></li>
       <li class="list-group-item list-group-item-dark"><a href="{% url 'bug-list' %}">Bugs only</a></li>
