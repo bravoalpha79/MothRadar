@@ -1,14 +1,21 @@
 {% extends "tickets/base.html" %} 
 {% load crispy_forms_tags %} 
 {% block content%}
-<h2>{{ user.username }} Profile</h2>
-<p>Email: {{ user.email }}</p>
-<p>Member since: {{ user.date_joined|date:"d F Y" }}</p>
-<p>Tickets raised: {{ user.raised_tickets.count }}</p>
-<p>Comments: {{ user.comments.count }}</p>
-{% block profile_update %}
-<a class="btn btn-info" href="{% url 'update_profile' %}">Edit</a>
-<a class="btn btn-warning" href="{% url 'password_change' %}"
-  >Change Password</a
->
-{% endblock profile_update %} {% endblock %}
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title"><strong>{{ user.username }}</strong></h2>
+      <h6 class="card-subtitle text-muted">Member since: {{ user.date_joined|date:"d F Y" }}</h6>
+      <br>
+      <p>email: {{ user.email }}</p>
+      <hr>
+      <p>Tickets raised: <strong>{{ user.raised_tickets.count }}</strong></p>
+      <p>Comments: <strong>{{ user.comments.count }}</strong></p>
+      <hr>
+      {% block profile_update %}
+      <a class="btn btn-sm btn-info" href="{% url 'update_profile' %}">Edit profile</a>
+      <a class="btn btn-sm btn-warning ml-2" href="{% url 'password_change' %}"
+        >Change password</a>
+  </div>
+</div>
+{% endblock profile_update %} 
+{% endblock %}

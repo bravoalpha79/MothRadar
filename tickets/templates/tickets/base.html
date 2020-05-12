@@ -41,7 +41,7 @@
             >
             {% if user.is_authenticated %}
             <a
-              class="nav-item nav-link btn btn-info ml-5"
+              class="nav-item nav-link btn btn-primary ml-5"
               href="{% url 'ticket-create' %}"
               >Create ticket</a
             >
@@ -71,6 +71,7 @@
     </div>
 
     <div class="container">
+      <br />
       <div class="row justify-content-center">
         {% block sidebar %} {% endblock %}
         <div id="main-content" class="col-lg-8">
