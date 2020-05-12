@@ -154,3 +154,11 @@ form select {
 .modal-footer {
   border: none;
 }
+
+.pagination {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
