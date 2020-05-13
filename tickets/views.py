@@ -65,6 +65,14 @@ class TicketListView(ListView):
     paginate_by = 5
     model = Ticket
 
+    # solution adapted from a post on Stack Overflow using Django documentation
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        search = self.request.GET.get("search")
+        if search:
+            queryset = queryset.filter(description__icontains=search)
+        return queryset
+
 
 class BugListView(TicketListView):
     queryset = Ticket.objects.filter(ticket_type="BUG")
