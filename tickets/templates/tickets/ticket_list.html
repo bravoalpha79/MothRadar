@@ -58,11 +58,11 @@
       <br />
       <hr />
       <div class="list-card-status-line mt-4">
-        <h6 class="list-upvote-count">
+        <span class="list-upvote-count">
           Upvotes:
           <span class="badge badge-primary">{{ ticket.upvotes.count }}</span>
-        </h6>
-        <span>Status:<span class="list-card-status-{{ ticket.status }}">{{ ticket.status }}</span></span>
+        </span>
+        <span id="statspan">Status: <span class="list-card-status-{{ ticket.status }}">{{ ticket.status }}</span></span>
       </div>
 
       {% if user.is_authenticated and user == ticket.author %}

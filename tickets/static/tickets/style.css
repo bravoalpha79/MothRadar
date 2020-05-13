@@ -63,6 +63,10 @@ form select {
   font-size: 1rem;
 }
 
+.list-upvote-count {
+  padding-top: 1.5px;
+}
+
 #commentMessage {
   margin-left: 2rem;
 }
@@ -102,9 +106,16 @@ form select {
   background-color: rgba(82, 3, 119, 0.7);
 }
 
+#statspan{
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
 .list-card-status-OPENED,
 .list-card-status-INPROG,
 .list-card-status-SOLVED {
+  font-size: 1.2rem;
   font-style: italic;
   font-weight: bold;
   margin-left: 0.5rem;
