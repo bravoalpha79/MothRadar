@@ -140,8 +140,13 @@ form select {
   color: #b9b7b7;
 }
 
+.list-group-item-dark.active {
+  background-color: rgb(85, 85, 85);
+  border: none;
+}
+
 .list-group-item-dark a {
-  color: #959595;
+  color: #b6b5b5;
 }
 
 #search {

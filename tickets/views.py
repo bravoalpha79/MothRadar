@@ -65,6 +65,11 @@ class TicketListView(ListView):
     paginate_by = 5
     model = Ticket
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["path"] = self.request.path
+        return context
+
     # solution adapted from a post on Stack Overflow using Django documentation
     def get_queryset(self):
         queryset = super().get_queryset()

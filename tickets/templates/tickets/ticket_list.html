@@ -1,4 +1,4 @@
-{% extends "tickets/base.html" %} 
+{% extends "tickets/base.html" %}
 {% block sidebar %}
 <div class="sidebar col-lg-4">
   <div>
@@ -11,18 +11,30 @@
           </button>
         </form>
       </li>
-      <li class="list-group-item list-group-item-dark text-muted">View:</li>
-      <li class="list-group-item list-group-item-dark">
+      <li class="list-group-item list-group-item-dark text-muted">Display:</li>
+      <li class="list-group-item list-group-item-dark{% if path == '/tickets/' %} active{% endif %}">
         <a href="{% url 'ticket-list' %}">Most recent</a>
+        {% if path == '/tickets/' %} 
+          <span class="sr-only">(current)</span>
+        {% endif %}
       </li>
-      <li class="list-group-item list-group-item-dark">
+      <li class="list-group-item list-group-item-dark{% if path == '/tickets/sort-upvoted/' %} active{% endif %}">
         <a href="{% url 'upvoted-list' %}">Most upvoted</a>
+        {% if path == '/tickets/sort-upvoted/' %} 
+          <span class="sr-only">(current)</span>
+        {% endif %}
       </li>
-      <li class="list-group-item list-group-item-dark">
+      <li class="list-group-item list-group-item-dark{% if path == '/tickets/bugs/' %} active{% endif %}">
         <a href="{% url 'bug-list' %}">Bugs only</a>
+        {% if path == '/tickets/bugs/' %} 
+          <span class="sr-only">(current)</span>
+        {% endif %}
       </li>
-      <li class="list-group-item list-group-item-dark">
+      <li class="list-group-item list-group-item-dark{% if path == '/tickets/features/' %} active{% endif %}">
         <a href="{% url 'feature-list' %}">Features only</a>
+        {% if path == '/tickets/features/' %} 
+          <span class="sr-only">(current)</span>
+        {% endif %}
       </li>
     </ul>
   </div>
