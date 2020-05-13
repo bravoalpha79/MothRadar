@@ -13,7 +13,7 @@ body {
 form input,
 form textarea,
 form select {
-  background-color: rgb(200, 199, 199) !important;
+  background-color: rgb(170, 170, 170) !important;
   color: #000 !important;
 }
 
@@ -173,6 +173,6 @@ form select {
   font-weight: 600;
 }
 
-#search-button {
-  width: 30px !important;
+#search::placeholder {
+  color: #000;
 }
