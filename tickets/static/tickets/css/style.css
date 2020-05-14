@@ -194,6 +194,10 @@ form select {
 }
 
 .alert-danger {
-  background-color: rgb(245, 51, 51);
+  background-color: rgb(246, 67, 67);
   border: none;
+}
+
+button.close {
+  color: #000 !important;
 }
