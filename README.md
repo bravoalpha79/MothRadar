@@ -46,9 +46,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 `web: gunicorn mothradar.wsgi:application`
 Save the file.
 
-12. Still in the root create a folder named "static".
+11. Still in the root create a folder named "static".
 
-13. From env.py, copy the following environment variables and their values (without quotes!) into Heroku App Config Vars:
+12. From env.py, copy the following environment variables and their values (without quotes!) into Heroku App Config Vars:
 ```python
 SECRET_KEY
 EMAIL_ADDRESS
@@ -58,9 +58,9 @@ STRIPE_SECRET
 ```
 Add a `DISABLE_COLLECTSTATIC` Config Var and set its value to 1.
 
-14. In settings.py, under `ALLOWED_HOSTS`, add `mothradar-ba79.herokuapp.com/`.
+13. In settings.py, under `ALLOWED_HOSTS`, add `mothradar-ba79.herokuapp.com/`.
 
-15. In Terminal, `run python manage.py collectstatic`.
+14. In Terminal, `run python manage.py collectstatic`.
 
 15. Commit and push all changes to GitHub master. 
 
