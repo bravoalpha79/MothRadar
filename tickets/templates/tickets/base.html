@@ -64,11 +64,19 @@
       <!-- /Bootstrap navbar -->
     </header>
     <div class="messages">
-      {% if messages %} {% for message in messages %}
-      <div class="alert alert-{{ message.tags }}" role="alert">
-        {{ message }}
-      </div>
-      {% endfor %} {% endif %}
+      {% if messages %} 
+        {% for message in messages %}
+          {% if message.tags == "error" %}
+          <div class="alert alert-danger text-center" role="alert">
+            <strong>{{ message }}</strong>
+          </div>
+          {% else %}
+          <div class="alert alert-{{ message.tags }} text-center" role="alert">
+            <strong>{{ message }}</strong>
+          </div>
+          {% endif %}
+        {% endfor %} 
+      {% endif %}
     </div>
 
     <div class="container">

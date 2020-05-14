@@ -52,18 +52,19 @@ def upvote_paid(request, pk):
                         description=request.user.email,
                         card=form.cleaned_data["stripe_id"],
                     )
-                except stripe.error.CardError:
-                    messages.warning(request, "Your card was declined!")
 
-                if customer.paid:
-                    Upvote.objects.create(ticket=ticket, upvoter=voter)
-                    messages.success(
-                        request,
-                        "Your payment was processed successfully! Ticket upvoted.",
-                    )
-                    return redirect(reverse("ticket-details", args=[pk]))
-                else:
-                    messages.warning(request, "Unable to process payment")
+                    if customer.paid:
+                        Upvote.objects.create(ticket=ticket, upvoter=voter)
+                        messages.success(
+                            request,
+                            "Your payment was processed successfully! Ticket upvoted.",
+                        )
+                        return redirect(reverse("ticket-details", args=[pk]))
+                    else:
+                        messages.error(request, "Unable to process payment")
+
+                except stripe.error.CardError:
+                    messages.error(request, "Your card was declined!")
 
         else:
             print(form.errors)

@@ -192,3 +192,8 @@ form select {
 #search::placeholder {
   color: #000;
 }
+
+.alert-danger {
+  background-color: rgb(245, 51, 51);
+  border: none;
+}
