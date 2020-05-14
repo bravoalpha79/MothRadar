@@ -38,7 +38,7 @@ else:
 9. In settings.py, under `MIDDLEWARE`, add `whitenoise.middleware.WhiteNoiseMiddleware`.   
 At the bottom of the file, add:
 ```python
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"))
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 ```
 
@@ -46,7 +46,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 `web: gunicorn mothradar.wsgi:application`
 Save the file.
 
-11. From env.py, copy the following environment variables and their values (without quotes!) into Heroku App Config Vars:
+12. Still in the root create a folder named "static".
+
+13. From env.py, copy the following environment variables and their values (without quotes!) into Heroku App Config Vars:
 ```python
 SECRET_KEY
 EMAIL_ADDRESS
@@ -54,13 +56,19 @@ EMAIL_PASSWORD
 STRIPE_PUBLISHABLE
 STRIPE_SECRET
 ```
+Add a `DISABLE_COLLECTSTATIC` Config Var and set its value to 1.
 
-12. In settings.py, under `ALLOWED_HOSTS`, add `mothradar-ba79.herokuapp.com/`.
-13. Commit and push all changes to GitHub master. 
+14. In settings.py, under `ALLOWED_HOSTS`, add `mothradar-ba79.herokuapp.com/`.
 
-13. In Heroku App DashBoard, under the Deploy tab, select GitHub as Deplyoment method. In the searchbox, type the name of the GitHub repo (MothRadar) and click "Connect".   
+15. In Terminal, `run python manage.py collectstatic`.
+
+15. Commit and push all changes to GitHub master. 
+
+16. In Heroku App DashBoard, under the Deploy tab, select GitHub as Deplyoment method. In the searchbox, type the name of the GitHub repo (MothRadar) and click "Connect".   
 Under Automatic deploys, make sure that the selected branch is **master**. Tick the checkbox "Wait for CI to pass" and click "Enable Automatic Deploys."   
 Finally, undel Manual deploy, make sure that the selected branch is **master**, and click Deploy Branch.
+
+
 
 
 

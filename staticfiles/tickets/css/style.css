@@ -1,0 +1,194 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap");
+
+body {
+  background-color: rgb(34, 33, 33);
+  color: #b9b7b7;
+  font-family: "Open Sans", sans-serif;
+}
+
+.bg-dark {
+  background-color: rgb(26, 25, 25) !important;
+}
+
+form input,
+form textarea,
+form select {
+  background-color: rgb(170, 170, 170) !important;
+  color: #000 !important;
+}
+
+#ticket-button {
+  color: #fafafa;
+}
+
+.homeCard {
+  margin-bottom: 1rem;
+  padding: 3rem;
+  transition: background-color 1s linear;
+}
+
+.homeCard:hover {
+  background-color: rgb(88, 87, 87);
+}
+
+.homeCard p {
+  display: none;
+}
+
+#text {
+  width: 100%;
+  background-color: rgb(82, 82, 82);
+  color: darkgray;
+}
+
+#text::placeholder {
+  color: darkgray;
+}
+
+.card {
+  background-color: rgb(47, 47, 47);
+}
+
+.card hr {
+  background-color: black;
+}
+
+.comment-card {
+  margin-top: 0.5rem;
+  background-color: rgb(44, 44, 44);
+}
+
+#upvoteCount,
+.list-upvote-count span {
+  font-size: 1rem;
+}
+
+.list-upvote-count {
+  padding-top: 1.5px;
+}
+
+#commentMessage {
+  margin-left: 2rem;
+}
+
+#newComment {
+  display: none;
+  background-color: rgba(0, 255, 0, 0.1);
+}
+
+.list-card-title-line,
+.list-card-status-line,
+.upvote-line {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.list-card-title-line h5 {
+  max-width: 85%;
+}
+
+.list-card-type-BUG,
+.list-card-type-FEATURE {
+  padding: 0rem 0.4rem;
+  border-radius: 5px;
+}
+
+.list-card-type-BUG {
+  color: #000;
+  background-color: rgba(255, 255, 0, 0.5);
+}
+
+.list-card-type-FEATURE {
+  color: #acabab;
+  background-color: rgba(82, 3, 119, 0.7);
+}
+
+#statspan{
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.list-card-status-OPENED,
+.list-card-status-INPROG,
+.list-card-status-SOLVED {
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: bold;
+  margin-left: 0.5rem;
+}
+
+.list-card-status-OPENED {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.list-card-status-INPROG {
+  color: rgba(255, 192, 203, 0.7);
+}
+
+.list-card-status-SOLVED {
+  color: rgba(0, 128, 0, 0.7);
+}
+
+.list-upvote-count span,
+#upvoteCount {
+  opacity: 0.7;
+}
+
+.detail-title {
+  margin-top: 1.5rem;
+}
+
+.sidebar {
+  margin-top: 0.5rem;
+}
+
+.list-group-item-dark {
+  background-color: rgb(44, 43, 43);
+  color: #b9b7b7;
+}
+
+.list-group-item-dark.active {
+  background-color: rgb(85, 85, 85);
+  border: none;
+}
+
+.list-group-item-dark a {
+  color: #b6b5b5;
+}
+
+#search {
+  background-color: rgb(82, 82, 82);
+  border: none;
+  color: #cecccc;
+}
+
+#search::placeholder {
+  color: #a1a0a0;
+}
+
+.modal-content {
+  background-color: rgb(192, 189, 189) !important;
+  color: #000;
+  border: none;
+}
+
+.modal-header,
+.modal-footer {
+  border: none;
+}
+
+.pagination {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+#search::placeholder {
+  color: #000;
+}
