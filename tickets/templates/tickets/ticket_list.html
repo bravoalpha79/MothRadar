@@ -36,6 +36,14 @@
           <span class="sr-only">(current)</span>
         {% endif %}
       </li>
+      {% if user.is_authenticated %}
+      <li class="list-group-item list-group-item-dark{% if path == '/tickets/my-tickets/' %} active{% endif %}">
+        <strong><a href="{% url 'my-tickets' %}">My tickets ({{ user_ticket_count }})</a></strong>
+        {% if path == '/tickets/my-tickets/' %} 
+          <span class="sr-only">(current)</span>
+        {% endif %}
+      </li>
+      {% endif %}
     </ul>
   </div>
 </div>

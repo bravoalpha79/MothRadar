@@ -10,6 +10,7 @@ from django.views.generic import (
 )
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from comments.models import Comment
 from comments.forms import EditCommentForm
 from upvotes.models import Upvote
@@ -21,6 +22,7 @@ def home(request):
     return render(request, "tickets/home.html", {"title": "Homepage"})
 
 
+@method_decorator(login_required, name="dispatch")
 class TicketCreateView(CreateView):
     model = Ticket
     fields = ["title", "description", "ticket_type"]
@@ -51,11 +53,13 @@ class TicketDetailView(DetailView):
         return context
 
 
+@method_decorator(login_required, name="dispatch")
 class TicketUpdateView(UpdateView):
     model = Ticket
     fields = ["title", "description", "ticket_type"]
 
 
+@method_decorator(login_required, name="dispatch")
 class TicketDeleteView(DeleteView):
     model = Ticket
     success_url = reverse_lazy("ticket-list")
@@ -68,6 +72,9 @@ class TicketListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["path"] = self.request.path
+        context["user_ticket_count"] = Ticket.objects.filter(
+            author=self.request.user
+        ).count()
         return context
 
     # solution adapted from a post on Stack Overflow using Django documentation
@@ -88,4 +95,12 @@ class FeatureListView(TicketListView):
 
 
 class UpvoteSortedListView(TicketListView):
-    queryset = Ticket.objects.all().annotate(votes=Count("upvotes")).order_by("-votes")
+    queryset = Ticket.objects.annotate(votes=Count("upvotes")).order_by("-votes")
+
+
+@method_decorator(login_required, name="dispatch")
+class UserRaisedTicketView(TicketListView):
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = Ticket.objects.filter(author=self.request.user)
+        return queryset

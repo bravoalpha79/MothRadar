@@ -8,11 +8,13 @@ from .views import (
     BugListView,
     FeatureListView,
     UpvoteSortedListView,
+    UserRaisedTicketView,
 )
 from . import views
 
 urlpatterns = [
     path("tickets/", TicketListView.as_view(), name="ticket-list"),
+    path("tickets/my-tickets/", UserRaisedTicketView.as_view(), name="my-tickets"),
     path("tickets/bugs/", BugListView.as_view(), name="bug-list"),
     path("tickets/features/", FeatureListView.as_view(), name="feature-list"),
     path("tickets/sort-upvoted/", UpvoteSortedListView.as_view(), name="upvoted-list"),
