@@ -1,21 +1,24 @@
 {% extends "tickets/base.html" %} 
 {% load crispy_forms_tags %} 
 {% block content%}
-  <div class="card">
-    <div class="card-body">
-      <h2 class="card-title"><strong>{{ user.username }}</strong></h2>
-      <h6 class="card-subtitle text-muted">Member since: {{ user.date_joined|date:"d F Y" }}</h6>
-      <br>
-      <p>email: {{ user.email }}</p>
-      <hr>
-      <p>Tickets raised: <strong>{{ user.raised_tickets.count }}</strong></p>
-      <p>Comments: <strong>{{ user.comments.count }}</strong></p>
-      <hr>
-      {% block profile_update %}
-      <a class="btn btn-sm btn-info" href="{% url 'update_profile' %}">Edit profile</a>
-      <a class="btn btn-sm btn-warning ml-2" href="{% url 'password_change' %}"
-        >Change password</a>
+<div class="row justify-content-center">
+  <div class="col-lg-7">
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title"><strong>{{ user.username }}</strong></h2>
+        <h6 class="card-subtitle text-muted">Member since: {{ user.date_joined|date:"d F Y" }}</h6>
+        <br>
+        <p>email: {{ user.email }}</p>
+        <hr>
+        <p>Tickets raised: <strong>{{ user.raised_tickets.count }}</strong></p>
+        <p>Comments: <strong>{{ user.comments.count }}</strong></p>
+        <hr>
+        {% block profile_update %}
+        <a class="btn btn-sm btn-info" href="{% url 'update_profile' %}">Edit profile</a>
+        <a class="btn btn-sm btn-warning ml-2" href="{% url 'password_change' %}">Change password</a>
+      </div>
+    </div>
   </div>
-</div>
+</div>    
 {% endblock profile_update %} 
 {% endblock %}

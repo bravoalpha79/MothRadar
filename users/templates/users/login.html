@@ -1,12 +1,16 @@
 {% extends "tickets/base.html" %} 
 {% load crispy_forms_tags %} 
 {% block content%}
-<h4 class="mb-4">Login</h4>
-<form method="POST">
-  {% csrf_token %} {{ form|crispy }}
-  <div>
-    <button class="btn btn-info mr-4" type="submit">Log In</button>
-    <small><a href="{% url 'password_reset' %}">Forgot password?</a></small>
-  </div>
-</form>
+<div class="row justify-content-center">
+  <div class="col-lg-6">
+    <h4 class="mb-4">Login</h4>
+    <form method="POST">
+      {% csrf_token %} {{ form|crispy }}
+      <div>
+        <button class="btn btn-info mr-4" type="submit">Log In</button>
+        <small><a href="{% url 'password_reset' %}">Forgot password?</a></small>
+      </div>
+    </form>
+  </div>  
+</div>
 {% endblock %}
