@@ -195,6 +195,7 @@ form select {
 
 .alert-danger {
   background-color: rgb(246, 67, 67);
+  color: #000;
   border: none;
 }
 
