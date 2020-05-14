@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 development = os.environ.get("DEVELOPMENT")
 DEBUG = development
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["mothradar-ba79.herokuapp.com"]
 
 
 # Application definition
