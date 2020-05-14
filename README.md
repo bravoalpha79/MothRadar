@@ -10,15 +10,18 @@ The application has been deployed to Heroku using the following procedure:
 
 1. On Heroku, create a new app **mothradar-ba79**.
 2. In the Heroku App Dashboard, under the Resources tab, add Heroku Postgres (select the "Hobby Dev - Free" option).
-3. In the project workspace's virtual environment, use pip to install dj-database-url, whitenoise and gunicorn (psycopg2 has already been installed).
-4. Run pip freeze --local > requirements.txt to update the requirements file.
+3. In the project workspace's virtual environment, use `pip install` to install `dj-database-url`, `whitenoise` and `gunicorn` (psycopg2 has already been installed).
+4. Run `pip freeze --local > requirements.txt` to update the requirements file.
 5. From Heroku Config Vars, copy the DATABASE_URL.    
-In env.py, add the DATABASE_URL, and DEVELOPMENT environment variable with the value of "1".
-6. In settings.py, import the DEVELOPMENT variable and set DEBUG to the value of the DEVELOPMENT variable:
+In env.py, add the `DATABASE_URL`, and a `DEVELOPMENT` environment variable with the value of `"1"`.
+6. In settings.py, import the `DEVELOPMENT` variable and set `DEBUG` to the value of the `DEVELOPMENT` variable:
+```python
 development = os.environ.get("DEVELOPMENT")
 DEBUG = development
-7. In settings.py, import dj_database_url. 
-Under DATABASES, set the database (Sqlite and Postgres) edpending on the DEVELOPMENT variable:
+```
+7. In settings.py, import dj_database_url.    
+Under `DATABASES`, set the database (Sqlite and Postgres) depending on the `DEVELOPMENT` variable:
+```python
 if development:
     DATABASES = {
         "default": {
@@ -28,4 +31,21 @@ if development:
     }
 else:
     DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
+```
+
+8. Run `python manage.py makemigrations` and then `python manage.py migrate`.
+
+9. In settings.py, under `MIDDLEWARE`, add `whitenoise.middleware.WhiteNoiseMiddleware`.   
+At the bottom of the file, add:
+```python
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"))
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+```
+
+10. In the root of the project workspace, create a Procfile (capital P!) with the following content:
+`web: gunicorn mothradar.wsgi:application`
+Save the file.
+
+11. From env.py, copy the following environment variables and their values into Heroku:
+
 
