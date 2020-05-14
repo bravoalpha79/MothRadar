@@ -7,10 +7,11 @@
     <h4 class="mb-5">Upvote Feature - payment details</h4>
       <form id="payment-form" method="POST" action="{% url 'upvote-paid' ticket.id %}">
         {% csrf_token %} {{ form|crispy }}
-        <div>
-          <button type="submit" id="completePayment" class="btn btn-info mt-2">
+        <div class="mt-4 align-middle">
+          <button type="submit" id="completePayment" class="btn btn-info">
             Complete Payment
           </button>
+          <span class="ml-3 text-danger" id="stripe-error-message"></span>
         </div>
       </form>
   </div>
