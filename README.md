@@ -6,6 +6,8 @@
 
 ## Deployment
 
+**The deployed app can be found here: [MothRadar](https://mothradar-ba79.herokuapp.com/)**
+
 The application has been deployed to Heroku using the following procedure:
 
 1. On Heroku, create a new app **mothradar-ba79**.
@@ -74,6 +76,8 @@ Under `ALLOWED_HOSTS`, add `mothradar-ba79.herokuapp.com` and `localhost`.
 
 17. In Heroku App DashBoard, under the Deploy tab, select GitHub as Deplyoment method. In the searchbox, type the name of the GitHub repo (MothRadar) and click "Connect".     
 Under Manual deploy, make sure that the selected branch is **master**, and click Deploy Branch.
+
+18. The app is now deployed on Heroku.
 
 
 
