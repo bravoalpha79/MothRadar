@@ -14,9 +14,12 @@ The application has been deployed to Heroku using the following procedure:
 4. Run `pip freeze --local > requirements.txt` to update the requirements file.
 5. From Heroku Config Vars, copy the DATABASE_URL.    
 In env.py, add the `DATABASE_URL`, and a `DEVELOPMENT` environment variable with the value of `"1"`.
-6. In settings.py, import the `DEVELOPMENT` variable and set `DEBUG` to the value of the `DEVELOPMENT` variable:
+6. In settings.py, import the `DEVELOPMENT` variable and set `DEBUG` dependent on the value of the `DEVELOPMENT` variable:
 ```python
-development = os.environ.get("DEVELOPMENT")
+if os.environ.get("DEVELOPMENT"):
+    development = True
+else:
+    development = False
 DEBUG = development
 ```
 7. In settings.py, import dj_database_url.
@@ -62,7 +65,7 @@ STRIPE_SECRET
 ```
 Add a `DISABLE_COLLECTSTATIC` Config Var and set its value to 1.
 
-14. In settings.py, under `ALLOWED_HOSTS`, add `mothradar-ba79.herokuapp.com`.
+14. In settings.py, under `ALLOWED_HOSTS`, add `mothradar-ba79.herokuapp.com` and `localhost`.
 
 15. In Terminal, `run python manage.py collectstatic`.
 
