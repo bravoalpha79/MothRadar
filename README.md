@@ -19,8 +19,15 @@ In env.py, add the `DATABASE_URL`, and a `DEVELOPMENT` environment variable with
 development = os.environ.get("DEVELOPMENT")
 DEBUG = development
 ```
-7. In settings.py, import dj_database_url.    
-Under `DATABASES`, set the database (Sqlite and Postgres) depending on the `DEVELOPMENT` variable:
+7. In settings.py, import dj_database_url.
+Under `DATABASES`, comment out Sqlite database and add the Postgres database:
+```python
+DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
+```
+
+8. Run `python manage.py makemigrations` and then `python manage.py migrate`.
+
+9. In settings.py, under `DATABASES`, uncomment the Sqlite database and set the database selection (Sqlite and Postgres) depending on the `DEVELOPMENT` variable:
 ```python
 if development:
     DATABASES = {
@@ -32,23 +39,20 @@ if development:
 else:
     DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 ```
-
-8. Run `python manage.py makemigrations` and then `python manage.py migrate`.
-
-9. In settings.py, under `MIDDLEWARE`, add `whitenoise.middleware.WhiteNoiseMiddleware`.   
+10. In settings.py, under `MIDDLEWARE`, add `whitenoise.middleware.WhiteNoiseMiddleware`.   
 At the bottom of the file, add:
 ```python
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 ```
 
-10. In the root of the project workspace, create a Procfile (capital P!) with the following content:
+11. In the root of the project workspace, create a Procfile (capital P!) with the following content:
 `web: gunicorn mothradar.wsgi:application`
 Save the file.
 
-11. Still in the root create a folder named "static".
+12. Still in the root create a folder named "static".
 
-12. From env.py, copy the following environment variables and their values (without quotes!) into Heroku App Config Vars:
+13. From env.py, copy the following environment variables and their values (without quotes!) into Heroku App Config Vars:
 ```python
 SECRET_KEY
 EMAIL_ADDRESS
@@ -58,13 +62,13 @@ STRIPE_SECRET
 ```
 Add a `DISABLE_COLLECTSTATIC` Config Var and set its value to 1.
 
-13. In settings.py, under `ALLOWED_HOSTS`, add `mothradar-ba79.herokuapp.com/`.
+14. In settings.py, under `ALLOWED_HOSTS`, add `mothradar-ba79.herokuapp.com`.
 
-14. In Terminal, `run python manage.py collectstatic`.
+15. In Terminal, `run python manage.py collectstatic`.
 
-15. Commit and push all changes to GitHub master. 
+16. Commit and push all changes to GitHub master. 
 
-16. In Heroku App DashBoard, under the Deploy tab, select GitHub as Deplyoment method. In the searchbox, type the name of the GitHub repo (MothRadar) and click "Connect".   
+17. In Heroku App DashBoard, under the Deploy tab, select GitHub as Deplyoment method. In the searchbox, type the name of the GitHub repo (MothRadar) and click "Connect".   
 Under Automatic deploys, make sure that the selected branch is **master**. Tick the checkbox "Wait for CI to pass" and click "Enable Automatic Deploys."   
 Finally, undel Manual deploy, make sure that the selected branch is **master**, and click Deploy Branch.
 
