@@ -1,23 +1,26 @@
-{% extends "tickets/base.html" %} {% load static %} {% load crispy_forms_tags %}
+{% extends "tickets/base.html" %} 
+{% load static %} 
+{% load crispy_forms_tags %}
 {% block content %}
-<form
-  id="payment-form"
-  method="POST"
-  action="{% url 'upvote-paid' ticket.id %}"
->
-  {% csrf_token %} {{ form|crispy }}
-  <div>
-    <button type="submit" id="completePayment" class="btn btn-info">
-      Complete Payment
-    </button>
+<div class="row justify-content-center">
+  <div class="col-lg-6">
+    <form id="payment-form" method="POST" action="{% url 'upvote-paid' ticket.id %}">
+      {% csrf_token %} {{ form|crispy }}
+      <div>
+        <button type="submit" id="completePayment" class="btn btn-info mt-2">
+          Complete Payment
+        </button>
+      </div>
+    </form>
   </div>
-</form>
-{% endblock %} {% block stripe_js %}
-<script src="https://js.stripe.com/v2/"></script>
-<script>
-  //<![CDATA[
-  Stripe.publishableKey = "{{ publishable }}";
-  //]]>
-</script>
-<script src="{% static 'upvotes/js/stripe.js' %}"></script>
+</div>
+{% endblock %} 
+{% block stripe_js %}
+  <script src="https://js.stripe.com/v2/"></script>
+  <script>
+    //<![CDATA[
+    Stripe.publishableKey = "{{ publishable }}";
+    //]]>
+  </script>
+  <script src="{% static 'upvotes/js/stripe.js' %}"></script>
 {% endblock %}

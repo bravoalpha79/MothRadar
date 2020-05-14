@@ -24,24 +24,12 @@
       {% endif %}
   {% endif %}
   <!-- Bootstrap Modal -->
-  <div
-    class="modal fade"
-    id="paymentModal"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="paymentModalLabel"
-    aria-hidden="true"
-  >
+  <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="paymentModalLabel"></h5>
-          <button
-            type="button"
-            class="close"
-            data-dismiss="modal"
-            aria-label="Close"
-          >
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -54,17 +42,10 @@
           <button type="button" class="btn btn-secondary" data-dismiss="modal">
             Cancel
           </button>
-          <a
-            type="button"
-            class="btn btn-primary"
-            href="{% url 'upvote-paid' ticket.id %}"
-            >Proceed</a
-          >
+          <a type="button" class="btn btn-primary" href="{% url 'upvote-paid' ticket.id %}">Proceed</a>
         </div>
       </div>
     </div>
   </div>
   <!-- ./Bootstrap Modal -->
-
-  {% endblock upvotes %}
-</span>
+{% endblock upvotes %}
