@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.utils.timezone import datetime
 from django.urls import reverse
 
-# Create your models here.
+
 class Ticket(models.Model):
     title = models.CharField(max_length=80)
     description = models.TextField()

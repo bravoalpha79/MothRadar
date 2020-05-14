@@ -4,7 +4,7 @@ from django.utils.timezone import datetime
 from django.urls import reverse
 from tickets.models import Ticket
 
-# Create your models here.
+
 class Comment(models.Model):
     text = models.TextField()
     created = models.DateTimeField(auto_now=True)

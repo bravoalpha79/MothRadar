@@ -17,7 +17,6 @@ from upvotes.models import Upvote
 from .models import Ticket
 
 
-# Create your views here.
 def home(request):
     return render(request, "tickets/home.html", {"title": "Homepage"})
 

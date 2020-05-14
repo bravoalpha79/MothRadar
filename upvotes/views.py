@@ -10,7 +10,7 @@ import stripe
 
 stripe.api_key = settings.STRIPE_SECRET
 
-# Create your views here.
+
 @login_required
 def upvote(request, pk):
     voter = request.user
