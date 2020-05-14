@@ -12,8 +12,8 @@ The application has been deployed to Heroku using the following procedure:
 2. In the Heroku App Dashboard, under the Resources tab, add Heroku Postgres (select the "Hobby Dev - Free" option).
 3. In the project workspace's virtual environment, use `pip install` to install `dj-database-url`, `whitenoise` and `gunicorn` (psycopg2 has already been installed).
 4. Run `pip freeze --local > requirements.txt` to update the requirements file.
-5. From Heroku Config Vars, copy the DATABASE_URL.    
-In env.py, add the `DATABASE_URL`, and a `DEVELOPMENT` environment variable with the value of `"1"`.
+5. From Heroku App Config Vars (Settings tab), copy the DATABASE_URL.    
+In env.py, add the `DATABASE_URL`, a `DEVELOPMENT` environment variable with the value of `"1"`, and a `LOCALHOST`variable`.
 6. In settings.py, import the `DEVELOPMENT` variable and set `DEBUG` dependent on the value of the `DEVELOPMENT` variable:
 ```python
 if os.environ.get("DEVELOPMENT"):
@@ -23,7 +23,7 @@ else:
 DEBUG = development
 ```
 7. In settings.py, import dj_database_url.
-Under `DATABASES`, comment out Sqlite database and add the Postgres database:
+Under `DATABASES`, comment out the Sqlite database and add the Postgres database:
 ```python
 DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 ```
@@ -32,15 +32,15 @@ DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 
 9. In settings.py, under `DATABASES`, uncomment the Sqlite database and set the database selection (Sqlite and Postgres) depending on the `DEVELOPMENT` variable:
 ```python
-if development:
+if os.environ.get("DATABASE_URL"):
+    DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
+else:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
             "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
         }
     }
-else:
-    DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 ```
 10. In settings.py, under `MIDDLEWARE`, add `whitenoise.middleware.WhiteNoiseMiddleware`.   
 At the bottom of the file, add:
@@ -65,15 +65,15 @@ STRIPE_SECRET
 ```
 Add a `DISABLE_COLLECTSTATIC` Config Var and set its value to 1.
 
-14. In settings.py, under `ALLOWED_HOSTS`, add `mothradar-ba79.herokuapp.com` and `localhost`.
+14. In settings.py, get the `LOCALHOST` environment variable as `localhost`.   
+Under `ALLOWED_HOSTS`, add `mothradar-ba79.herokuapp.com` and `localhost`.
 
 15. In Terminal, `run python manage.py collectstatic`.
 
 16. Commit and push all changes to GitHub master. 
 
-17. In Heroku App DashBoard, under the Deploy tab, select GitHub as Deplyoment method. In the searchbox, type the name of the GitHub repo (MothRadar) and click "Connect".   
-Under Automatic deploys, make sure that the selected branch is **master**. Tick the checkbox "Wait for CI to pass" and click "Enable Automatic Deploys."   
-Finally, undel Manual deploy, make sure that the selected branch is **master**, and click Deploy Branch.
+17. In Heroku App DashBoard, under the Deploy tab, select GitHub as Deplyoment method. In the searchbox, type the name of the GitHub repo (MothRadar) and click "Connect".     
+Under Manual deploy, make sure that the selected branch is **master**, and click Deploy Branch.
 
 
 
