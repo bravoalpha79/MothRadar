@@ -34,7 +34,6 @@ def update_profile(request):
                 request,
                 "Your profile has been updated, {}.".format(request.user.username),
             )
-            form.save()
             return redirect("profile")
     else:
         form = UserUpdateForm(instance=request.user)
