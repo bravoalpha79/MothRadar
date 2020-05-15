@@ -103,7 +103,8 @@ $("#upvoteFree").click(function () {
   });
 });
 
-// Homepage card animation
+// Homepage card animation - 'not(this)' solution obtained from Stack Overflow
 $(".homeCard").click(function () {
   $(this).children("p").toggle("500");
+  $(".homeCard").not(this).children("p").hide("500");
 });
