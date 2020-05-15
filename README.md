@@ -81,5 +81,13 @@ Under Manual deploy, make sure that the selected branch is **master**, and click
 
 
 
+## Acknowledgements
+
+- Favicon image was obtained from [publicdomainvectors.org](https://publicdomainvectors.org/).
+- [convertio.co](https://convertio.co/) was used to convert favicon image from SVG to PNG.
+- [favicon.io](https://favicon.io/) was used to generate favicon.
+
+
+
 
 
