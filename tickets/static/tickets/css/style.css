@@ -6,6 +6,10 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
+.container {
+  min-height: 92vh;
+}
+
 .bg-dark {
   background-color: rgb(26, 25, 25) !important;
 }
@@ -216,4 +220,19 @@ form select {
 
 button.close {
   color: #000 !important;
+}
+
+footer {
+  background-color: rgb(31, 30, 30);
+  color: #a1a0a0;
+  height: 4vh;
+  padding: 0.5rem;
+}
+
+footer p {
+  margin: 0;
+}
+
+footer a {
+  color: rgb(92, 91, 91)
 }
