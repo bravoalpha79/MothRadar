@@ -18,7 +18,7 @@ from .models import Ticket
 
 
 def home(request):
-    return render(request, "tickets/home.html", {"title": "Homepage"})
+    return render(request, "tickets/home.html")
 
 
 @method_decorator(login_required, name="dispatch")
