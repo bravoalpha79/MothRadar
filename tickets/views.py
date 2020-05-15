@@ -58,12 +58,6 @@ class TicketUpdateView(UpdateView):
     fields = ["title", "description", "ticket_type"]
 
 
-@method_decorator(login_required, name="dispatch")
-class TicketDeleteView(DeleteView):
-    model = Ticket
-    success_url = reverse_lazy("ticket-list")
-
-
 class TicketListView(ListView):
     paginate_by = 5
     model = Ticket
