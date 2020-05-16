@@ -23,7 +23,7 @@
     <!-- comments "form" -->
     {% if user.is_authenticated %}
     <div class="form-group">
-      <textarea name="" class="textarea form-control" id="commentTextArea" rows="3" placeholder="Your comment:"></textarea>
+      <textarea class="textarea form-control" id="commentTextArea" rows="3" placeholder="Your comment:"></textarea>
       <div>
         <button id="postComment" class="btn btn-info btn-sm mt-2">
           Post comment
@@ -34,5 +34,4 @@
     {% endif %}
     <!--./comments "form"-->
     <br />
-  </div>
 {% endblock comments %}

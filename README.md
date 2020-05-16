@@ -88,6 +88,16 @@ Under Manual deploy, make sure that the selected branch is **master**, and click
 - [favicon.io](https://favicon.io/) was used to generate favicon.
 
 
+## Code validation:
 
+### HTML 
+
+Validated using [W3c Markup Validation Service](https://validator.w3.org/).
+Issues found:
+1. Register form -  "Element <ul> not allowed as child of element <small> in this context."
+This issue is related to the way Crispy Forms displays the Registration Form.
+2. Password Reset form -  "Element <ul> not allowed as child of element <small> in this context."
+This issue is related to the way Crispy Forms displays the Registration Form.
+3. Password Change form -  "Element <ul> not allowed as child of element <small> in this context."
 
 
