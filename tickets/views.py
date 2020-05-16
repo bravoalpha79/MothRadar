@@ -78,7 +78,7 @@ class TicketUpdateView(UpdateView):
         queryset = super().get_queryset()
         author = self.request.user
         # Limit edit view access only to tickets created by the
-        # current user - solution obtained from StackOverflow.
+        # current user - solution obtained from Stack Overflow.
         queryset = Ticket.objects.filter(author=author)
         return queryset
 
@@ -87,7 +87,7 @@ class TicketListView(ListView):
     """
     Display list of all tickets in the database, 
     search box and filter views sidebar.
-    Display number of tickets ceated by current user.
+    Display number of tickets created by the current user.
     Handle search box inputs.
     """
 

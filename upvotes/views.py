@@ -43,6 +43,7 @@ def upvote_paid(request, pk):
 
         if form.is_valid():
             # if ticket already upvoted, return to Ticket details
+            # without processing payment.
             if upvoted:
                 messages.warning(
                     request,
