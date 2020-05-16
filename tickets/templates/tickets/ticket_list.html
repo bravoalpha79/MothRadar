@@ -1,108 +1,106 @@
 {% extends "tickets/base.html" %}
 
 {% block sidebar %}
-<div class="row justify-content-between">
-  <div class="sidebar col-lg-4">
-    <div>
-      <ul class="list-group">
-        <li class="list-group-item list-group-item-dark searchbox">
-          <form class="row justify-content-between" method="GET">
-            <input id="search" name="search" class="col-9 col-lg-8 form-control mt-1 ml-3 mr-1" placeholder="Search keyword(s)" aria-label="Search" required/>
-            <button id="search-button" class="col-2 btn btn-outline-success px-md-2 mt-1 mr-3" type="submit">
-              <i class="fas fa-search"></i>
-            </button>
-          </form>
-        </li>
-        <li class="list-group-item list-group-item-dark text-muted">Display:</li>
-        <li class="list-group-item list-group-item-dark{% if path == '/tickets/' %} active{% endif %}">
-          <a href="{% url 'ticket-list' %}">Most recent</a>
-          {% if path == '/tickets/' %} 
-            <span class="sr-only">(current)</span>
+  <div class="row justify-content-between">
+    <div class="sidebar col-lg-4">
+      <div>
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-dark searchbox">
+            <form class="row justify-content-between" method="GET">
+              <input id="search" name="search" class="col-9 col-lg-8 form-control mt-1 ml-3 mr-1" placeholder="Search keyword(s)" aria-label="Search" required />
+              <button id="search-button" class="col-2 btn btn-outline-success px-md-2 mt-1 mr-3" type="submit">
+                <i class="fas fa-search"></i>
+              </button>
+            </form>
+          </li>
+          <li class="list-group-item list-group-item-dark text-muted">Display:</li>
+          <li class="list-group-item list-group-item-dark{% if path == '/tickets/' %} active{% endif %}">
+            <a href="{% url 'ticket-list' %}">Most recent</a>
+            {% if path == '/tickets/' %} 
+              <span class="sr-only">(current)</span>
+            {% endif %}
+          </li>
+          <li class="list-group-item list-group-item-dark{% if path == '/tickets/sort-upvoted/' %} active{% endif %}">
+            <a href="{% url 'upvoted-list' %}">Most upvoted</a>
+            {% if path == '/tickets/sort-upvoted/' %} 
+              <span class="sr-only">(current)</span>
+            {% endif %}
+          </li>
+          <li class="list-group-item list-group-item-dark{% if path == '/tickets/bugs/' %} active{% endif %}">
+            <a href="{% url 'bug-list' %}">Bugs only</a>
+            {% if path == '/tickets/bugs/' %} 
+              <span class="sr-only">(current)</span>
+            {% endif %}
+          </li>
+          <li class="list-group-item list-group-item-dark{% if path == '/tickets/features/' %} active{% endif %}">
+            <a href="{% url 'feature-list' %}">Features only</a>
+            {% if path == '/tickets/features/' %} 
+              <span class="sr-only">(current)</span>
+            {% endif %}
+          </li>
+          {% if user.is_authenticated %}
+          <li class="list-group-item list-group-item-dark{% if path == '/tickets/my-tickets/' %} active{% endif %}">
+            <strong><a href="{% url 'my-tickets' %}">My tickets ({{ user_ticket_count }})</a></strong>
+            {% if path == '/tickets/my-tickets/' %} 
+              <span class="sr-only">(current)</span>
+            {% endif %}
+          </li>
           {% endif %}
-        </li>
-        <li class="list-group-item list-group-item-dark{% if path == '/tickets/sort-upvoted/' %} active{% endif %}">
-          <a href="{% url 'upvoted-list' %}">Most upvoted</a>
-          {% if path == '/tickets/sort-upvoted/' %} 
-            <span class="sr-only">(current)</span>
-          {% endif %}
-        </li>
-        <li class="list-group-item list-group-item-dark{% if path == '/tickets/bugs/' %} active{% endif %}">
-          <a href="{% url 'bug-list' %}">Bugs only</a>
-          {% if path == '/tickets/bugs/' %} 
-            <span class="sr-only">(current)</span>
-          {% endif %}
-        </li>
-        <li class="list-group-item list-group-item-dark{% if path == '/tickets/features/' %} active{% endif %}">
-          <a href="{% url 'feature-list' %}">Features only</a>
-          {% if path == '/tickets/features/' %} 
-            <span class="sr-only">(current)</span>
-          {% endif %}
-        </li>
-        {% if user.is_authenticated %}
-        <li class="list-group-item list-group-item-dark{% if path == '/tickets/my-tickets/' %} active{% endif %}">
-          <strong><a href="{% url 'my-tickets' %}">My tickets ({{ user_ticket_count }})</a></strong>
-          {% if path == '/tickets/my-tickets/' %} 
-            <span class="sr-only">(current)</span>
-          {% endif %}
-        </li>
-        {% endif %}
-      </ul>
-    </div>
-  </div>
+        </ul>
+      </div>
+    </div>  
 {% endblock %} 
 
 {% block content%} 
-  <div id="main-content" class="col-lg-7">
-    {% for ticket in object_list %}
-    <div class="card list-card mt-2 mb-3 p-1">
-      <div class="card-body">
-        <div class="list-card-title-line">
-          <h5 class="card-title">
-            <a href="{% url 'ticket-details' ticket.id %}">{{ ticket.title }}</a>
-          </h5>
-          <span class="list-card-type-{{ticket.ticket_type}}"><strong>{{ ticket.ticket_type }}</strong></span>
-        </div>
-        <h6 class="card-subtitle mb-2 text-muted">
-          <small>Created on {{ ticket.date_created }} by <strong>{{ ticket.author }}</strong></small>
-        </h6>
-        <p class="card-text">{{ ticket.description }}</p>
-        <br />
-        <hr />
-        <div class="list-card-status-line mt-4">
-          <span class="list-upvote-count">
-            Upvotes:
-            <span class="badge badge-primary">{{ ticket.upvotes.count }}</span>
-          </span>
-          <span class="statspan">Status: <span class="list-card-status-{{ ticket.status }}">{{ ticket.status }}</span></span>
+    <div id="main-content" class="col-lg-7">
+      {% for ticket in object_list %}
+      <div class="card list-card mt-2 mb-3 p-1">
+        <div class="card-body">
+          <div class="list-card-title-line">
+            <h5 class="card-title">
+              <a href="{% url 'ticket-details' ticket.id %}">{{ ticket.title }}</a>
+            </h5>
+            <span class="list-card-type-{{ticket.ticket_type}}"><strong>{{ ticket.ticket_type }}</strong></span>
+          </div>
+          <h6 class="card-subtitle mb-2 text-muted">
+            <small>Created on {{ ticket.date_created }} by <strong>{{ ticket.author }}</strong></small>
+          </h6>
+          <p class="card-text">{{ ticket.description }}</p>
+          <br />
+          <hr />
+          <div class="list-card-status-line mt-4">
+            <span class="list-upvote-count">
+              Upvotes:
+              <span class="badge badge-primary">{{ ticket.upvotes.count }}</span>
+            </span>
+            <span class="statspan">Status: <span class="list-card-status-{{ ticket.status }}">{{ ticket.status }}</span></span>
+          </div>
         </div>
       </div>
-    </div>
-    {% empty %}
-    <div>
-      <h6 class="text-center mt-3">No tickets found matching your search.</h6>
-    </div>
-    {% endfor %}
+      {% empty %}
+      <div>
+        <h6 class="text-center mt-3">No tickets found matching your search.</h6>
+      </div>
+      {% endfor %}
 
-  <!-- Pagination code snippet copied from Django documentation and styled -->
-    {% if page_obj %}
-    <div class="pagination my-3 py-2 mx-auto">
-      <span class="step-links">
-        {% if page_obj.has_previous %}
-        <a href="?page=1">&laquo; First</a>
-        <a class="mx-1" href="?page={{ page_obj.previous_page_number }}">Previous</a>
-        {% endif %}
-
-        <span class="current mx-2">
-          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+    <!-- Pagination code snippet copied from Django documentation and styled -->
+      {% if page_obj %}
+      <div class="pagination my-3 py-2 mx-auto">
+        <span class="step-links">
+          {% if page_obj.has_previous %}
+          <a href="?page=1">&laquo; First</a>
+          <a class="mx-1" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+          {% endif %}
+          <span class="current mx-2">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+          </span>
+          {% if page_obj.has_next %}
+          <a class="mx-1" href="?page={{ page_obj.next_page_number }}">Next</a>
+          <a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+          {% endif %}
         </span>
-
-        {% if page_obj.has_next %}
-        <a class="mx-1" href="?page={{ page_obj.next_page_number }}">Next</a>
-        <a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
-        {% endif %}
-      </span>
+      </div>
+      {% endif %}
     </div>
-    {% endif %}
   </div>
-</div> 
 {% endblock %}

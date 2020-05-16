@@ -19,9 +19,9 @@
       <!-- ./New comments -->
     </div>
   </div>
-    <br />
-    <!-- comments "form" -->
-    {% if user.is_authenticated %}
+  <br />
+  <!-- comments "form" -->
+  {% if user.is_authenticated %}
     <div class="form-group">
       <textarea class="textarea form-control" id="commentTextArea" rows="3" placeholder="Your comment:"></textarea>
       <div>
@@ -31,7 +31,7 @@
         <small id="commentMessage"></small>
       </div>
     </div>
-    {% endif %}
-    <!--./comments "form"-->
-    <br />
+  {% endif %}
+  <!--./comments "form"-->
+  <br />
 {% endblock comments %}

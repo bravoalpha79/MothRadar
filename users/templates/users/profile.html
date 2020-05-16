@@ -14,8 +14,8 @@
           <p>Comments: <strong>{{ user.comments.count }}</strong></p>
           <hr>
           {% block profile_update %}
-          <a class="btn btn-sm btn-info" href="{% url 'update_profile' %}">Edit profile</a>
-          <a class="btn btn-sm btn-warning ml-2" href="{% url 'password_change' %}">Change password</a>
+            <a class="btn btn-sm btn-info" href="{% url 'update_profile' %}">Edit profile</a>
+            <a class="btn btn-sm btn-warning ml-2" href="{% url 'password_change' %}">Change password</a>
           {% endblock profile_update %}
         </div>
       </div>

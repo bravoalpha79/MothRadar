@@ -1,16 +1,16 @@
 {% extends "tickets/base.html" %} 
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="row justify-content-center">
-  <div class="col-lg-7">
-        <h4 class="mb-4">New user registration</h4> 
-        <form method="POST">
-            {% csrf_token %}
-            {{ form|crispy }}
-            <div>
-                <button class="btn btn-info" type="submit">Register</button>
-            </div>
-        </form>
+    <div class="row justify-content-center">
+    <div class="col-lg-7">
+            <h4 class="mb-4">New user registration</h4> 
+            <form method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div>
+                    <button class="btn btn-info" type="submit">Register</button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 {% endblock %}

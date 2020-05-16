@@ -1,12 +1,12 @@
 {% extends "users/profile.html" %} 
 {% load crispy_forms_tags %} 
 {% block profile_update %}
-<form method="POST">
-    {% csrf_token %} 
-    {{ form|crispy }}
-    <div>
-        <button class="btn btn-info" type="submit">Update</button>
-    </div>
-</form>
+    <form method="POST">
+        {% csrf_token %} 
+        {{ form|crispy }}
+        <div>
+            <button class="btn btn-info" type="submit">Update</button>
+        </div>
+    </form>
 {% endblock profile_update %} 
 

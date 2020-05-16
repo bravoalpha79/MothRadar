@@ -109,4 +109,3 @@ No issues were found.
 Validated using [JSHint](https://jshint.com/).   
 No issues were found.
 
-
