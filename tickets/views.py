@@ -57,6 +57,12 @@ class TicketUpdateView(UpdateView):
     model = Ticket
     fields = ["title", "description", "ticket_type"]
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        author = self.request.user
+        queryset = Ticket.objects.filter(author=author)
+        return queryset
+
 
 class TicketListView(ListView):
     paginate_by = 5
