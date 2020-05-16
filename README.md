@@ -95,9 +95,9 @@ Under Manual deploy, make sure that the selected branch is **master**, and click
 Validated using [W3c Markup Validation Service](https://validator.w3.org/).
 Issues found:
 1. Register form -  "Element **ul** not allowed as child of element **small** in this context."
-2. Password Reset form -  "Element **ul** not allowed as child of element **small** in this context."
+2. Password Reset Confirm form -  "Element **ul** not allowed as child of element **small** in this context."
 3. Password Change form -  "Element **ul** not allowed as child of element **small** in this context."
-These issues are related to the way Crispy Forms handles the Registration Form.
+These issues are related to the way Crispy Forms handles the respective Django forms.
 
 ### CSS
 
