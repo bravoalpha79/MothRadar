@@ -179,7 +179,7 @@ form select {
   background-color: rgba(82, 3, 119, 0.7);
 }
 
-#statspan{
+.statspan{
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
