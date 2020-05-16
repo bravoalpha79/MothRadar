@@ -80,12 +80,37 @@ Under Manual deploy, make sure that the selected branch is **master**, and click
 18. The app is now deployed on Heroku.
 
 
+## Technologies Used
+
+The languages, frameworks, libraries, and other tools used during this project: 
+
+- HTML for page structure and content;
+- CSS for content styling;
+- JavaScript for HTML DOM manipulation, Ajax server requests and Stripe payment processing;
+- Python 3 for application logic;
+- [Django](https://www.djangoproject.com/) framework (v3.0.5) for application backend, development database provision (Sqlite), routing and template manipulation; 
+- [Bootstrap](https://getbootstrap.com/) was used for responsive design, navigation bar, buttons, alerts and modal implementation;    
+- [jQuery](https://jquery.com/) for easier DOM manipulation and for Stripe payment;
+- [Gmail](https://mail.google.com/) for sending/forwarding of Password Reset messages to users;
+- Fonts were obtained from [Google Fonts](https://fonts.google.com/);
+- Icons were obtained from [FontAwesome](https://fontawesome.com/);
+- [convertio.co](https://convertio.co/) was used to convert favicon image from SVG to PNG.
+- [Favicon.io](https://favicon.io/) was used for favicon creation;
+- [W3C Markup Validation Service](https://validator.w3.org/) was used to validate HTML and CSS code;
+- [JSHint](https://jshint.com/) was used to validate JavaScript code;
+- [PEP8 online](http://pep8online.com/) to validate Python code;
+- [W3schools.com Color Converter](https://www.w3schools.com/colors/colors_converter.asp) was used to convert colours between default, HEX and RGB for CSS coding purposes;
+- [Autoprefixer CSS online](https://autoprefixer.github.io/) was used for correct vendor prefixing of CSS styles where required;
+- Google Chrome Developer Tools were used for development and testing, debugging and as a styling aid;
+- [Visual Studio Code]https://code.visualstudio.com/) was used as the IDE for development and Git version control;
+- [GitHub](https://github.com/) was used for source code storage;
+- [Heroku](https://www.heroku.com/) for application online deployment and production database provision (Postgres).
+
+
 
 ## Acknowledgements
 
 - Favicon image was obtained from [publicdomainvectors.org](https://publicdomainvectors.org/).
-- [convertio.co](https://convertio.co/) was used to convert favicon image from SVG to PNG.
-- [favicon.io](https://favicon.io/) was used to generate favicon.
 
 
 ## Code validation:
