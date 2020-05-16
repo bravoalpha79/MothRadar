@@ -7,6 +7,9 @@ from .models import Comment
 # The Comment.objects.create solution obtained from ckz8780
 @login_required
 def add_comment(request, pk):
+    """
+    Add new ticket comment by logged-in user.
+    """
     if request.method == "POST":
         text = request.POST.get("text")
         author = request.user

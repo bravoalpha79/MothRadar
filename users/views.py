@@ -5,6 +5,7 @@ from .forms import UserRegistrationForm, UserUpdateForm
 
 
 def register(request):
+    """ Handle registration of new users. """
     if request.method == "POST":
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
@@ -21,11 +22,13 @@ def register(request):
 
 @login_required
 def profile(request):
+    """ Display logged-in user's profile page. """
     return render(request, "users/profile.html")
 
 
 @login_required
 def update_profile(request):
+    """ Handle updating of user's profile info. """
     if request.method == "POST":
         form = UserUpdateForm(request.POST, instance=request.user)
         if form.is_valid():

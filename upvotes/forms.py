@@ -2,6 +2,7 @@ from django import forms
 
 
 class UpvoteFeaturePaymentForm(forms.Form):
+    """Stripe Credit Card Payment form"""
 
     MONTH_CHOICES = [(i, i) for i in range(1, 13)]
     YEAR_CHOICES = [(i, i) for i in range(2020, 2030)]
