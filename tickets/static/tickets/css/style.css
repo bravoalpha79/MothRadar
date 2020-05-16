@@ -76,7 +76,7 @@ form select {
   color: #a9a9a9;
 }
 
-#text::placeholder {
+#commentTextArea::placeholder {
   color: #a9a9a9;
 }
 
@@ -89,7 +89,7 @@ form select {
   margin-left: 2rem;
 }
 
-#newComment {
+.newComment {
   display: none;
   background-color: rgba(0, 255, 0, 0.1);
 }
