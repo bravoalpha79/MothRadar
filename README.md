@@ -94,10 +94,19 @@ Under Manual deploy, make sure that the selected branch is **master**, and click
 
 Validated using [W3c Markup Validation Service](https://validator.w3.org/).
 Issues found:
-1. Register form -  "Element <ul> not allowed as child of element <small> in this context."
-This issue is related to the way Crispy Forms displays the Registration Form.
-2. Password Reset form -  "Element <ul> not allowed as child of element <small> in this context."
-This issue is related to the way Crispy Forms displays the Registration Form.
-3. Password Change form -  "Element <ul> not allowed as child of element <small> in this context."
+1. Register form -  "Element **ul** not allowed as child of element **small** in this context."
+2. Password Reset form -  "Element **ul** not allowed as child of element **small** in this context."
+3. Password Change form -  "Element **ul** not allowed as child of element **small** in this context."
+These issues are related to the way Crispy Forms handles the Registration Form.
+
+### CSS
+
+Validated using [W3c CSS Validation Service](http://jigsaw.w3.org/css-validator/).   
+No issues were found.
+
+### JS
+
+Validated using [JSHint](https://jshint.com/).   
+No issues were found.
 
 
