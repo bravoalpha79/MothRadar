@@ -27,7 +27,7 @@ function getCookie(name) {
  **/
 $("#postComment").click(function () {
   const url = `comments/add/`;
-  const text = $("#text").val();
+  const text = $("#commentTextArea").val();
   let csrfToken = getCookie("csrftoken");
 
   if (!text) {
@@ -41,7 +41,7 @@ $("#postComment").click(function () {
       if (response.error) {
         $("#commentMessage").text(response.error);
       } else {
-        $("#text").val("");
+        $("#commentTextArea").val("");
         $("#commentMessage").text(response.success);
 
         let newCommentDiv = document.createElement("div");
