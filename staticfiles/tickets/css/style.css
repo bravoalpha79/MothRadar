@@ -1,3 +1,11 @@
+/*
+* Wherever vendor prefixes are present in the code,
+* they were Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap");
 
 
@@ -42,11 +50,21 @@ form select {
 
 /* Homepage heading animation coded using help from W3Schools */
 .welcome {
-  animation-name: radar;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate; 
-  animation-timing-function: linear;
+  -webkit-animation-name: radar;
+          animation-name: radar;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate; 
+  -webkit-animation-timing-function: linear; 
+          animation-timing-function: linear;
+}
+
+@-webkit-keyframes radar {
+  from {color: #b9b7b7;}
+  to {color: #008000;}
 }
 
 @keyframes radar {
@@ -57,6 +75,8 @@ form select {
 .homeCard {
   margin-bottom: 1rem;
   padding: 3rem;
+  -webkit-transition: background-color 1s linear;
+  -o-transition: background-color 1s linear;
   transition: background-color 1s linear;
 }
 
@@ -76,12 +96,27 @@ form select {
   color: #a9a9a9;
 }
 
+#commentTextArea::-webkit-input-placeholder {
+  color: #a9a9a9;
+}
+
+#commentTextArea::-moz-placeholder {
+  color: #a9a9a9;
+}
+
+#commentTextArea:-ms-input-placeholder {
+  color: #a9a9a9;
+}
+
+#commentTextArea::-ms-input-placeholder {
+  color: #a9a9a9;
+}
+
 #commentTextArea::placeholder {
   color: #a9a9a9;
 }
 
 .comment-card {
-  margin-top: 0.5rem;
   background-color: #2c2c2c;
 }
 
@@ -108,10 +143,19 @@ form select {
 .list-card-title-line,
 .list-card-status-line,
 .upvote-line {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  align-items: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   margin-bottom: 0.5rem;
 }
 
@@ -136,9 +180,16 @@ form select {
 }
 
 #statspan{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-flow: row wrap;
-  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .list-card-status-OPENED,
@@ -193,14 +244,36 @@ form select {
   color: #cecccc;
 }
 
+#search::-webkit-input-placeholder {
+  color: #000;
+}
+
+#search::-moz-placeholder {
+  color: #000;
+}
+
+#search:-ms-input-placeholder {
+  color: #000;
+}
+
+#search::-ms-input-placeholder {
+  color: #000;
+}
+
 #search::placeholder {
   color: #000;
 }
 
 .pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   font-size: 1.2rem;
   font-weight: 600;
 }
