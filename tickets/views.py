@@ -84,7 +84,7 @@ class TicketListView(ListView):
         if search:
             queryset = queryset.filter(description__icontains=search)
         else:
-            queryset = Ticket.objects.all()
+            queryset = queryset
         return queryset
 
 
