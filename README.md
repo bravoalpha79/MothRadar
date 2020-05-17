@@ -367,6 +367,56 @@ To create a virtual environment for your project, in the Terminal, in the projec
 `python manage.py runserver`
 ***
 
+## Code validation:
+
+### HTML 
+
+Validated using [W3C Markup Validation Service](https://validator.w3.org/).   
+Issues found:
+1. Register form -  "Element **ul** not allowed as child of element **small** in this context."
+2. Password Reset Confirm form -  "Element **ul** not allowed as child of element **small** in this context."
+3. Password Change form -  "Element **ul** not allowed as child of element **small** in this context."
+
+These issues are related to the way Crispy Forms handles the HTML rendering of the respective Django forms.
+
+Given that:
+- these errors are not related to author-written code in any way,
+- no display errors have been observed in rendering of the forms concerned in any of the test browsers, and
+- elimination of the errors would imply dispensing with Crispy Forms altogether or at least a "manual" redesign of the forms concerned, which is time-prohibitive,
+it has been to rpoceed with deployment regardles of the aforementioned errors.
+
+
+### CSS
+
+Validated using [W3C CSS Validation Service](http://jigsaw.w3.org/css-validator/).   
+No issues were found.
+
+### JS
+
+Validated using [JSHint](https://jshint.com/).   
+No issues were found.
+
+### Python 
+Validated using [PEP8 online](http://pep8online.com/).   
+
+Issues found: "Line too long" in lines 111 and 113-115 of `settings.py`:
+```python
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+    },
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator", },
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator", },
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator", },
+]
+```
+Considering my insufficient experience as well as the absence of an unambiguous confirmation that configurations like these should also be split into concatenated multi-line strings, this snippet has been left as-is regardless of the raised pep8 errors. 
+
+
+
+
+
+
 ## Technologies Used
 
 Languages:
@@ -443,25 +493,4 @@ Also, many thanks to all my fellow CI Slack members who also helped either by po
 Finally, a special THANK YOU to my mentor Narender, who always patiently tries and manages to find a way to push my limits just that tiny bit further. :) 
 
 
-## Code validation:
-
-### HTML 
-
-Validated using [W3C Markup Validation Service](https://validator.w3.org/).
-Issues found:
-1. Register form -  "Element **ul** not allowed as child of element **small** in this context."
-2. Password Reset Confirm form -  "Element **ul** not allowed as child of element **small** in this context."
-3. Password Change form -  "Element **ul** not allowed as child of element **small** in this context."
-
-These issues are related to the way Crispy Forms handles the respective Django forms. 
-
-### CSS
-
-Validated using [W3C CSS Validation Service](http://jigsaw.w3.org/css-validator/).   
-No issues were found.
-
-### JS
-
-Validated using [JSHint](https://jshint.com/).   
-No issues were found.
 
