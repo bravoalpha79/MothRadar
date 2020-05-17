@@ -176,7 +176,7 @@ Defensive design principles have been implemented wherever possible, namely by r
 
 2. For the logged-in user, add the ability to edit and delete own comments.
 
-3. Add additional ticket statuses (e.g. "Analysed" - to indicate that the ticket has been attended to i.e. it is no longer in initial state - and "Closed", to indicate that the either fix has been fully validated or that a ticket has been resolved in some other way).
+3. Add additional ticket statuses (e.g. "Analysed" - to indicate that the ticket has been attended to i.e. it is no longer in initial state - and "Closed", to indicate that either the fix has been fully validated or that a ticket has been resolved in some other way).
 
 4. Add an algorithm to prevent the user from accidentally creating a duplicated ticket by going back to a previously created ticket's form (time constraints prevented this from being implemented in the current version).
 
@@ -382,7 +382,7 @@ These issues are related to the way Crispy Forms handles the HTML rendering of t
 Given that:
 - these errors are not related to author-written code in any way,
 - no display errors have been observed in rendering of the forms concerned in any of the test browsers, and
-- elimination of the errors would imply dispensing with Crispy Forms altogether or at least a "manual" redesign of the forms concerned, which is time-prohibitive,
+- elimination of the errors would imply dispensing with Crispy Forms altogether or at least a "manual" redesign of the forms concerned, which is time-prohibitive,   
 it has been decided to proceed with deployment regardless of the aforementioned errors.
 
 
