@@ -166,32 +166,52 @@ To create a virtual environment for your project, in the Terminal, in the projec
 
 ## Technologies Used
 
-The languages, frameworks, libraries, and other tools used during this project: 
+Languages:
 
 - HTML for page structure and content;
 - CSS for content styling;
 - JavaScript for HTML DOM manipulation, Ajax server requests and Stripe payment processing;
 - Python 3 for application logic;
-- [Django](https://www.djangoproject.com/) framework (v3.0.5) for application backend, development database provision (Sqlite), routing and template manipulation; 
+
+Framework:
+- [Django](https://www.djangoproject.com/) framework (v3.0.5) for application backend, development database provision (SQLite3), routing and template manipulation; 
+
+Libraries:
 - [Bootstrap](https://getbootstrap.com/) was used for responsive design, styling, navigation bar, buttons, alerts and modal implementation;
-- [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/) to facilitate HTML rendering of Django forms;
 - [jQuery](https://jquery.com/) for easier DOM manipulation and for Stripe payment;
-- [Gmail](https://mail.google.com/) for sending of Password Reset messages to users;
-- [Stripe](https://stripe.com/) v2 was used for credit card payment processing;
+- [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/) to facilitate HTML rendering of Django forms;
 - Fonts were obtained from [Google Fonts](https://fonts.google.com/);
 - Icons were obtained from [FontAwesome](https://fontawesome.com/);
-- [convertio.co](https://convertio.co/) was used to convert favicon image from SVG to PNG;
-- [Favicon.io](https://favicon.io/) was used for favicon creation;
+
+Development:
+- [Visual Studio Code](https://code.visualstudio.com/) was used as the IDE for development and Git version control;
+- [GitHub](https://github.com/) was used for source code storage;
+- Google Chrome Developer Tools were used for development and testing, debugging and as a styling aid;
+
+Code validation tools:
 - [W3C Markup Validation Service](https://validator.w3.org/) was used to validate HTML and CSS code;
 - [JSHint](https://jshint.com/) was used to validate JavaScript code;
 - [PEP8 online](http://pep8online.com/) to validate Python code;
+
+Deployment:
+- [WhiteNoise](http://whitenoise.evans.io/en/stable) to facilitate Django static files serving on Heroku;
+- [Heroku](https://www.heroku.com/) for application online deployment and production database provision (PostgreSQL).
+
+
+Utilities:
 - [W3schools.com Color Converter](https://www.w3schools.com/colors/colors_converter.asp) was used to convert colours between default, HEX and RGB for CSS coding purposes;
 - [Autoprefixer CSS online](https://autoprefixer.github.io/) was used for correct vendor prefixing of CSS styles where required;
-- Google Chrome Developer Tools were used for development and testing, debugging and as a styling aid;
-- [Visual Studio Code](https://code.visualstudio.com/) was used as the IDE for development and Git version control;
-- [GitHub](https://github.com/) was used for source code storage;
-- [WhiteNoise](http://whitenoise.evans.io/en/stable) to facilitate Django static files serving on Heroku;
-- [Heroku](https://www.heroku.com/) for application online deployment and production database provision (Postgres).
+- [convertio.co](https://convertio.co/) was used to convert favicon image from SVG to PNG;
+- [Favicon.io](https://favicon.io/) was used for favicon creation;
+
+External (third-party) services:
+- [Gmail](https://mail.google.com/) for sending of Password Reset messages to users;
+- [Stripe](https://stripe.com/) v2 was used for credit card payment processing.
+
+
+
+
+
 
 
 
