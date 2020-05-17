@@ -80,6 +80,90 @@ Under Manual deploy, make sure that the selected branch is **master**, and click
 18. The app is now deployed on Heroku.
 
 
+## Local development
+
+Prerequisites:
+- IDE of your choice with:    
+    - installed [Python 3](https://www.python.org/downloads/) and  
+    - installed [pip](https://pypi.org/project/pip/), 
+- created [Gmail](https://mail.google.com/) account with two-factor authentication enabled, and
+- created [Stripe](https://stripe.com/) free account. 
+
+
+_Note: the Terminal commands in the following steps assume a Windows environment and a Command Prompt shell. If you are using a different operating system and/or shell, the commands will need to be adapted to your environment._
+
+If you want to work on this project locally, follow these steps:
+
+1. Clone or download the MothRadar GitHub repository into your local IDE.
+
+2. To install the project's dependencies, it is recommended to create a virtual environment to prevent the dependencies from being installed globally on your system.     
+To create a virtual environment for your project, in the Terminal, in the project's root directory, enter:
+
+    `python -m venv venv`
+
+    and then activate the created virtual environment with
+
+    `venv\Scripts\activate`
+
+4. Upgrade `pip` if needed:
+
+    `python -m pip install --upgrade pip`
+
+3. Install the project dependencies using  the following command:
+
+    `pip install -r requirements.txt`
+
+
+4. In the root directory of the project (where the `manage.py` file is located), create a file named `env.py`.
+
+    **Remember to check immediately that the `env.py` file is listed in your `.gitignore` file to prevent your sensitive data from being commited and pushed to GitHub.**
+
+    Inside the `env.py` file, enter the following commands and variables:
+
+    _Note: all variable values must be **in quotes**._
+
+   ```python
+    import os
+
+    os.environ["DEVELOPMENT"] = "1"
+    os.environ["LOCALHOST"] = "127.0.0.1"
+
+    os.environ["SECRET_KEY"] =      # your secret key
+    os.environ["EMAIL_ADDRESS"] =   # your Gmail email address 
+    os.environ["EMAIL_PASSWORD"] =  # your Gmail two-factor authentication app password
+
+    os.environ["STRIPE_PUBLISHABLE"] = # your Stripe Publishable Key 
+    os.environ["STRIPE_SECRET"] = # your Stripe Secret Key
+   ```
+
+    _Note: setting the_ `"DEVELOPMENT"` _variable serves to set_ `DEBUG=True` _during development. If you want_ `DEBUG=False`, _simply omit the_ `"DEVELOPMENT"` _variable definition._ 
+
+    Save the `env.py` file.
+
+
+5. In the Terminal, run 
+
+    `python manage.py makemigrations` 
+
+    to create the migrations for your Django database, and then
+
+    `python manage.py migrate`
+
+    to apply the migrations to the database.
+
+
+6. In the Terminal, run
+
+    `python manage.py createsuperuser`
+
+    When prompted, enter a username, email, password, and repeat password, to complete superuser creation.
+
+
+  **The application can now be run locally using the following command:**
+
+`python manage.py runserver`
+***
+
 ## Technologies Used
 
 The languages, frameworks, libraries, and other tools used during this project: 
