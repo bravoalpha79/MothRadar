@@ -16,7 +16,10 @@ def register(request):
             form.save()
             return redirect("login")
     else:
-        form = UserRegistrationForm()
+        if request.user.is_authenticated:
+            return redirect("home")
+        else:
+            form = UserRegistrationForm()
     return render(request, "users/register.html", {"form": form})
 
 
