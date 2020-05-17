@@ -413,15 +413,33 @@ External (third-party) services:
 - [Stripe](https://stripe.com/) v2 was used for credit card payment processing.
 
 
+## Credits
 
+### Code
 
+#### HTML
+1. The solution to highlight the currently active link in the sidebar within the ticket_list.html template (`{% if path == ... %}`) was found on [Stack Overflow](https://stackoverflow.com/).
+2. The custom script to pass the Stripe Publishable Key into JavaScript (in upvotes.html) was obtained from the Code Institute course videos.   
 
+#### JavaScript
+The complete Stripe payment processing script (stripe.js file) was obtained from Code Institute course videos.
 
+#### Python / Django
+MothRadar being my first independent Django project, I had to still tackle the basics of Django together with building a full-fledged app. Thus I had to rely heavily on external resorces, primarily on [Corey Schafer's YouTube Django series](https://www.youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p) tutorial and then on Code Institute course videos as well.   
+While I never wanted to just copy-paste any code, especially not without understanding it, in the beginning stages of my project (the `users` app and the initial stage of the `tickets` app) I was coding along with the tutorials a lot, while adapting the code to the specific needs of my app. In later stages I relied mostly on Django documentation and occasionally on Stack Overflow to implement the desired functionality.    
+Thus, while the concrete app implementation is definitely my own, the significant influence of Corey's videos is inevitable. This includes the idea to use Bootstrap cards to display the main items (tickets and comments) as well as the use of Crispy Forms to render Django forms.   
+I have honestly tried to do all the coding as independently as I could once my understanding of Django and of documentation broadened, but at this stage of my coding education building a full Django app of this size completely independently would have been impossible, especially in the given timeframe. 
 
-
-## Acknowledgements
-
+### Media
 - Favicon image was obtained from [publicdomainvectors.org](https://publicdomainvectors.org/).
+
+
+### Acknowledgements
+Above all I would like to thank Chris (**ckz8780**) who helped me immensely on this project with his knowledge of Django. While never providing me with complete solutions, on multiple occasions he was able to point me to the right direction to look for them. He also helped me debug the Stripe payment functionality when I got completely stuck. Thanks, Chris!
+
+Also, many thanks to all my fellow CI Slack members who also helped either by pointing me to various Django resources, by sharing their experiences, having walked the same path before me, or simply by encouraging me when I lost my momentum. **Anna**, **Jo**, **Simen**, **Johan** and **Anthony** - I owe you all bigtime!!  
+
+Finally, a special THANK YOU to my mentor Narender, who always patiently tries and manages to find a way to push my limits just that tiny bit further. :) 
 
 
 ## Code validation:
