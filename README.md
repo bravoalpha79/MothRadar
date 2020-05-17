@@ -3,13 +3,13 @@
 [![Build Status](https://travis-ci.org/bravoalpha79/MothRadar.svg?branch=master)](https://travis-ci.org/bravoalpha79/MothRadar)
 
 
-MothRadar is a ticket tracker app for a fictional application called UnicornAttractor. MothRadar enables the users of the UnicornAttractor to raise tickets on issues encounterd during the app use, to browse through existing tickets, and to comment on them. It also provides the users with the ability to upvote existing tickets, thus helping the UnicornAttractor app owner to prioritise fixes among existing bugs.
+MothRadar is a ticket tracker app for a fictional application called UnicornAttractor. MothRadar enables the users of the UnicornAttractor to raise tickets on issues encountered during the app use, to browse through existing tickets, and to comment on them. It also provides the users with the ability to upvote existing tickets, thus helping the UnicornAttractor app owner to prioritise fixes among existing bugs.
 
 _"MothRadar never loses track of any bug that enters its scope."_
 
 ## UX
 
-MothRadar is inteded primarily for the users of the UnicornAttractor app. It also aims to facilitate the owner's maintenance work on the app by providing user feedback in the form of tickets, comments and upvotes.
+MothRadar is intended primarily for the users of the UnicornAttractor app. It also aims to facilitate the owner's maintenance work on the app by providing user feedback in the form of tickets, comments and upvotes.
 
 Visitors (unregistered users and users not logged-in) have only the option to browse, search and filter existing tickets and view individual ticket details (read-only access).
 
@@ -22,7 +22,7 @@ Tickets can be raised as one of two types: **Bug** (for UnicornAttractor app iss
 Based on the above general requirements, the following user stories have been identified:
 
 As a user:
-1. I want to be provided with som general information on the MothRadar app's available features and how to use them.
+1. I want to be provided with some general information on the MothRadar app's available features and how to use them.
 2. I want to be able to create a new ticket.
 3. I want to be able to edit/amend a ticket that I have created.
 4. I want to be able to browse existing tickets.
@@ -38,7 +38,7 @@ As a user:
 14. I want to be able to view my account details.
 15. I want to be able to edit my account details.
 16. I want to be able to change my password.
-17. I want to be able to log out so I can protect my account when I'm finished working with the app.
+17. I want to be able to log out so I can protect my account when I am finished working with the app.
 18. I want to be able to reset my password via email if I forget it.
 
 As app owner:   
@@ -54,7 +54,7 @@ As app owner:
 
 ### UI structure
 
-#### Necessary elements
+#### Essential elements
 
 _Due to time constraints, it has been decided that, with regards to comments, in this version of the app only creation of comments will be enabled. Editing and deleting of existing comments (by their creator only) - **user stories 11 and 12 - will need to be implemented in a future version.**_ 
 
@@ -82,14 +82,14 @@ Most of the needed forms are obtained either directly from Django default forms 
 
 The two exceptions to this are: 
 - the Ticket Search form, which uses a GET method and therefore does not require validation, and 
-- the comments "form", which uses JavaScript processing (including an Ajax call to backend) and is therefore not defined as an HTML form element but just as a textarea with a button to trigger the JavaScript script.
+- the comments "form", which uses JavaScript processing (including an Ajax call to backend) and is therefore not defined as an HTML form element but just as an HTML text area with a button to trigger the JavaScript script.
 
 
 #### Visual layout
 
 [Bootstrap](https://getbootstrap.com/) styling has been used as much as possible to assure full responsivity of the site. 
 
-A top-fixed Bootstrap navbar with the essential links is present at all times. At screen sizes below 992px this is reduced to just the Logo and the "burger icon" which opens a sidenav with the links.
+A top-fixed Bootstrap navbar with the essential links is present at all times. At screen sizes below 992px this is reduced to just the Logo and the "burger icon" which opens a "sidenav" with the links.
 On screen sizes below 992px all content is displayed in single-column layout (screen-wide), while on large screens (992px and above) it is dependent on the actual page displayed.
 Four [wireframe.cc](https://wireframe.cc/) wireframes (for desktop-size display) were produced during the prototyping phase of the project:
 
@@ -135,7 +135,7 @@ Pagination (5 tickets per page) is implemented in all list views.
 The search function is implemented as a simple search box with a button to trigger the search. 
 The search is performed on top of any current view filters, so if e.g. the user has selected the "Features only" filter, the search will be performed among Feature tickets only.    
 
-_Note: the current search funtionality uses a simple `__icontains` on the Ticket model's `description` field. The plan is to implement a more complex search algorithm, and include both the `title` and the `description` fields, in a future version of the app._  
+_Note: the current search functionality uses a simple `__icontains` on the Ticket model's `description` field. The plan is to implement a more complex search algorithm, and include both the `title` and the `description` fields, in a future version of the app._  
 
 #### Ticket detail view
 The ticket detail view provides any user with all details of the ticket (author, creation date, title, description, ticket type and ticket status), plus the upvotes count and the complete list of comments for the ticket.   
@@ -179,6 +179,9 @@ Defensive design principles have been implemented wherever possible, namely by r
 3. Add additional ticket statuses (e.g. "Analysed" - to indicate that the ticket has been attended to but fix work has not yet started - and "Closed", to indicate that the either fix has been fully validated or that a ticket has been resolved in some other way).
 
 4. Add an algorithm to prevent the user from accidentally creating a duplicated ticket by going back to a previously created ticket's form (time constraints prevented this from being implemented in the current version).
+
+
+## Database structure
 
 
 
@@ -254,7 +257,7 @@ Under `ALLOWED_HOSTS`, add `mothradar-ba79.herokuapp.com` and `localhost`.
 
 16. Commit and push all changes to GitHub master. 
 
-17. In Heroku App DashBoard, under the Deploy tab, select GitHub as Deplyoment method. In the searchbox, type the name of the GitHub repo (MothRadar) and click "Connect".     
+17. In Heroku App DashBoard, under the Deploy tab, select GitHub as Deployment method. In the search box, type the name of the GitHub repo (MothRadar) and click "Connect".     
 Under Manual deploy, make sure that the selected branch is **master**, and click Deploy Branch.
 
 18. The app is now deployed on Heroku.
@@ -296,7 +299,7 @@ To create a virtual environment for your project, in the Terminal, in the projec
 
 4. In the root directory of the project (where the `manage.py` file is located), create a file named `env.py`.
 
-    **Remember to check immediately that the `env.py` file is listed in your `.gitignore` file to prevent your sensitive data from being commited and pushed to GitHub.**
+    **Remember to check immediately that the `env.py` file is listed in your `.gitignore` file to prevent your sensitive data from being committed and pushed to GitHub.**
 
     Inside the `env.py` file, enter the following commands and variables:
 
