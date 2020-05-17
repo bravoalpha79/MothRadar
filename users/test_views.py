@@ -7,7 +7,9 @@ from .forms import UserRegistrationForm, UserUpdateForm
 class TestUserViews(TestCase):
     def setUp(self):
         user1 = User.objects.create_user(
-            username="TestUser", email="test_email@example.com", password="testing123"
+            username="TestUser",
+            email="test_email@example.com",
+            password="testing123"
         )
         user1.save()
         self.tester = Client()
@@ -55,7 +57,10 @@ class TestUserViews(TestCase):
         self.tester.login(username="TestUser", password="testing123")
         user = get_object_or_404(User, username="TestUser")
         form = UserUpdateForm(
-            {"username": "TestUser", "email": "test_email_changed@example.com"},
+            {
+                "username": "TestUser",
+                "email": "test_email_changed@example.com"
+            },
             instance=user,
         )
         self.tester.post("/profile/update/")

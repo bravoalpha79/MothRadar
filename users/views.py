@@ -11,7 +11,8 @@ def register(request):
         if form.is_valid():
             username = form.cleaned_data.get("username")
             messages.success(
-                request, "Your account has been created, {}.".format(username)
+                request,
+                "Your account has been created, {}.".format(username)
             )
             form.save()
             return redirect("login")
@@ -38,7 +39,8 @@ def update_profile(request):
             form.save()
             messages.success(
                 request,
-                "Your profile has been updated, {}.".format(request.user.username),
+                "Your profile has been updated, {}.".format(
+                    request.user.username),
             )
             return redirect("profile")
     else:

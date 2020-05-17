@@ -47,7 +47,8 @@ def upvote_paid(request, pk):
             if upvoted:
                 messages.warning(
                     request,
-                    "Ticket already upvoted. Your payment will not be processed.",
+                    ("Ticket already upvoted. "
+                     "Your payment will not be processed.")
                 )
                 return redirect(reverse("ticket-details", args=[pk]))
             # otherwise, attempt Stripe payment
@@ -59,12 +60,14 @@ def upvote_paid(request, pk):
                         description=request.user.email,
                         card=form.cleaned_data["stripe_id"],
                     )
-                    # payment successful - upvote ticket and redirect to Ticket details
+                    # payment successful - upvote ticket
+                    # and redirect to Ticket details
                     if customer.paid:
                         Upvote.objects.create(ticket=ticket, upvoter=voter)
                         messages.success(
                             request,
-                            "Your payment was processed successfully! Ticket upvoted.",
+                            ("Your payment was processed successfully! "
+                             "Ticket upvoted.")
                         )
                         return redirect(reverse("ticket-details", args=[pk]))
                     # payment unsuccessful
@@ -76,7 +79,8 @@ def upvote_paid(request, pk):
         # handle form errors
         else:
             print(form.errors)
-            messages.warning(request, "Unable to process payment with that card.")
+            messages.warning(
+                request, "Unable to process payment with that card.")
 
     else:
         form = UpvoteFeaturePaymentForm()
@@ -84,5 +88,9 @@ def upvote_paid(request, pk):
     return render(
         request,
         "upvotes/payment.html",
-        {"form": form, "publishable": settings.STRIPE_PUBLISHABLE, "ticket": ticket},
+        {
+            "form": form,
+            "publishable": settings.STRIPE_PUBLISHABLE,
+            "ticket": ticket
+        },
     )
