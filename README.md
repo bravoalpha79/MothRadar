@@ -176,12 +176,32 @@ Defensive design principles have been implemented wherever possible, namely by r
 
 2. For the logged-in user, add the ability to edit and delete own comments.
 
-3. Add additional ticket statuses (e.g. "Analysed" - to indicate that the ticket has been attended to but fix work has not yet started - and "Closed", to indicate that the either fix has been fully validated or that a ticket has been resolved in some other way).
+3. Add additional ticket statuses (e.g. "Analysed" - to indicate that the ticket has been attended to i.e. it is no longer in initial state - and "Closed", to indicate that the either fix has been fully validated or that a ticket has been resolved in some other way).
 
 4. Add an algorithm to prevent the user from accidentally creating a duplicated ticket by going back to a previously created ticket's form (time constraints prevented this from being implemented in the current version).
 
 
 ## Database structure
+
+On top of the Django User model, which has not been modified for this app, three more modelas have been created:
+
+1. **Ticket** - with User as Foreign Key (`author`).
+
+    <table><tr><th>id</th><th>title</th><th>description</th><th>ticket_type</th><th>status</th><th>author_id</th><th>date_created</th><tr><tr><td>2</td><td>Some issue 1</td><td>Some description of issue 1 edited</td><td>FEATURE</td><td>SOLVED</td><td>3</td><td>2020-05-02</td></tr><tr><td>4</td><td>Some issue 2</td><td>Description of Issue 2 in a few words...</td><td>BUG</td><td>INPROG</td><td>3</td><td>2020-05-02</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table>
+
+2. **Comment** - with User and Ticket as Foreign Keys (`author` and `rel_ticket`).
+
+    <table><tr><th>id</th><th>text</th><th>created</th><th>rel_ticket_id</th><th>author_id</th><tr><tr><td>1</td><td>Here is my very fist comment to a ticket.</td><td>2020-05-04 11:47:20.171831</td><td>2</td><td>1</td></tr><tr><td>2</td><td>One more comment to this issue</td><td>2020-05-04 11:47:38.591623</td><td>2</td><td>3</td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr></table>
+
+
+3. **Upvote** - with User and Ticket as Foreign Keys (`upvoter` and `ticket`).
+
+    <table><tr><th>id</th><th>ticket_id</th><th>upvoter_id</th><tr><tr><td>46</td><td>23</td><td>1</td></tr><tr><td>47</td><td>21</td><td>1</td></tr><tr><td></td><td></td><td></td></tr></table>
+
+
+All Foreign Keys have been set with `on_delete=models.CASCADE`.
+
+Each of the four models is handled by a separate app - `users`, `tickets`, `comments` and `upvotes`.
 
 
 
