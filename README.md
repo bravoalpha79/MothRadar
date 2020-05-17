@@ -218,7 +218,7 @@ The application has been deployed to Heroku using the following procedure:
 3. In the project workspace's virtual environment, use `pip install` to install `dj-database-url`, `whitenoise` and `gunicorn` (psycopg2 has already been installed).
 4. Run `pip freeze --local > requirements.txt` to update the requirements file.
 5. From Heroku App Config Vars (Settings tab), copy the DATABASE_URL.    
-In env.py, add the `DATABASE_URL`, a `DEVELOPMENT` environment variable with the value of `"1"`, and a `LOCALHOST`variable`.
+In env.py, add the `DATABASE_URL`, a `DEVELOPMENT` environment variable with the value of `"1"`, and a `LOCALHOST` variable`.
 6. In settings.py, import the `DEVELOPMENT` variable and set `DEBUG` dependent on the value of the `DEVELOPMENT` variable:
 ```python
 if os.environ.get("DEVELOPMENT"):
@@ -383,7 +383,7 @@ Given that:
 - these errors are not related to author-written code in any way,
 - no display errors have been observed in rendering of the forms concerned in any of the test browsers, and
 - elimination of the errors would imply dispensing with Crispy Forms altogether or at least a "manual" redesign of the forms concerned, which is time-prohibitive,
-it has been to rpoceed with deployment regardles of the aforementioned errors.
+it has been decided to proceed with deployment regardless of the aforementioned errors.
 
 
 ### CSS
@@ -476,7 +476,7 @@ External (third-party) services:
 The complete Stripe payment processing script (stripe.js file) was obtained from Code Institute course videos.
 
 #### Python / Django
-MothRadar being my first independent Django project, I had to still tackle the basics of Django together with building a full-fledged app. Thus I had to rely heavily on external resorces, primarily on [Corey Schafer's YouTube Django series](https://www.youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p) tutorial and then on Code Institute course videos as well.   
+MothRadar being my first independent Django project, I had to still tackle the basics of Django together with building a full-fledged app. Thus I had to rely heavily on external resources, primarily on [Corey Schafer's YouTube Django series](https://www.youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p) tutorial and then on Code Institute course videos as well.   
 While I never wanted to just copy-paste any code, especially not without understanding it, in the beginning stages of my project (the `users` app and the initial stage of the `tickets` app) I was coding along with the tutorials a lot, while adapting the code to the specific needs of my app. In later stages I relied mostly on Django documentation and occasionally on Stack Overflow to implement the desired functionality.    
 Thus, while the concrete app implementation is definitely my own, the significant influence of Corey's videos is inevitable. This includes the idea to use Bootstrap cards to display the main items (tickets and comments), a sidebar, as well as the use of Crispy Forms to render Django forms.   
 I have honestly tried to do all the coding as independently as I could once my understanding of Django and of documentation broadened, but at this stage of my coding education building a full Django app of this size completely independently would have been impossible, especially in the given timeframe. 
