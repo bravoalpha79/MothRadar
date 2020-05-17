@@ -32,7 +32,7 @@ DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 
 8. Run `python manage.py makemigrations` and then `python manage.py migrate`.
 
-9. In settings.py, under `DATABASES`, uncomment the Sqlite database and set the database selection (Sqlite and Postgres) depending on the `DEVELOPMENT` variable:
+9. In settings.py, under `DATABASES`, uncomment the Sqlite database and set the database selection (Sqlite and Postgres) depending on the `DATABASE_URL` variable:
 ```python
 if os.environ.get("DATABASE_URL"):
     DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
@@ -52,10 +52,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 ```
 
 11. In the root of the project workspace, create a Procfile (capital P!) with the following content:
-`web: gunicorn mothradar.wsgi:application`
+`web: gunicorn mothradar.wsgi:application`  
 Save the file.
 
-12. Still in the root create a folder named "static".
+12. Still in the root, create a folder named "static".
 
 13. From env.py, copy the following environment variables and their values (without quotes!) into Heroku App Config Vars:
 ```python
