@@ -110,6 +110,79 @@ Thus the basic background colour is a very dark (near-black) grey (#222121) with
 The only elements departing from this general scheme are buttons and badges (styled with Bootstrap default colour classes), alerts (default Bootstrap colour classes with occasional custom adjustments), links/anchors (default blue colour) and ticket type and status tags (custom colours). These details were chosen in order to add clear highlight to elements that point to a certain functionality, or to subtly highlight specific ticket data.
 
 
+## Features
+
+### Existing features
+
+#### Navbar
+The navbar is implemented as a Bootstrap top-fixed navbar with responsive layout (breakpoint 992px). The contents (links) in the navbar change dynamically depending on whether the user is logged in or not.
+
+#### Landing page
+The landing page is designed in the form of interactive cards which, when clicked, expand to reveal the details of certain features of the application.
+
+#### Ticket list view
+The default ticket list view displays the list of all tickets in the database sorted by date and time created (newest first).
+
+#### Ticket list view filters/sorting
+Four sort/filter options are available to all users: sort by most recent (default view), sort by most upvoted, filter Bug tickets only, and filter Feature tickets only.    
+For logged-in users, a third filter is available to display only the tickets created by that user, the total number of those tickets being indicated in the sidebar.
+
+The current selected view/filter is clearly indicated by the UI by colour-highlighting the corresponding view's link/button in the sidebar.
+
+Pagination (5 tickets per page) is implemented in all list views.
+
+#### Ticket list search
+The search function is implemented as a simple search box with a button to trigger the search. 
+The search is performed on top of any current view filters, so if e.g. the user has selected the "Features only" filter, the search will be performed among Feature tickets only.    
+
+_Note: the current search funtionality uses a simple `__icontains` on the Ticket model's `description` field. The plan is to implement a more complex search algorithm, and include both the `title` and the `description` fields, in a future version of the app._  
+
+#### Ticket detail view
+The ticket detail view provides any user with all details of the ticket (author, creation date, title, description, ticket type and ticket status), plus the upvotes count and the complete list of comments for the ticket.   
+For logged-in users, this is expanded by:
+- a button to upvote the ticket (if not already upvoted),
+- a button to edit the ticket (if raised by the current user and if in "OPENED" i.e. initial status),
+- a text area and a button to post comments.
+
+#### Upvoting system
+
+Ticket upvoting is login-dependent. Any ticket can be upvoted only once by an individual user.    
+
+##### Bug ticket upvoting 
+Bug ticket upvoting is free of charge.   
+The status of the upvote button provides clear feedback on the availability of the upvote function for the current user (greyed out if the ticket is already upvoted by the user, and completely absent if the user is not logged in).   
+A click on the available Upvote button provides the user with success feedback, greys out the button, and updates the upvote count.
+##### Feature ticket upvoting
+The UI for the initiation of Ticket upvoting is near-identical to the one described above, with two differences:
+- a lock icon is displayed on the Upvote button in Feature tickets, to indicate a reserved feature, and
+- click on the available Upvote button triggers a confirmation modal which informs the user that it is a paid service (including the price) and provides the user with the option to cancel the action or to continue.
+
+Confirmation of the modal redirects the user to a Stripe Card Payment processing form. Only credit card details (card number, CVV, expiry month and expiry year) are required to complete payment, the user is asked for no personal information.
+
+The user is informed about the payment status on every step of the process, either by an error text next to the payment button (in case of invalid CVV or expiry date/month) or by a closable Bootstrap alert at the top of the screen. 
+
+#### User handling
+User handling relies completely on Django authorisation and forms to create and update user data and to authorise users. Thus the user has the option to register, log in, log out, edit password, edit profile data, and reset password via email.  
+
+
+#### Defensive design
+
+Defensive design principles have been implemented wherever possible, namely by restricting the ability to add to the database (ticket creation, ticket updating, adding of comments, upvoting) to logged-in users only and by restricting the edit possibilities only to the data "owned" (authored) by the current logged-in user.   
+ Wherever possible, the restrictions have been implemented both at the frontend (absence of access to buttons/views) and at the backend (login_required view decoration, filtering querysets by author).
+
+### Features left to implement
+
+1. Add a better search algorithm (ability to search by complex phrases, as well as to search on both ticket title and description).
+
+2. For the logged-in user, add the ability to edit and delete own comments.
+
+3. Add additional ticket statuses (e.g. "Analysed" - to indicate that the ticket has been attended to but fix work has not yet started - and "Closed", to indicate that the either fix has been fully validated or that a ticket has been resolved in some other way).
+
+4. Add an algorithm to prevent the user from accidentally creating a duplicated ticket by going back to a previously created ticket's form (time constraints prevented this from being implemented in the current version).
+
+
+
+
 
 ## Deployment
 
