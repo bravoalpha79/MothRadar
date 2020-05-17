@@ -1,8 +1,9 @@
 from django.http import JsonResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 from tickets.models import Ticket
 from .models import Comment
+
 
 # The Comment.objects.create solution obtained from ckz8780
 @login_required
@@ -24,4 +25,8 @@ def add_comment(request, pk):
                 }
             )
         except:
-            return JsonResponse({"error": "Something went wrong. Comment not added."})
+            return JsonResponse(
+                {
+                    "error": "Something went wrong. Comment not added."
+                }
+            )

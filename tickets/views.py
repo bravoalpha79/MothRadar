@@ -1,18 +1,14 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse_lazy
+from django.shortcuts import render
 from django.db.models import Count
 from django.views.generic import (
     CreateView,
     DetailView,
     UpdateView,
-    DeleteView,
     ListView,
 )
-from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from comments.models import Comment
-from comments.forms import EditCommentForm
 from upvotes.models import Upvote
 from .models import Ticket
 
@@ -50,12 +46,14 @@ class TicketDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         voter = self.request.user
-        upvoted = Upvote.objects.filter(ticket=self.object.id, upvoter=voter.id)
+        upvoted = Upvote.objects.filter(ticket=self.object.id,
+                                        upvoter=voter.id)
 
         context["comments"] = Comment.objects.filter(
             rel_ticket=self.object.id
         ).order_by("created")
-        context["upvotes"] = Upvote.objects.filter(ticket=self.object.id).count()
+        context["upvotes"] = Upvote.objects.filter(
+            ticket=self.object.id).count()
 
         if upvoted:
             context["uv_status"] = False
@@ -85,7 +83,7 @@ class TicketUpdateView(UpdateView):
 
 class TicketListView(ListView):
     """
-    Display list of all tickets in the database, 
+    Display list of all tickets in the database,
     search box and filter views sidebar.
     Display number of tickets created by the current user.
     Handle search box inputs.
@@ -118,7 +116,7 @@ class TicketListView(ListView):
 
 
 class BugListView(TicketListView):
-    """ 
+    """
     From all tickets, display only Bugs.
     """
 
@@ -126,7 +124,7 @@ class BugListView(TicketListView):
 
 
 class FeatureListView(TicketListView):
-    """ 
+    """
     From all tickets, display only Features.
     """
 
@@ -134,17 +132,18 @@ class FeatureListView(TicketListView):
 
 
 class UpvoteSortedListView(TicketListView):
-    """ 
+    """
     Display all tickets sorted by upvote count.
     Annotation method suggested by ckz8780.
     """
 
-    queryset = Ticket.objects.annotate(votes=Count("upvotes")).order_by("-votes")
+    queryset = Ticket.objects.annotate(
+        votes=Count("upvotes")).order_by("-votes")
 
 
 @method_decorator(login_required, name="dispatch")
 class UserRaisedTicketView(TicketListView):
-    """ 
+    """
     From all tickets, display only tickets raised
     by the current user.
     """
