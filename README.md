@@ -61,6 +61,7 @@ _Due to time constraints, it has been decided that, with regards to comments, in
 The following UI elements are essential for the implementation of the user stories:
 
 - navigation bar/menu,
+- landing page,
 - ticket creation form,
 - ticket search form,
 - ticket filters/views:
