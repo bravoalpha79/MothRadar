@@ -390,6 +390,7 @@ Development:
 - [Visual Studio Code](https://code.visualstudio.com/) was used as the IDE for development and Git version control;
 - [GitHub](https://github.com/) was used for source code storage;
 - Google Chrome Developer Tools were used for development and testing, debugging and as a styling aid;
+- [Travis CI](https://travis-ci.org/) for continuous integration;
 
 Code validation tools:
 - [W3C Markup Validation Service](https://validator.w3.org/) was used to validate HTML and CSS code;
