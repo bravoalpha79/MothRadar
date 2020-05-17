@@ -183,7 +183,7 @@ Defensive design principles have been implemented wherever possible, namely by r
 
 ## Database structure
 
-On top of the Django User model, which has not been modified for this app, three more modelas have been created:
+On top of the Django User model, which has not been modified for this project, three more models have been created:
 
 1. **Ticket** - with User as Foreign Key (`author`).
 
