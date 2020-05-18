@@ -1,6 +1,6 @@
 # MothRadar - Test Process and Findings
 
-This document details the testind conducted on the deployed app, as well as the issues encountered, their analysis and solution (where available).
+This document details the testing conducted on the deployed application, as well as the issues encountered, their analysis and solutions.
 
 **Note to Assessors: to enable assessment of the backend/admin side of the app (if needed), a 'staff' account with read-only privileges has been created:**  
 
@@ -79,13 +79,13 @@ The following issues have been observed:
 
 _Analysis: Upon Search, the queryset is set correctly (the number of pages is correct), but requesting the next page deletes the search call and reverts to the default queryset (and number of pages) of TicketListView._
 
-_Solution: I have tried to override reverting to the default queryset but all my attempts have been unsuccessful. In the end a workaround has been implemented in the form of disabling pagination altogehter for the search view (`self.paginate_by=None`), which is based on a post from Stack Overflow._
+_Solution: I have tried to override reverting to the default queryset but all my attempts have been unsuccessful. In the end a workaround has been implemented in the form of disabling pagination altogether for the search view (`self.paginate_by=None`), which is based on a post from Stack Overflow._
 
 _Validation: Revalidate Python code of tickets/views.py. Verify that pagination is disabled for the search view, but is unaffected for other ticket list views and filters._ 
 
 Outcome: Fix implemented, Python code successfully revalidated. Search view is no longer paginated so the issue is absent, and pagination on all other views/filters is unaffected.
 
-**Conclusion: the issue has been fixed. A better fix will be attempted in a future version.**
+**Conclusion: the issue has been fixed with a workaround. A better fix will be attempted in a future version.**
 ***
 **Issue #2: Ticket list view and detail view needlessly display time (H:MM) of ticket creation.**
 
@@ -250,7 +250,7 @@ _Solution: in base.html, modify the Create ticket button Bootstrap styling to_ `
 
 _Validation: Revalidate HTML code of base.html. Re-check display of Create ticket button on test screen and on larger screens._ 
 
-Outcome: HTML code revalidated OK. Create ticket button isplay unchanged on large+ screens, issue no longer present on test screen and sizes below large. Issue resolved.
+Outcome: HTML code revalidated OK. Create ticket button display unchanged on large+ screens, issue no longer present on test screen and sizes below large. Issue resolved.
 
 **Conclusion: Issue #5 is fixed and can be closed.**
 ***
