@@ -621,9 +621,11 @@ _Solution: in payment.html, modify the Bootstrap class of the stripe-error-messa
 
 _Validation: Revalidate HTML code of payment.html. Re-check display of payment error message and payment button on test screen and on larger screens._
 
+Outcome: HTML code revalidated OK. Issue no longer present on test screen, behaviour unchanged on medium screens and above. Issue resolved.
 
-
-
+**Conclusion: Issue #7 is fixed and can be closed.**
+***
+All five issues raised during Responsive design testing (Issues #3 - #7) have been fixed and closed. No new issues have been identified. The rendering of HTML forms that had raised errors during HTML validation shows no issues.
 
 ## Technologies Used
 
