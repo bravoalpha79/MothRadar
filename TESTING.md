@@ -83,9 +83,9 @@ _Solution: I have tried to override reverting to the default queryset but all my
 
 _Validation: Revalidate Python code of tickets/views.py. Verify that pagination is disabled for the search view, but is unaffected for other ticket list views and filters._ 
 
+Outcome: Fix implemented, Python code successfully revalidated. Search view is no longer paginated so the issue is absent, and pagination on all other views/filters is unaffected.
 
-
-**Conclusion: the issue will need to be fixed in a later version of the app.**
+**Conclusion: the issue has been fixed. A better fix will be attempted in a future version.**
 ***
 **Issue #2: Ticket list view and detail view needlessly display time (H:MM) of ticket creation.**
 
@@ -280,3 +280,11 @@ Outcome: HTML code revalidated OK. Issue no longer present on test screen, behav
 **Conclusion: Issue #7 is fixed and can be closed.**
 ***
 All five issues raised during Responsive design testing (Issues #3 - #7) have been fixed and closed. No new issues have been identified. The rendering of HTML forms that had raised errors during HTML validation shows no issues.
+
+***
+## Conclusion
+
+A total of seven issues have been identified. Six of them have been fixed completely, and for one (Issue #1) a workaround solution has been implemented.   
+The HTML code errors raised during code validation caused no issues in the functioning of the app.
+
+**The application is considered ready for production.**

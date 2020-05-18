@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/bravoalpha79/MothRadar.svg?branch=master)](https://travis-ci.org/bravoalpha79/MothRadar)
 
 
-MothRadar is a ticket tracker app for a fictional application called UnicornAttractor. MothRadar enables the users of the UnicornAttractor to raise tickets on issues encountered during the app use, to browse through existing tickets, and to comment on them. It also provides the users with the ability to upvote existing tickets, thus helping the UnicornAttractor app owner to prioritise fixes among existing bugs.
+MothRadar is a ticket tracker for a fictional application called UnicornAttractor. MothRadar enables the users of the UnicornAttractor to raise tickets on issues encountered during the app use, to browse through existing tickets, and to comment on them. It also provides the users with the ability to upvote existing tickets, thus helping the UnicornAttractor app owner to prioritise fixes among existing bugs.
 
 _"MothRadar never loses track of any bug that enters its scope."_
 
@@ -372,6 +372,12 @@ To create a virtual environment for your project, in the Terminal, in the projec
 
 The testing process and results are detailed in a [separate document](https://github.com/bravoalpha79/MothRadar/blob/master/TESTING.md). 
 
+### Testing summary:
+
+A total of seven issues have been identified. Six of them have been fixed completely, and for one (Issue #1) a workaround solution has been implemented.   
+The HTML code errors raised during code validation caused no issues in the functioning of the app.
+
+**The application is considered ready for production.**
 
 
 ## Technologies Used
