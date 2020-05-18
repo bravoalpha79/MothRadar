@@ -76,8 +76,9 @@ class TicketUpdateView(UpdateView):
         queryset = super().get_queryset()
         author = self.request.user
         # Limit edit view access only to tickets created by the
-        # current user - solution obtained from Stack Overflow.
-        queryset = Ticket.objects.filter(author=author)
+        # current user and in status "OPENED" -
+        # solution adapted from Stack Overflow.
+        queryset = Ticket.objects.filter(author=author, status="OPENED")
         return queryset
 
 
