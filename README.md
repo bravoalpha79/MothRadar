@@ -600,15 +600,19 @@ _Solution: in base.html, modify the Create ticket button Bootstrap styling to_ `
 
 _Validation: Revalidate HTML code of base.html. Re-check display of Create ticket button on test screen and on larger screens._ 
 
+Outcome: HTML code revalidated OK. Create ticket button isplay unchanged on large+ screens, issue no longer present on test screen and sizes below large. Issue resolved.
+**Conclusion: Issue #5 is fixed and can be closed.**
 ***
 
 **Issue #6: The upvote message unexpectedly pushes the Upvote button to the beginning of a new row.**   
 _Analysis: On large screens this issue is not visible, but on small widths the screen is not wide enough to contain the upvote count, the message, and the upvote button on one line._
 
-_Solution: in upvotes.html, add a Bootstrap class of_`d-none d-sm-inline` _to the upvoteMessage span, to keep the message hidden on small screens and prevent the button from being pushed to another row._ 
+_Solution: in upvotes.html, add a Bootstrap class of_ `d-none d-sm-inline` _to the upvoteMessage span, to keep the message hidden on small screens and prevent the button from being pushed to another row._ 
 
 _Validation: Revalidate HTML code of upvotes.html. Re-check display of upvote message and Upvote button on test screen and on larger screens._
 
+Outcome: HTML code revalidated OK. Issue no longer present on test screen, behaviour unchanged on larger screens. Issue resolved.
+**Conclusion: Issue #6 is fixed and can be closed.**
 ***
 
 
