@@ -413,7 +413,25 @@ AUTH_PASSWORD_VALIDATORS = [
 Considering my insufficient experience as well as the absence of an unambiguous confirmation that configurations like these should also be split into concatenated multi-line strings, this snippet has been left as-is regardless of the raised pep8 errors. 
 
 
+## Testing
 
+**Note to Assessors: to enable assessment of the backend/admin side of the app (if needed), a 'staff' account with read-only privileges has been created:**  
+
+- **_username_: demoadmin**   
+- **_password_: admintest456**
+
+
+### User stories
+
+_Note: As detailed in the UX section above, User Stories 11 and 12 (editing and deleting of user's comments) have not been implemented in this version and are therefore not tested._
+
+All user stories have been tested. The following issue has been observed:
+***
+**Issue #1: Search filter view reverts to all tickets view upon "Next page" click.**  
+_Analysis: Upon Search, the queryset is set correctly (the number of pages is correct), but requesting the next page deletes the search call and reverts to the default queryset (and number of pages) of TicketListView._   
+_Solution: I have tried to override the default pagination (paginate_by=5) if search is performed by using paginate_queryset, but all my attempts have been unsuccessful._
+**Conclusion: the issue will need to be fixed in a later version of the app.**
+***
 
 
 
