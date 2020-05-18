@@ -102,7 +102,8 @@ class TicketListView(ListView):
             ).count()
         return context
 
-    # Search solution adapted from a post on Stack Overflow
+    # Search solution and search queryset workaround
+    # adapted from a post on Stack Overflow
     # using Django documentation.
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -110,6 +111,7 @@ class TicketListView(ListView):
         # perform search if entered
         if search:
             queryset = queryset.filter(description__icontains=search)
+            self.paginate_by = None
         # otherwise display all tickets in the view
         else:
             queryset = queryset

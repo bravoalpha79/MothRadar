@@ -79,7 +79,11 @@ The following issues have been observed:
 
 _Analysis: Upon Search, the queryset is set correctly (the number of pages is correct), but requesting the next page deletes the search call and reverts to the default queryset (and number of pages) of TicketListView._
 
-_Solution: I have tried to override the default pagination (paginate_by=5) if search is performed by using paginate_queryset, but all my attempts have been unsuccessful._
+_Solution: I have tried to override reverting to the default queryset but all my attempts have been unsuccessful. In the end a workaround has been implemented in the form of disabling pagination altogehter for the search view (`self.paginate_by=None`), which is based on a post from Stack Overflow._
+
+_Validation: Revalidate Python code of tickets/views.py. Verify that pagination is disabled for the search view, but is unaffected for other ticket list views and filters._ 
+
+
 
 **Conclusion: the issue will need to be fixed in a later version of the app.**
 ***
