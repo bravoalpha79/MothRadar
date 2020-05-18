@@ -367,7 +367,7 @@ To create a virtual environment for your project, in the Terminal, in the projec
 `python manage.py runserver`
 ***
 
-## Code validation:
+## Code validation
 
 ### HTML 
 
