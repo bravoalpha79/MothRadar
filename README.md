@@ -425,13 +425,19 @@ Considering my insufficient experience as well as the absence of an unambiguous 
 
 _Note: As detailed in the UX section above, User Stories 11 and 12 (editing and deleting of user's comments) have not been implemented in this version and are therefore not tested._
 
-All user stories have been tested. The following issue has been observed:
+All user stories have been tested. The following issues have been observed:
 ***
 **Issue #1: Search filter view reverts to all tickets view upon "Next page" click.**  
 _Analysis: Upon Search, the queryset is set correctly (the number of pages is correct), but requesting the next page deletes the search call and reverts to the default queryset (and number of pages) of TicketListView._   
-_Solution: I have tried to override the default pagination (paginate_by=5) if search is performed by using paginate_queryset, but all my attempts have been unsuccessful._
+_Solution: I have tried to override the default pagination (paginate_by=5) if search is performed by using paginate_queryset, but all my attempts have been unsuccessful._   
 **Conclusion: the issue will need to be fixed in a later version of the app.**
 ***
+**Issue #2: Ticket list view and detail view needlessly display time (H:MM) of ticket creation.**  
+_Analysis: In a late stage of development, the date_created field in the ticket model has been changed to a DateTime field. However, in the ticket_list and ticket_detail templates no filter was added to filter out the time._   
+_Solution: Add filter (display only date) to the display of object.date_created in the ticket_detail template._
+_Validation: Revalidate HTML code of ticket_list.html and ticket_detail.html. Re-check display of concerned data in ticket list and ticket detail views._   
+**Conclusion: the issue will need to be fixed in a later version of the app.**
+
 
 
 

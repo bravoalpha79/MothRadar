@@ -63,7 +63,7 @@
             <span class="list-card-type-{{ticket.ticket_type}}"><strong>{{ ticket.ticket_type }}</strong></span>
           </div>
           <h6 class="card-subtitle mb-2 text-muted">
-            <small>Created on {{ ticket.date_created }} by <strong>{{ ticket.author }}</strong></small>
+            <small>Created on {{ ticket.date_created|date:"j M Y" }} by <strong>{{ ticket.author }}</strong></small>
           </h6>
           <p class="card-text">{{ ticket.description }}</p>
           <br />
