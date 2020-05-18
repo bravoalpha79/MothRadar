@@ -425,7 +425,9 @@ Considering my insufficient experience as well as the absence of an unambiguous 
 
 _Note: As detailed in the UX section above, User Stories 11 and 12 (editing and deleting of user's comments) have not been implemented in this version and are therefore not tested._
 
-All user stories have been tested. The following issues have been observed:
+All user stories have been tested. 
+
+The following issues have been observed:
 ***
 **Issue #1: Search filter view reverts to all tickets view upon "Next page" click.**  
 _Analysis: Upon Search, the queryset is set correctly (the number of pages is correct), but requesting the next page deletes the search call and reverts to the default queryset (and number of pages) of TicketListView._   
@@ -443,6 +445,56 @@ Outcome: Fix implemented, HTML code successfully revalidated, display of ticket 
 **Conclusion: Issue #2 is fixed and can be closed.**
 *** 
 
+
+### Features
+
+#### Navbar 
+1. Check that the navbar contents change dynamically dependent on whether the user is logged in or not.
+2. Check that all links are working in both cases.
+3. Check that the Create ticket button is not present if user is not logged in.
+
+_All Navbar features have been tested successfully. No issue was found._
+
+#### Landing page
+1. Check that the landing page renders properly.
+2. Check that the four information cards are responsive (colour highlight, toggle expand) upon clicking or hovering.
+3. Check that the information cards display the desired textual information.
+4. Check that the login and register anchors are only present if a user is not logged in.
+5. Check that the registration and login anchors, when present, are functional.
+6. Check that the footer anchor is functional and opens the link in a new tab.
+
+_All Landing page features have been tested successfully. No issue was found._
+
+#### Ticket list view
+1. Check that the ticket list view displays all expected information.
+2. Check that pagination is present.
+3. Check that all pagination links (First, Prev, Next, Last) work as expected.
+4. By going to the admin pages, check that the total list of tickets displayed corresponds to the total list of tickets in the database.
+5. Check that the searchbox and sidebar links are rendered corectly.
+6. Check that the sidebar view "My tickets" is only present if a user is logged in and then contains the correct number of tickets raised by that user.
+7. Check that the default view in ticket list sorts tickets descending by date created.
+8. Check that the "Most recent" view sorts tickets as expected.
+9. Check that the "Most upvoted" view sorts tickets as expected.
+10. Check that the "Bugs only" and "Features only" views filter tickets as expected.
+11. Check that the search functionality works as expected. 
+
+_All Ticket list view features have been tested successfully. No issue was found except as related to point 11, which is already highlihted in **issue #1**._
+
+_Note: during testing it has been observed that the Ticket view on the admin pages only logs the ticket title, which makes it difficult to check the number of tickets per author or type. Therefore an adjustment has been made to tickets/models.py to display all details (except date_created and description) in the admin pages. The corresponding Python code has been revalidated successfully._
+
+
+
+### Defensive design
+1. If the user is not logged in, check that a "manual" (via URL editing) attempt to access: 
+    - ticket create view,
+    - ticket edit view, 
+    - profile view, 
+    - upvote view (for Bug tickets), or
+    - upvote-feature view (for Feature tickets)
+
+    will redirect to login view.
+
+2.  
 
 
 

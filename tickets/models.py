@@ -29,7 +29,8 @@ class Ticket(models.Model):
     )
 
     def __str__(self):
-        return self.title
+        return "{} | {} | {} | {}".format(
+            self.ticket_type, self.author, self.status, self.title)
 
     def get_absolute_url(self):
         return reverse("ticket-details", kwargs={"pk": self.pk})
