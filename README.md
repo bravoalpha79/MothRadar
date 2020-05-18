@@ -429,19 +429,24 @@ All user stories have been tested.
 
 The following issues have been observed:
 ***
-**Issue #1: Search filter view reverts to all tickets view upon "Next page" click.**  
-_Analysis: Upon Search, the queryset is set correctly (the number of pages is correct), but requesting the next page deletes the search call and reverts to the default queryset (and number of pages) of TicketListView._   
-_Solution: I have tried to override the default pagination (paginate_by=5) if search is performed by using paginate_queryset, but all my attempts have been unsuccessful._   
+**Issue #1: Search filter view reverts to all tickets view upon "Next page" click.**
+
+_Analysis: Upon Search, the queryset is set correctly (the number of pages is correct), but requesting the next page deletes the search call and reverts to the default queryset (and number of pages) of TicketListView._
+
+_Solution: I have tried to override the default pagination (paginate_by=5) if search is performed by using paginate_queryset, but all my attempts have been unsuccessful._
+
 **Conclusion: the issue will need to be fixed in a later version of the app.**
 ***
-**Issue #2: Ticket list view and detail view needlessly display time (H:MM) of ticket creation.**  
+**Issue #2: Ticket list view and detail view needlessly display time (H:MM) of ticket creation.**
+
 _Analysis: In a late stage of development, the date_created field format in the Ticket model has been changed to DateTimeField. However, in the ticket_list and ticket_detail templates no filter was added to filter out the time part._
 
 _Solution: Add filter (display only date) to the display of object.date_created in the ticket_detail template and of ticket.date_created in the ticket_list template._  
 
 _Validation: Revalidate HTML code of ticket_list.html and ticket_detail.html. Re-check display of concerned data in ticket list and ticket detail views._  
 
-Outcome: Fix implemented, HTML code successfully revalidated, display of ticket list and ticket detail views checked. Issue has been fixed.   
+Outcome: Fix implemented, HTML code successfully revalidated, display of ticket list and ticket detail views checked. Issue has been fixed.
+
 **Conclusion: Issue #2 is fixed and can be closed.**
 *** 
 
@@ -562,16 +567,27 @@ On Mozilla Firefox, no new issue was observed. The three aforementioned forms re
 
 On Microsoft Edge, no new issue was observed. The three aforementioned forms rendered without issues.
 
-On Google Chrome emulated device mode, the following issue was observed:
+On Google Chrome emulated device mode, the following issues were observed:
+***
+**Issue #3: The footer bar is displayed as a strip, not touching the bottom of the screen, and the footer text is stretching outside of it.**
 
-**Issue #3: The footer bar is displayed as a strip, not touching the bottom of the screen, and the footer text is stretching outside of it.**   
-_Analysis: Due to the narrow(er) screen width, the footer text is split into two lines. Since the current footer CSS height (4vh) is insufficient to cover two lines, the text cannot be contained in the footer._
+_Analysis: Due to the narrow(er) screen width, the footer text splits into two lines. Since the current footer CSS height (4vh) is insufficient to cover two lines, the resulting text cannot be contained in the footer._
 
-_Solution: in style CSS, change the footer property to `min-height:4vh`, which will keep its current height on large screens but enable it to stretch if necessary on smaller ones._   
+_Solution: in style.css, change the footer property to `min-height:4vh`, which will keep its current height on large screens but enable it to stretch if necessary on smaller ones._   
 
 _Validation: Revalidate CSS code of style.css. Perform collectstatic and push the code to Heroku. Re-check display of footer on test screen and on desktop screen._   
 
+Outcome: CSS code revelidated OK. Collectstatic performed and code redeployed to Heroku. Display unchanged on desktop, issue no longer present on test screen. Issue resolved.
 
+**Conclusion: Issue #3 is fixed and can be closed.**
+***
+**Issue #4: In ticket list view, the search button is pushed to the second line, not aligned with the search box.**   
+
+_Analysis: the search box width on small screens was set to Bootstrap_ `col-9 col-lg-8`, _which, together with margin settings, caused the button to wrap onto a second line on small screens._
+
+_Solution: in ticket__ _list.html, modify the search box width to_ `col-8 col-md-9 col-lg-8` _to remove the issue on small screens and keep the good display on medium and large+ screens._  
+
+_Validation: Revalidate HTML code of ticket__ _list.html. Re-check display of search box and buttons on test screen and on medium and desktop screens._ 
 
 ## Technologies Used
 
