@@ -29,7 +29,7 @@ class TestUserViews(TestCase):
 
     def test_get_profile(self):
         self.client.login(username="TestUser", password="testing123")
-        response = self.client.get("/profile/")
+        self.client.get("/profile/")
         self.assertTemplateUsed("users/profile.html")
 
     def test_post_valid_registration_form(self):
@@ -50,7 +50,7 @@ class TestUserViews(TestCase):
 
     def test_get_profile_update(self):
         self.tester.login(username="TestUser", password="testing123")
-        response = self.tester.get("/profile/update/")
+        self.tester.get("/profile/update/")
         self.assertTemplateUsed("users/profile_update.html")
 
     def test_post_valid_profile_update_form(self):
