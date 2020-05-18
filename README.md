@@ -576,7 +576,7 @@ _Solution: in style.css, change the footer property to `min-height:4vh`, which w
 
 _Validation: Revalidate CSS code of style.css. Perform collectstatic and push the code to Heroku. Re-check display of footer on test screen and on desktop screen._   
 
-Outcome: CSS code revelidated OK. Collectstatic performed and code redeployed to Heroku. Display unchanged on desktop, issue no longer present on test screen. Issue resolved.
+Outcome: CSS code revalidated OK. Collectstatic performed and code redeployed to Heroku. Display unchanged on desktop, issue no longer present on test screen. Issue resolved.
 
 **Conclusion: Issue #3 is fixed and can be closed.**
 ***
@@ -588,7 +588,7 @@ _Solution: in ticket__ _list.html, modify the search box width to_ `col-8 col-md
 
 _Validation: Revalidate HTML code of ticket__ _list.html. Re-check display of search box and buttons on test screen and on medium and desktop screens._ 
 
-Outcome: HTML code revelidated OK. Display unchanged on medium and larger screens, issue no longer present on test screen. Issue resolved.   
+Outcome: HTML code revalidated OK. Display unchanged on medium and larger screens, issue no longer present on test screen. Issue resolved.   
 
 **Conclusion: Issue #4 is fixed and can be closed.**
 ***
@@ -614,8 +614,12 @@ _Validation: Revalidate HTML code of upvotes.html. Re-check display of upvote me
 Outcome: HTML code revalidated OK. Issue no longer present on test screen, behaviour unchanged on larger screens. Issue resolved.
 **Conclusion: Issue #6 is fixed and can be closed.**
 ***
+**Issue #7: The inline message for erroneous payment data is broken across two lines.**   
+_Analysis: On large screens this issue is not visible, but on small widths the screen is not wide enough to contain the whole the whole error message in one row, and the existing Bootstrap margin of `ml-3` looks awkward._
 
+_Solution: in payment.html, modify the Bootstrap class of the stripe-error-message span to_ `d-block d-md-inline ml-md-3` _to force the whole message to be displayed below the button on small screens and to apply the margin only on screens from medium above._ 
 
+_Validation: Revalidate HTML code of payment.html. Re-check display of payment error message and payment button on test screen and on larger screens._
 
 
 
