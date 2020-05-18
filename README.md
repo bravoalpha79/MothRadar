@@ -592,6 +592,30 @@ Outcome: HTML code revelidated OK. Display unchanged on medium and larger screen
 
 **Conclusion: Issue #4 is fixed and can be closed.**
 ***
+**Issue #5: In the slide-down menu, the Create ticket button is abnormally wide (full screen width) with an unwanted left margin.**   
+
+_Analysis: In base.html, the current Bootstrap margin styling of the Create ticket button (_`mt-5`_) only catered for the display on desktop screens. This needs to be adjusted for screens of lower width._
+
+_Solution: in base.html, modify the Create ticket button Bootstrap styling to_ `mr-auto px-2 ml-lg-5` _to keep the button appearance on desktop screens, but to remove the unwanted margin and reduce the button width on smaller screens._   
+
+_Validation: Revalidate HTML code of base.html. Re-check display of Create ticket button on test screen and on larger screens._ 
+
+***
+
+**Issue #6: The upvote message unexpectedly pushes the Upvote button to the beginning of a new row.**   
+_Analysis: On large screens this issue is not visible, but on small widths the screen is not wide enough to contain the upvote count, the message, and the upvote button on one line._
+
+_Solution: in upvotes.html, add a Bootstrap class of_`d-none d-sm-inline` _to the upvoteMessage span, to keep the message hidden on small screens and prevent the button from being pushed to another row._ 
+
+_Validation: Revalidate HTML code of upvotes.html. Re-check display of upvote message and Upvote button on test screen and on larger screens._
+
+***
+
+
+
+
+
+
 
 ## Technologies Used
 
