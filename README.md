@@ -433,10 +433,15 @@ _Solution: I have tried to override the default pagination (paginate_by=5) if se
 **Conclusion: the issue will need to be fixed in a later version of the app.**
 ***
 **Issue #2: Ticket list view and detail view needlessly display time (H:MM) of ticket creation.**  
-_Analysis: In a late stage of development, the date_created field in the ticket model has been changed to a DateTime field. However, in the ticket_list and ticket_detail templates no filter was added to filter out the time._   
-_Solution: Add filter (display only date) to the display of object.date_created in the ticket_detail template._
-_Validation: Revalidate HTML code of ticket_list.html and ticket_detail.html. Re-check display of concerned data in ticket list and ticket detail views._   
-**Conclusion: the issue will need to be fixed in a later version of the app.**
+_Analysis: In a late stage of development, the date_created field format in the Ticket model has been changed to DateTimeField. However, in the ticket_list and ticket_detail templates no filter was added to filter out the time part._
+
+_Solution: Add filter (display only date) to the display of object.date_created in the ticket_detail template and of ticket.date_created in the ticket_list template._  
+
+_Validation: Revalidate HTML code of ticket_list.html and ticket_detail.html. Re-check display of concerned data in ticket list and ticket detail views._  
+
+Outcome: Fix implemented, HTML code successfully revalidated, display of ticket list and ticket detail views checked. Issue has been fixed.   
+**Conclusion: Issue #2 is fixed and can be closed.**
+*** 
 
 
 
