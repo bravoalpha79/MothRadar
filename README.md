@@ -465,7 +465,7 @@ _All Navbar features have been tested successfully. No issue was found._
 
 _All Landing page features have been tested successfully. No issue was found._
 
-#### Ticket list view
+#### Ticket list view, sorting and search
 1. Check that the ticket list view displays all expected information.
 2. Check that pagination is present.
 3. Check that all pagination links (First, Prev, Next, Last) work as expected.
@@ -483,6 +483,55 @@ _All Ticket list view features have been tested successfully. No issue was found
 _Note: during testing it has been observed that the Ticket view on the admin pages only logs the ticket title, which makes it difficult to check the number of tickets per author or type. Therefore an adjustment has been made to tickets/models.py to display all details (except date_created and description) in the admin pages. The corresponding Python code has been revalidated successfully._
 
 
+### Ticket detail view
+
+1. Check that the Ticket detail view displays all ticket information, including upvotes count.
+2. Check that the Upvote button is only present if a user is logged in. 
+3. Check that the upvote button is greyed out if the logged-in user has already upvoted the ticket.
+4. Check that the comments text area and Post comment button are only present if a user is logged in.
+5. Check that existing comments (if any) are displayed regardless if a user is logged in or not.
+6. Check that the "Edit ticket" button is only present if the logged-in user is the ticket author AND the ticket is in status "OPENED". If the edit button is not present, check that a manual (via URL) attempt to access the edit route for the ticket results in a "Not found" error.
+7. If the Edit ticket button is available, check that it is possible to edit the title, description and ticket type fields of the ticket, and that all fields are mandatory. Check that, upon submission, the modified ticket details are updated. 
+
+_All Ticket list view features have been tested successfully. No issue was found._
+
+### Upvoting system
+
+1. Check that the Upvote button is displayed with a lock icon for Feature tickets (if not yet upvoted by the current logged-in user). Check that the lock icon is not displayed for Bug tickets under identical conditions.
+2. Check that the Upvote button is greyed out and insensitive if the current logged-in user has already upvoted the ticket.
+3. In a Bug ticket, upon clicking the Upvote button, check that the button becomes greyed out, a success message is displayed next to the button, and the upvote counter is increased by 1. Upon a repeated click, check that a message "Already upvoted." is displayed.
+4. In a Feature ticket, upon clicking the Upvote button, check that a modal opens informing the user that this is a paid service (including the price) and offering the user the options to cancel or to proceed.
+5. If the user selects Cancel, check that the modal closes, and the ticket's upvote count and the availability of the upvote button remain unchanged.
+6. If the user selects Proceed, check that the browser redirects to the Payment Processing form.
+7. Check that the Payment Processing form is displayed as expected.
+8. Check that, upon entering of invalid card data:
+    - card number shorter than 12 digits, or
+    - CVV shorter than 3 digits, or
+    - expiry month in the past,
+
+    and clicking the Submit payment button, a corresponding error text is presented to the user next to the Submit payment button.   
+9. Check that, upon entering valid card data and clicking Submit payment, if the payment is unsuccessful (e.g. due to card processing errors), a red alert banner is displayed below the Navbar. Check that the alert banner can be closed.
+10. If the payment is successful, check that the browser redirects to the upvoted ticket's detail view, a green alert closable banner is displayed below the Navbar, the upvote button is greyed out, and the upvote count has been increased by 1.
+
+_The upvoting system has been tested successfully. No issue was found._
+
+### Comments system
+
+1. In the Ticket detail view, if a logged-in user attemts tu submit a comment without entering any content into the comment text area, check that an information message is displayed next to the Submit comment button.
+2. If a logged-in user submits a non-empty comment, check that the comment becomes displayed at the bottom of the existing comments (if any) and highlighted in green.
+3. Upon page refresh, check that the newly submitted comment is displayed without highlight.
+4. Check that the existing comments are sorted from newest at the top.
+5. Check that there is a "No comments yet." paragraph if no comments have been submitted for the ticket yet. 
+
+_The comments system has been tested successfully. No issue was found._
+
+### User handling
+1. In the Register view, check that the form cannot be submitted with empty or invalid data. Check that clear feedback on invalid data is provided to the user.
+2. In the Profile Update view, check that the form cannot be submitted with empty or invalid data. Check that clear feedback on invalid data is provided to the user. Check that it is not possible to change the username if a user of the same name already exists.
+3. In the Password Change view, check that the form cannot be submitted with empty or invalid data. Check that clear feedback on invalid data is provided to the user.
+4. In the Password Reset Confirm view, check that the form cannot be submitted with empty or invalid data. Check that clear feedback on invalid data is provided to the user.
+
+_The user handling system has been tested successfully. No issue was found._
 
 ### Defensive design
 1. If the user is not logged in, check that a "manual" (via URL editing) attempt to access: 
@@ -494,7 +543,7 @@ _Note: during testing it has been observed that the Ticket view on the admin pag
 
     will redirect to login view.
 
-2.  
+2.  If a logged in user attempts to manually (via URL) access the upvote-feature route for a ticket they have already upvoted, and they submit valid payment data, check that the browser redirects to the concerned ticket, a yellow alert closable banner is displayed below the Navbar, and the upvote count remains unchanged.   
 
 
 
