@@ -470,7 +470,7 @@ _All Landing page features have been tested successfully. No issue was found._
 2. Check that pagination is present.
 3. Check that all pagination links (First, Prev, Next, Last) work as expected.
 4. By going to the admin pages, check that the total list of tickets displayed corresponds to the total list of tickets in the database.
-5. Check that the searchbox and sidebar links are rendered corectly.
+5. Check that the search box and sidebar links are rendered correctly.
 6. Check that the sidebar view "My tickets" is only present if a user is logged in and then contains the correct number of tickets raised by that user.
 7. Check that the default view in ticket list sorts tickets descending by date created.
 8. Check that the "Most recent" view sorts tickets as expected.
@@ -478,12 +478,12 @@ _All Landing page features have been tested successfully. No issue was found._
 10. Check that the "Bugs only" and "Features only" views filter tickets as expected.
 11. Check that the search functionality works as expected. 
 
-_All Ticket list view features have been tested successfully. No issue was found except as related to point 11, which is already highlihted in **issue #1**._
+_All Ticket list view features have been tested successfully. No issue was found except as related to point 11, which is already highlighted in **Issue #1**._
 
 _Note: during testing it has been observed that the Ticket view on the admin pages only logs the ticket title, which makes it difficult to check the number of tickets per author or type. Therefore an adjustment has been made to tickets/models.py to display all details (except date_created and description) in the admin pages. The corresponding Python code has been revalidated successfully._
 
 
-### Ticket detail view
+#### Ticket detail view
 
 1. Check that the Ticket detail view displays all ticket information, including upvotes count.
 2. Check that the Upvote button is only present if a user is logged in. 
@@ -495,7 +495,7 @@ _Note: during testing it has been observed that the Ticket view on the admin pag
 
 _All Ticket list view features have been tested successfully. No issue was found._
 
-### Upvoting system
+#### Upvoting system
 
 1. Check that the Upvote button is displayed with a lock icon for Feature tickets (if not yet upvoted by the current logged-in user). Check that the lock icon is not displayed for Bug tickets under identical conditions.
 2. Check that the Upvote button is greyed out and insensitive if the current logged-in user has already upvoted the ticket.
@@ -515,9 +515,9 @@ _All Ticket list view features have been tested successfully. No issue was found
 
 _The upvoting system has been tested successfully. No issue was found._
 
-### Comments system
+#### Comments system
 
-1. In the Ticket detail view, if a logged-in user attemts tu submit a comment without entering any content into the comment text area, check that an information message is displayed next to the Submit comment button.
+1. In the Ticket detail view, if a logged-in user attempts to submit a comment without entering any content into the comment text area, check that an information message is displayed next to the Submit comment button.
 2. If a logged-in user submits a non-empty comment, check that the comment becomes displayed at the bottom of the existing comments (if any) and highlighted in green.
 3. Upon page refresh, check that the newly submitted comment is displayed without highlight.
 4. Check that the existing comments are sorted from newest at the top.
@@ -525,7 +525,7 @@ _The upvoting system has been tested successfully. No issue was found._
 
 _The comments system has been tested successfully. No issue was found._
 
-### User handling
+#### User handling
 1. In the Register view, check that the form cannot be submitted with empty or invalid data. Check that clear feedback on invalid data is provided to the user.
 2. In the Profile Update view, check that the form cannot be submitted with empty or invalid data. Check that clear feedback on invalid data is provided to the user. Check that it is not possible to change the username if a user of the same name already exists.
 3. In the Password Change view, check that the form cannot be submitted with empty or invalid data. Check that clear feedback on invalid data is provided to the user.
@@ -533,7 +533,7 @@ _The comments system has been tested successfully. No issue was found._
 
 _The user handling system has been tested successfully. No issue was found._
 
-### Defensive design
+#### Defensive design
 1. If the user is not logged in, check that a "manual" (via URL editing) attempt to access: 
     - ticket create view,
     - ticket edit view, 
@@ -543,7 +543,7 @@ _The user handling system has been tested successfully. No issue was found._
 
     will redirect to login view.
 
-2.  If a logged in user attempts to manually (via URL) access the upvote-feature route for a ticket they have already upvoted, and they submit valid payment data, check that the browser redirects to the concerned ticket, a yellow alert closable banner is displayed below the Navbar, and the upvote count remains unchanged.   
+2.  If a logged-in user attempts to manually (via URL) access the upvote-feature route for a ticket they have already upvoted, and they submit valid payment data, check that the browser redirects to the concerned ticket, a yellow alert closable banner is displayed below the Navbar, and the upvote count remains unchanged.   
 
 
 
