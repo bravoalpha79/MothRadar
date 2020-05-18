@@ -56,6 +56,11 @@ AUTH_PASSWORD_VALIDATORS = [
 ```
 Considering my insufficient experience as well as the absence of an unambiguous confirmation that configurations like these should also be split into concatenated multi-line strings, this snippet has been left as-is regardless of the raised pep8 errors. 
 
+## Continuous integration
+
+[Travis CI](https://travis-ci.org/) has been used for continuous integration since the earliest stages of the project.   
+The production build passes all integration tests. 
+
 ## Automated testing
 
 Automated testing has been minimal. I managed to create several tests for users/views (see `users/test_views.py`) but quickly realised that the Django automated testing has a learning curve of its own and that drafting any meaningful automated test coverage would require significantly more time than the project deadline allowed for. Therefore automated testing was not implemented beyond the aforementioned cases, the focus was placed on manual testing instead.
