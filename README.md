@@ -546,6 +546,32 @@ _The user handling system has been tested successfully. No issue was found._
 2.  If a logged-in user attempts to manually (via URL) access the upvote-feature route for a ticket they have already upvoted, and they submit valid payment data, check that the browser redirects to the concerned ticket, a yellow alert closable banner is displayed below the Navbar, and the upvote count remains unchanged.   
 
 
+### Responsive design
+
+For all tests listed until now, Google Chrome has been used as the test browser. No issues except the already documented ones have been identified.
+
+All relevant user stories have been retested using:
+-  Mozilla Firefox, 
+- Microsoft Edge,
+- Google Chrome Developer Tools emulated device mode - iPhone X, and
+- physical mobile device - Sony Xperia XZ2 Compact (1080 x 2160px).
+
+Particular attention was paid to the three forms (Register form, Password Reset Confirm form, Password Change form) which returned an error during HTML code validation.  
+
+On Mozilla Firefox, no new issue was observed. The three aforementioned forms rendered without issues.
+
+On Microsoft Edge, no new issue was observed. The three aforementioned forms rendered without issues.
+
+On Google Chrome emulated device mode, the following issue was observed:
+
+**Issue #3: The footer bar is displayed as a strip, not touching the bottom of the screen, and the footer text is stretching outside of it.**   
+_Analysis: Due to the narrow(er) screen width, the footer text is split into two lines. Since the current footer CSS height (4vh) is insufficient to cover two lines, the text cannot be contained in the footer._
+
+_Solution: in style CSS, change the footer property to `min-height:4vh`, which will keep its current height on large screens but enable it to stretch if necessary on smaller ones._   
+
+_Validation: Revalidate CSS code of style.css. Perform collectstatic and push the code to Heroku. Re-check display of footer on test screen and on desktop screen._   
+
+
 
 ## Technologies Used
 

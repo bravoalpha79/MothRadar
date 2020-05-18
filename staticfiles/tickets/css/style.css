@@ -308,7 +308,7 @@ button.close {
 footer {
   background-color: #1f1e1e;
   color: #a1a0a0;
-  height: 4vh;
+  min-height: 4vh;
   padding: 0.5rem;
 }
 
