@@ -558,8 +558,7 @@ For all tests listed until now, Google Chrome has been used as the test browser.
 All relevant user stories have been retested using:
 -  Mozilla Firefox, 
 - Microsoft Edge,
-- Google Chrome Developer Tools emulated device mode - iPhone X, and
-- physical mobile device - Sony Xperia XZ2 Compact (1080 x 2160px).
+- Google Chrome Developer Tools emulated device mode - iPhone X.
 
 Particular attention was paid to the three forms (Register form, Password Reset Confirm form, Password Change form) which returned an error during HTML code validation.  
 
@@ -588,6 +587,11 @@ _Analysis: the search box width on small screens was set to Bootstrap_ `col-9 co
 _Solution: in ticket__ _list.html, modify the search box width to_ `col-8 col-md-9 col-lg-8` _to remove the issue on small screens and keep the good display on medium and large+ screens._  
 
 _Validation: Revalidate HTML code of ticket__ _list.html. Re-check display of search box and buttons on test screen and on medium and desktop screens._ 
+
+Outcome: HTML code revelidated OK. Display unchanged on medium and larger screens, issue no longer present on test screen. Issue resolved.   
+
+**Conclusion: Issue #4 is fixed and can be closed.**
+***
 
 ## Technologies Used
 
